@@ -40,7 +40,7 @@ Theoretical Computer Science; TCS
 
 - 最適化アルゴリズム
 - グラフアルゴリズム
-- 困難性 (計算量下界 e.g., $\mathsf{P}$ vs $\mathsf{NP}$問題)
+- 計算量下界
 - 暗号
 - 学習理論
 - マルコフ連鎖
@@ -60,24 +60,39 @@ etc
 </div>
 
 <div class="text-center mt-4 text-xl font-bold">
-メッセージ: 純粋数学の応用は暗号業界にとどまらない!
+マトロイド: 理論計算機科学と純粋数学の間の架け橋の一つ
 </div>
 
 ---
+layout: two-cols-header
+---
 
-# 理論計算機科学におけるマトロイド
-
-Matroid in TCS
+# 諸分野におけるマトロイド
 
 
+マトロイドは研究対象の「扱いやすい」性質を抽象化した時に見えてくることが多い
 
+::left::
+
+理論計算機科学
+
+- 効率的に解ける組合せ最適化問題の性質の抽象化
+
+- 効率的にサンプリング(数え上げ)できる離散構造の性質の抽象化 (**今日の話題**)
+
+::right::
+
+純粋数学
+
+- グラフに付随する不変量の一般化
+
+- 線形部分空間や超平面配置の組合せ的性質の抽出
 
 
 ---
 
 
-
-# What is Slidev?
+# hoge
 
 Slidev is a slides maker and presenter designed for developers, consist of the following features
 
