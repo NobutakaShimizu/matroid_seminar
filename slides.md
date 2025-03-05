@@ -3,49 +3,79 @@
 theme: seriph
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
-background: https://cover.sli.dev
+layout: cover
 # some information about your slides (markdown enabled)
-title: Welcome to Slidev
+title: マトロイドのエクスパンダー性
 info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
+  ## Slide of my talk at [Hokkaido University Matroid Seminar](https://sites.google.com/view/matroid-seminar/), held at March 28
 
-  Learn more at [Sli.dev](https://sli.dev)
-# apply unocss classes to the current slide
-class: text-center
 # https://sli.dev/features/drawing
 drawings:
-  persist: false
-# slide transition: https://sli.dev/guide/animations.html#slide-transitions
-transition: slide-left
+  persist: true
 # enable MDC Syntax: https://sli.dev/features/mdc
 mdc: true
+author: Nobutaka Shimizu
 ---
 
-# Welcome to Slidev
+# マトロイドのエクスパンダー性
 
-Presentation slides for developers
+@北海道大学マトロイドセミナー
 
-<div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="white op-10">
-  Press Space for next page <carbon:arrow-right />
-</div>
+  [清水 伸高](https://sites.google.com/view/nobutaka-shimizu/home) (東京科学大学)
 
-<div class="abs-br m-6 text-xl">
-  <button @click="$slidev.nav.openInEditor" title="Open in Editor" class="slidev-icon-btn">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" class="slidev-icon-btn">
-    <carbon:logo-github />
-  </a>
-</div>
 
 <!--
 The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
 -->
 
 ---
-transition: fade-out
+layout: default
 ---
+
+# 理論計算機科学
+
+Theoretical Computer Science; TCS
+
+計算機の理論的な能力やその限界を数学を使って解明 (応用数学)
+
+- 最適化アルゴリズム
+- グラフアルゴリズム
+- 困難性 (計算量下界 e.g., $\mathsf{P}$ vs $\mathsf{NP}$問題)
+- 暗号
+- 学習理論
+- マルコフ連鎖
+- 数値計算
+- 量子アルゴリズム
+- 分散アルゴリズム
+- データ構造
+
+etc
+
+---
+
+# TCSと純粋数学のつながり
+
+<div class="flex justify-center">
+<img src="/images/TCS_and_math.svg" alt="TCSと純粋数学の関係" class="w-170"/>
+</div>
+
+<div class="text-center mt-4 text-xl font-bold">
+メッセージ: 純粋数学の応用は暗号業界にとどまらない!
+</div>
+
+---
+
+# 理論計算機科学におけるマトロイド
+
+Matroid in TCS
+
+
+
+
+
+---
+
+
 
 # What is Slidev?
 
