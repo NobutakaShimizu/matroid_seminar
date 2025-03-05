@@ -85,6 +85,7 @@ color: amber-light
 
 <div class="text-center mt-4 text-xl font-bold">
 マトロイド: 理論計算機科学と純粋数学の間の架け橋の一つ
+マトロイド: 理論計算機科学と純粋数学の間の架け橋の一つ
 </div>
 
 ---
