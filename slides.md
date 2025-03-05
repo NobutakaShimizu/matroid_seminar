@@ -1,6 +1,6 @@
 ---
 # You can also start simply with 'default'
-theme: seriph
+theme: neversink
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
 layout: cover
@@ -29,31 +29,43 @@ The last comment block of each slide will be treated as slide notes. It will be 
 -->
 
 ---
-layout: default
+layout: top-title
+color: amber-light
 ---
 
-# 理論計算機科学
+::title::
 
-Theoretical Computer Science; TCS
+# 理論計算機科学 (Theoretical Computer Science; TCS)
 
-計算機の理論的な能力やその限界を数学を使って解明 (応用数学)
+::content::
+
+#### 計算機の理論的な能力やその限界を数学を使って解明 (応用数学)
+
+- 数学「四色定理によれば地図は4色で塗れる」
+
+- TCS「具体的な色分けはどれくらいの手間で見つかるか?」
+
+
+#### 多彩な応用例
 
 - 最適化アルゴリズム
-- グラフアルゴリズム
 - 計算量下界
 - 暗号
 - 学習理論
 - マルコフ連鎖
-- 数値計算
-- 量子アルゴリズム
-- 分散アルゴリズム
-- データ構造
 
-etc
+数学の様々な概念が応用される. 
 
 ---
+layout: top-title
+color: amber-light
+---
+
+::title::
 
 # TCSと純粋数学のつながり
+
+::content::
 
 <div class="flex justify-center">
 <img src="/images/TCS_and_math.svg" alt="TCSと純粋数学の関係" class="w-170"/>
@@ -64,29 +76,43 @@ etc
 </div>
 
 ---
-layout: two-cols-header
+layout: top-title-two-cols
+color: amber-light
 ---
+
+::title::
 
 # 諸分野におけるマトロイド
 
 
-マトロイドは研究対象の「扱いやすい」性質を抽象化した時に見えてくることが多い
-
 ::left::
 
-理論計算機科学
+### 理論計算機科学
 
 - 効率的に解ける組合せ最適化問題の性質の抽象化
+  - 貪欲法
+  - マトロイド交叉
 
 - 効率的にサンプリング(数え上げ)できる離散構造の性質の抽象化 (**今日の話題**)
+  - 高次元エクスパンダー
+  - 対数凹多項式 (log-concave polynomial)
 
 ::right::
 
-純粋数学
+### 純粋数学
 
 - グラフに付随する不変量の一般化
-
+  - ランク多項式
 - 線形部分空間や超平面配置の組合せ的性質の抽出
+  - 有向マトロイド
+::default::
+
+<div class="text-center">
+<div class="rounded-lg border-2 border-gray-300 p-4 max-w-2xl mx-auto">
+マトロイドは研究対象の「扱いやすい」性質を抽象化した時に見えてくることが多い
+</div>
+</div>
+
 
 
 ---
