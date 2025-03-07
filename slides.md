@@ -55,15 +55,15 @@ color: amber-light
 
 - 数学「四色定理によれば地図は4色で塗れる」
 
-- TCS「具体的な色分けはどれくらいの手間で見つかるか?」
+- TCS「具体的な色分けはどれくらいの手間 (演算回数) で見つかるか?」
 
 
-#### 多彩な応用例
+#### 研究範囲 (ごく一部)
 
 - 最適化アルゴリズム
 - 計算量下界
 - 暗号
-- 学習理論
+- 誤り訂正符号
 - マルコフ連鎖
 
 数学の様々な概念が応用される. 
@@ -84,7 +84,6 @@ color: amber-light
 </div>
 
 <div class="text-center mt-4 text-xl font-bold">
-マトロイド: 理論計算機科学と純粋数学の間の架け橋の一つ
 マトロイド: 理論計算機科学と純粋数学の間の架け橋の一つ
 </div>
 
@@ -150,13 +149,6 @@ color: amber-light
 - 実はマトロイドを特殊ケースとして含む (**今日の話**)
   - 基のサンプリングと数え上げの近似が効率的に計算できる (Mihail-Vazirani予想の解決)
 
-<div class="rounded-lg border-2 border-gray-300 p-4 max-w-2xl mx-auto text-center">
-期待されるマトロイドの新たな応用(清水の意見)
-
-単に既存の概念の<strong>抽象化</strong>として捉えるのではなく, 既存の誤り訂正符号や計算量下界のパラメータの改善のために<strong>道具</strong>になりうる.
-また, エクスパンダー性を応用した新たなアプローチに基づくアルゴリズムが期待される.
-</div>
-
 ---
 
 # この後の構成
@@ -173,12 +165,138 @@ layout: section
 
 # グラフエクスパンダーとは?
 
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# グラフのエクスパンダー性
+
+::content::
+
+無向グラフ$G=(V,E)$の正規化された隣接行列 $P\in[0,1]^{V\times V}$を考える. 
+
+$$
+\begin{aligned}
+P = \begin{cases}
+\frac{1}{\deg(u)} & \text{if }\{u,v\}\in E,\\
+0 & \text{otherwise}.
+\end{cases}
+\end{aligned}
+$$
+
+この行列の固有値を$1=\lambda_1\ge\dots\ge\lambda_n\ge -1$とする ($n=|V|$).
+
+<div class="rounded-lg border-1 border-blue-600 bg-sky-100">
+
+  <div class="ml-4">
+
+  **定義.**
+
+  グラフ$G=(V,E)$は, $\max\{ |\lambda_2|,|\lambda_n| \}\le\lambda$ を満たすとき, **$\lambda$-エクスパンダー**であるという.
+  </div>
+</div>
+
+全成分$1$のベクトルが第一固有ベクトルに対応する.
+
+パラメータ$\lambda$が小さいほど, そのグラフはよりエクスパンダー性が高い.
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+# ランダムウォークとエクスパンダー
+
+::content::
+
+グラフ$G = (V,E)$上の単純ランダムウォーク: ランダムに定まる頂点列$(X_t)_{t\ge 0}$ ($t=0,1,\dots$) であって
+頂点$X_0\in V$は任意に指定され, 頂点$X_{t+1}$は頂点$X_t$の一様ランダムな隣接点.
+
+すなわち, 頂点$u$から頂点$v$に遷移する確率は$P(u,v)$.
+
+グラフがエクスパンダー性を持つならば, ランダムウォークの分布は速く収束する.
+
+
+<div class="rounded-lg border-1 border-blue-600 bg-sky-100">
+
+  <div class="ml-4">
+
+  **命題.**
+
+  グラフ$G=(V,E)$上の**単純ランダムウォーク**$(X_t)_{t\ge 0}$に対し, $X_t$の分布を$p_t\in[0,1]^{V}$とする. すなわち, $p_t(v) = \Pr[X_t=v]$で定まるベクトルである.
+  グラフ$G$が連結かつ二部グラフでないならば, ある$V$上の分布$\pi\in[0,1]^V$が存在して, $p_t \to \pi$となる.
+
+  さらに, グラフ$G$が$\lambda$-エクスパンダーならば, ある定数$C>0$が存在して, 任意の初期頂点$X_0$と十分大きな全ての$t\ge 0$に対して, $\|p_t-\pi\|_1\le C\exp(-\lambda t)$が成り立つ.
+  </div>
+</div>
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# 遅延単純ランダムウォーク
+
+::content::
+
+確率$1/2$で自己ループに遷移し, 確率$1/2$で一様ランダムな隣接点に遷移する頂点列を**遅延単純ランダムウォーク**という.
+
+
+**観察**: 単純遅延RWは**頂点→辺**の遷移と**辺→頂点**の遷移に分解して考えることができる.
+
+<!-- TODO: 図 -->
+
 
 ---
 layout: section
 ---
 
 # 高次元エクスパンダーとは?
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# (抽象的)単体複体
+
+::content::
+
+**単体複体**: 有限集合 $V$ と部分集合族 $\mathcal{F} \subseteq 2^V$の組 $X=(V,\mathcal{F})$ であり, 部分集合で閉じているもの.
+- 面$\sigma$に対し, その次元を$\dim(\sigma)=|\sigma|-1$で定め, 次元$i$の面の集合を$X(i)$とする.
+- $X$の次元を最大次元の面の次元で定める.
+- 全ての極大面の次元が等しいとき, $X$は**純粋**であるという.
+
+
+
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# (抽象的)単体複体
+
+::content::
+
+<div class="flex justify-center">
+<img src="/images/face.png" alt="幾何的" class="w-120"/>
+</div>
+
+<div class="text-center">
+幾何的には, 点, 線分, 三角形, 四面体, ...を貼り合わせたもの.
+</div>
+
 
 ---
 layout: section
