@@ -1,0 +1,173 @@
+.theorem {
+  border: 2px solid #d32f2f;
+  background-color: #ffebee;
+  padding: 35px 15px 8px;
+  margin: 10px 0 2px;
+  position: relative;
+  border-radius: 8px;
+}
+
+.theorem::before {
+  content: "定理";
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  color: #d32f2f;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.theorem::after {
+  content: "✎";
+  position: absolute;
+  top: 10px;
+  left: 55px;
+  color: #d32f2f;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.definition {
+  border: 2px solid #1976d2;
+  background-color: #e3f2fd;
+  padding: 35px 15px 8px;
+  margin: 10px 0 2px;
+  position: relative;
+  border-radius: 8px;
+}
+
+.definition::before {
+  content: "定義";
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  color: #1976d2;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.definition::after {
+  content: "✎";
+  position: absolute;
+  top: 10px;
+  left: 55px;
+  color: #1976d2;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.lemma {
+  border: 2px solid #2e7d32;
+  background-color: #e8f5e9;
+  padding: 35px 15px 8px;
+  margin: 10px 0 2px;
+  position: relative;
+  border-radius: 8px;
+}
+
+.lemma::before {
+  content: "補題";
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  color: #2e7d32;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.lemma::after {
+  content: "✎";
+  position: absolute;
+  top: 10px;
+  left: 55px;
+  color: #2e7d32;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.corollary {
+  border: 2px solid #795548;
+  background-color: #efebe9;
+  padding: 35px 15px 8px;
+  margin: 10px 0 2px;
+  position: relative;
+  border-radius: 8px;
+}
+
+.corollary::before {
+  content: "系";
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  color: #795548;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.corollary::after {
+  content: "✎";
+  position: absolute;
+  top: 10px;
+  left: 35px;
+  color: #795548;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.proposition {
+  border: 2px solid #2e7d32;
+  background-color: #e8f5e9;
+  padding: 35px 15px 8px;
+  margin: 10px 0 2px;
+  position: relative;
+  border-radius: 8px;
+}
+
+.proposition::before {
+  content: "命題";
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  color: #2e7d32;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.proposition::after {
+  content: "✎";
+  position: absolute;
+  top: 10px;
+  left: 55px;
+  color: #2e7d32;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.note {
+  border: 2px solid #795548;
+  background-color: #efebe9;
+  padding: 35px 15px 8px;
+  margin: 10px 0 2px;
+  position: relative;
+  border-radius: 8px;
+}
+
+.note::before {
+  content: "注釈";
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  color: #795548;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.note::after {
+  content: "✎";
+  position: absolute;
+  top: 10px;
+  left: 55px;
+  color: #795548;
+  font-weight: bold;
+  font-size: 0.95em;
+} 

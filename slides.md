@@ -15,6 +15,18 @@ drawings:
 # enable MDC Syntax: https://sli.dev/features/mdc
 mdc: true
 author: Nobutaka Shimizu
+css: 
+  - 'styles/custom.css'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css'
+fonts:
+  sans: 'Roboto'
+  mono: 'Fira Code'
+  weights: '400,500,700'
+  italic: true
+favicon: 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/svgs/solid/book.svg'
+themeConfig:
+  primary: '#1976d2'
+
 ---
 
 # マトロイドのエクスパンダー性
@@ -189,14 +201,9 @@ $$
 
 この行列の固有値を$1=\lambda_1\ge\dots\ge\lambda_n\ge -1$とする ($n=|V|$).
 
-<div class="rounded-lg border-1 border-blue-600 bg-sky-100">
-
-  <div class="ml-4">
-
-  **定義.**
+<div class="definition">
 
   グラフ$G=(V,E)$は, $\max\{ |\lambda_2|,|\lambda_n| \}\le\lambda$ を満たすとき, **$\lambda$-エクスパンダー**であるという.
-  </div>
 </div>
 
 全成分$1$のベクトルが第一固有ベクトルに対応する.
@@ -213,25 +220,21 @@ color: amber-light
 
 ::content::
 
-グラフ$G = (V,E)$上の単純ランダムウォーク: ランダムに定まる頂点列$(X_t)_{t\ge 0}$ ($t=0,1,\dots$) であって
-頂点$X_0\in V$は任意に指定され, 頂点$X_{t+1}$は頂点$X_t$の一様ランダムな隣接点.
+グラフ$G = (V,E)$上の単純ランダムウォーク: ランダムに定まる頂点列$(u_t)_{t\ge 0}$ ($t=0,1,\dots$) であって
+頂点$u_0\in V$は任意に指定され, 頂点$u_{t+1}$は頂点$u_t$の一様ランダムな隣接点.
 
 すなわち, 頂点$u$から頂点$v$に遷移する確率は$P(u,v)$.
 
 グラフがエクスパンダー性を持つならば, ランダムウォークの分布は速く収束する.
 
 
-<div class="rounded-lg border-1 border-blue-600 bg-sky-100">
+<div class="proposition">
 
-  <div class="ml-4">
-
-  **命題.**
-
-  グラフ$G=(V,E)$上の**単純ランダムウォーク**$(X_t)_{t\ge 0}$に対し, $X_t$の分布を$p_t\in[0,1]^{V}$とする. すなわち, $p_t(v) = \Pr[X_t=v]$で定まるベクトルである.
+  グラフ$G=(V,E)$上の**単純ランダムウォーク**$(u_t)_{t\ge 0}$に対し, $u_t$の分布を$p_t\in[0,1]^{V}$とする. すなわち, $p_t(v) = \Pr[u_t=v]$で定まるベクトルである.
   グラフ$G$が連結かつ二部グラフでないならば, ある$V$上の分布$\pi\in[0,1]^V$が存在して, $p_t \to \pi$となる.
 
-  さらに, グラフ$G$が$\lambda$-エクスパンダーならば, ある定数$C>0$が存在して, 任意の初期頂点$X_0$と十分大きな全ての$t\ge 0$に対して, $\|p_t-\pi\|_1\le C\exp(-\lambda t)$が成り立つ.
-  </div>
+  さらに, グラフ$G$が$\lambda$-エクスパンダーならば, ある定数$C>0$が存在して, 任意の初期頂点$u_0$と十分大きな全ての$t\ge 0$に対して, $\|p_t-\pi\|_1\le C\exp(-\lambda t)$が成り立つ.
+
 </div>
 
 ---
@@ -289,20 +292,61 @@ color: amber-light
 
 ::content::
 
+幾何的には, 点, 線分, 三角形, 四面体, ...を貼り合わせたもの.
+
+幾何学的な意味での次元と面の次元は一致.
+
 <div class="flex justify-center">
 <img src="/images/face.png" alt="幾何的" class="w-120"/>
 </div>
 
-<div class="text-center">
-幾何的には, 点, 線分, 三角形, 四面体, ...を貼り合わせたもの.
+
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# 単体複体上のランダムウォーク
+
+::content::
+
+面上を遷移する二種類のランダムウォークを考える
+- 上昇ウォーク: 一つ上の次元の面に遷移
+- 下降ウォーク: 一つ下の次元の面に遷移
+
+<div class="rounded-lg border-2 border-gray-300 p-4 max-w-2xl mx-auto">
+
+面$\tau \in X(i)$からスタートして,
+1. $\tau$ から $u\sim \sigma$を一様ランダムに選び, $\sigma = \tau - u$とする.
+2. $\tau$ から $\sigma' \in X(i)$ を一様ランダムに選ぶ
+
 </div>
 
-
 ---
-layout: section
+layout: top-title
+color: amber-light
 ---
 
-# マトロイドのエクスパンダー性
+::title::
+# 高次元エクスパンダーの定義
+
+::content::
+
+<div class="definition">
+  マトロイドのエクスパンダー性
+</div>
+
+<div class="theorem">
+定理の内容をここに書きます
+</div>
+
+<div class="note">
+注釈の内容をここに書きます
+</div>
+
 
 
 
