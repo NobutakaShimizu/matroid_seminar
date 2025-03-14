@@ -1,7 +1,7 @@
 .theorem {
   border: 2px solid #d32f2f;
   background-color: #ffebee;
-  padding: 35px 15px 8px;
+  padding: 35px 15px 4px;
   margin: 10px 0 2px;
   position: relative;
   border-radius: 8px;
@@ -18,7 +18,7 @@
 }
 
 .theorem::after {
-  content: "✎";
+  content: "✍";
   position: absolute;
   top: 10px;
   left: 55px;
@@ -30,7 +30,7 @@
 .definition {
   border: 2px solid #1976d2;
   background-color: #e3f2fd;
-  padding: 35px 15px 8px;
+  padding: 35px 15px 4px;
   margin: 10px 0 2px;
   position: relative;
   border-radius: 8px;
@@ -47,7 +47,7 @@
 }
 
 .definition::after {
-  content: "✎";
+  content: "✍";
   position: absolute;
   top: 10px;
   left: 55px;
@@ -59,7 +59,7 @@
 .lemma {
   border: 2px solid #2e7d32;
   background-color: #e8f5e9;
-  padding: 35px 15px 8px;
+  padding: 35px 15px 4px;
   margin: 10px 0 2px;
   position: relative;
   border-radius: 8px;
@@ -76,7 +76,7 @@
 }
 
 .lemma::after {
-  content: "✎";
+  content: "✍";
   position: absolute;
   top: 10px;
   left: 55px;
@@ -88,7 +88,7 @@
 .corollary {
   border: 2px solid #795548;
   background-color: #efebe9;
-  padding: 35px 15px 8px;
+  padding: 35px 15px 4px;
   margin: 10px 0 2px;
   position: relative;
   border-radius: 8px;
@@ -105,7 +105,7 @@
 }
 
 .corollary::after {
-  content: "✎";
+  content: "✍";
   position: absolute;
   top: 10px;
   left: 35px;
@@ -117,7 +117,7 @@
 .proposition {
   border: 2px solid #2e7d32;
   background-color: #e8f5e9;
-  padding: 35px 15px 8px;
+  padding: 35px 15px 4px;
   margin: 10px 0 2px;
   position: relative;
   border-radius: 8px;
@@ -134,7 +134,7 @@
 }
 
 .proposition::after {
-  content: "✎";
+  content: "✍";
   position: absolute;
   top: 10px;
   left: 55px;
@@ -143,16 +143,16 @@
   font-size: 0.95em;
 }
 
-.note {
+.remark {
   border: 2px solid #795548;
   background-color: #efebe9;
-  padding: 35px 15px 8px;
+  padding: 35px 15px 4px;
   margin: 10px 0 2px;
   position: relative;
   border-radius: 8px;
 }
 
-.note::before {
+.remark::before {
   content: "注釈";
   position: absolute;
   top: 10px;
@@ -162,12 +162,45 @@
   font-size: 0.95em;
 }
 
-.note::after {
-  content: "✎";
+.remark::after {
+  content: "🧐";
   position: absolute;
   top: 10px;
   left: 55px;
   color: #795548;
   font-weight: bold;
   font-size: 0.95em;
+}
+
+.question {
+  border: 2px solid #673ab7;
+  background-color: #ede7f6;
+  padding: 35px 15px 4px;
+  margin: 10px 0 2px;
+  position: relative;
+  border-radius: 8px;
+}
+
+.question::before {
+  content: "質問";
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  color: #673ab7;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.question::after {
+  content: "🤔";
+  position: absolute;
+  top: 10px;
+  left: 55px;
+  color: #673ab7;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.caption {
+  @apply text-center text-sm text-gray-500 mt-2;
 } 

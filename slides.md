@@ -36,9 +36,6 @@ themeConfig:
   [清水 伸高](https://sites.google.com/view/nobutaka-shimizu/home) (東京科学大学)
 
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
 
 ---
 layout: top-title
@@ -69,6 +66,7 @@ color: amber-light
 
 - TCS「具体的な色分けはどれくらいの手間 (演算回数) で見つかるか?」
 
+<v-click>
 
 #### 研究範囲 (ごく一部)
 
@@ -79,6 +77,8 @@ color: amber-light
 - マルコフ連鎖
 
 数学の様々な概念が応用される. 
+
+</v-click>
 
 ---
 layout: top-title
@@ -95,9 +95,11 @@ color: amber-light
 <img src="/images/TCS_and_math.svg" alt="TCSと純粋数学の関係" class="w-170"/>
 </div>
 
+<v-clicks>
 <div class="text-center mt-4 text-xl font-bold">
 マトロイド: 理論計算機科学と純粋数学の間の架け橋の一つ
 </div>
+</v-clicks>
 
 ---
 layout: top-title-two-cols
@@ -140,8 +142,15 @@ color: amber-light
 
 
 ---
+layout: top-title
+color: amber-light
+---
+
+::title::
 
 # 今日の話題: エクスパンダー性
+
+::content::
 
 - ランダムウォークの混交性に関する性質
 - 擬似ランダムネス
@@ -150,8 +159,15 @@ color: amber-light
 - 計算量下界の証明や行列演算の効率的な誤り訂正に応用 (Hirahara and S, STOC24)(Hirahara and S, STOC23)(Hirahara and S, STOC23)
 
 ---
+layout: top-title
+color: amber-light
+---
+
+::title::
 
 # 高次元エクスパンダー
+
+::content::
 
 - エクスパンダー性は元々はグラフの性質だが, 近年は単体複体に拡張 (高次元エクスパンダー)
 - 計算量理論と誤り訂正符号への応用 (**私の専門**)
@@ -162,20 +178,45 @@ color: amber-light
   - 基のサンプリングと数え上げの近似が効率的に計算できる (Mihail-Vazirani予想の解決)
 
 ---
-
-# この後の構成
-
-- グラフエクスパンダー性
-- 高次元エクスパンダー性
-- マトロイドのエクスパンダー性
-- その応用: サンプリングと近似数え上げ
-- 高次元エクスパンダーの応用 (時間があれば)
-
----
 layout: section
 ---
 
-# グラフエクスパンダーとは?
+# グラフとエクスパンダー性
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# グラフ上のランダムウォーク
+
+::content::
+
+グラフ $G=(V,E)$ を考える. 頂点$u_0\in V$から開始して, 次の頂点を隣接点の中から一様ランダムに選ぶことを繰り返すことで得られる頂点列 $(u_t)_{t\ge 0}$ を**単純ランダムウォーク**という.
+
+<div class="proposition">
+
+グラフが連結かつ非二部ならば, 任意の初期頂点から開始しても, $u_t$の分布は, $t\to\infty$ のとき定常分布 $\pi \in [0,1]^V$ に収束する.
+
+</div>
+
+定常分布 $\pi$ は, $\pi(u) \propto \deg(u)$ で与えられる.
+
+<v-clicks>
+
+<div class="question">
+
+  この収束速度はどのように評価できるか?
+
+</div>
+
+
+グラフがエクスパンダー性を満たすならば指数的に早く収束します!
+
+</v-clicks>
+
 
 ---
 layout: top-title
@@ -188,7 +229,7 @@ color: amber-light
 
 ::content::
 
-無向グラフ$G=(V,E)$の正規化された隣接行列 $P\in[0,1]^{V\times V}$を考える. 
+遷移確率行列を$P$とする:
 
 $$
 \begin{aligned}
@@ -199,16 +240,19 @@ P = \begin{cases}
 \end{aligned}
 $$
 
-この行列の固有値を$1=\lambda_1\ge\dots\ge\lambda_n\ge -1$とする ($n=|V|$).
+つまり, $P(u,v)=\Pr[u\to v]$. この行列の固有値を$1=\lambda_1\ge\dots\ge\lambda_n\ge -1$とする ($n=|V|$).
+
+- 全成分$1$のベクトルが$\lambda_1=1$の固有ベクトルになる.
+<v-clicks>
 
 <div class="definition">
 
   グラフ$G=(V,E)$は, $\max\{ |\lambda_2|,|\lambda_n| \}\le\lambda$ を満たすとき, **$\lambda$-エクスパンダー**であるという.
 </div>
 
-全成分$1$のベクトルが第一固有ベクトルに対応する.
 
-パラメータ$\lambda$が小さいほど, そのグラフはよりエクスパンダー性が高い.
+パラメータ$\lambda$が小さいほど, そのグラフはよりエクスパンダー性が高い ($\lambda\in[0,1]$).
+</v-clicks>
 
 ---
 layout: top-title
@@ -220,22 +264,54 @@ color: amber-light
 
 ::content::
 
-グラフ$G = (V,E)$上の単純ランダムウォーク: ランダムに定まる頂点列$(u_t)_{t\ge 0}$ ($t=0,1,\dots$) であって
-頂点$u_0\in V$は任意に指定され, 頂点$u_{t+1}$は頂点$u_t$の一様ランダムな隣接点.
-
-すなわち, 頂点$u$から頂点$v$に遷移する確率は$P(u,v)$.
-
-グラフがエクスパンダー性を持つならば, ランダムウォークの分布は速く収束する.
+グラフがエクスパンダー性を持つならば, ランダムウォークの分布は早く収束する.
 
 
 <div class="proposition">
 
-  グラフ$G=(V,E)$上の**単純ランダムウォーク**$(u_t)_{t\ge 0}$に対し, $u_t$の分布を$p_t\in[0,1]^{V}$とする. すなわち, $p_t(v) = \Pr[u_t=v]$で定まるベクトルである.
-  グラフ$G$が連結かつ二部グラフでないならば, ある$V$上の分布$\pi\in[0,1]^V$が存在して, $p_t \to \pi$となる.
-
-  さらに, グラフ$G$が$\lambda$-エクスパンダーならば, ある定数$C>0$が存在して, 任意の初期頂点$u_0$と十分大きな全ての$t\ge 0$に対して, $\|p_t-\pi\|_1\le C\exp(-\lambda t)$が成り立つ.
+ランダムウォークの$t$番目の頂点$u_t$の分布を$p_t\in[0,1]^V$とする.
+グラフ$G$が$\lambda$-エクスパンダーならば, 任意の初期頂点$u_0$と十分大きな全ての$t\ge 0$に対して, $\|p_t-\pi\|_1\le O(n^2\lambda^{t})$が成り立つ.
 
 </div>
+
+$\lambda$が小さいほど収束が早い → ランダムウォークが「混ざりやすい」
+
+<details class="bg-gray-100">
+<summary>証明のアイデア</summary>
+
+  簡単のため$P^\top=P$とする (つまり$G$は正則).
+  ベクトル $p_t - \pi = (p_0-\pi)P^t$ の$\ell^2$ノルムを抑えてから$\ell^1$ノルムのバウンドに変換する. $\pi_0 - \pi$は第一固有ベクトル$\mathbf{1}$に直交するので,  固有値のmin-maxの関係(Courant-Fischerの定理)より
+
+  $$
+    \begin{align*}
+      \|p_t - \pi\|_2^2 = \langle p_0 - \pi, P^{2t}(p_0 - \pi) \rangle \le \lambda^{2t} \|p_0 - \pi\|_2^2.
+    \end{align*}
+  $$
+
+  主張の$n^2$倍のファクターは, 一般の$P$を扱う過程と$\ell^1$ノルムと$\ell^2$ノルムの関係から生じる. $\square$
+</details>
+
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# エクスパンダーグラフの例
+
+::content::
+
+<div class="flex justify-center">
+<img src="/images/expander.png" alt="エクスパンダーの例" class="w-110"/>
+<img src="/images/barbell.png" alt="エクスパンダーじゃない例" class="w-110"/>
+</div>
+
+<div class="caption">
+  ランダム3正則グラフ (左) とバーベルグラフ (右). 左はランダムウォークがすぐ混ざるが, 右はそうならない.
+</div>
+
 
 ---
 layout: top-title
@@ -248,19 +324,65 @@ color: amber-light
 
 ::content::
 
-確率$1/2$で自己ループに遷移し, 確率$1/2$で一様ランダムな隣接点に遷移する頂点列を**遅延単純ランダムウォーク**という.
+単純ランダムウォークに確率$1/2$の自己遷移を付与したランダムウォークを**遅延単純ランダムウォーク**という.
+遷移確率行列は次で与えられる:
+
+$$
+  \begin{align*}
+    P = \begin{cases}
+      \frac{1}{2} & \text{if } u=v,\\
+      \frac{1}{2\deg(u)} & \text{if }\{u,v\}\in E,\\
+      0 & \text{otherwise}.
+    \end{cases}
+  \end{align*}
+$$
+
+<div class="remark">
+
+単純遅延RWは**頂点→辺**の遷移と**辺→頂点**の遷移に分解して考えることができる.
+
+</div>
+
+<div class="flex justify-center">
+<div class="relative">
+<img v-click.hide="1" src="/images/lazyRW1.svg" alt="遅延単純RWの遷移プロセス" class="w-40"/>
+<img v-click="['+1', '+1']" src="/images/lazyRW2.svg" alt="遅延単純RWの遷移プロセス" class="w-40 absolute top-0 left-0"/>
+<img v-click="2" src="/images/lazyRW3.svg" alt="遅延単純RWの遷移プロセス" class="w-40 absolute top-0 left-0"/>
+</div>
+</div>
 
 
-**観察**: 単純遅延RWは**頂点→辺**の遷移と**辺→頂点**の遷移に分解して考えることができる.
+---
+layout: top-title
+color: amber-light
+---
 
-<!-- TODO: 図 -->
+::title::
+
+# 遅延単純ランダムウォーク
+
+::content::
+
+<div class="flex justify-center">
+<img src="/images/VE.svg" alt="頂点-辺の遷移" class="w-80"/>
+</div>
+
+<div class="caption">
+「0次元」の点から開始し, 「1次元」の辺を経由して再び「0次元」の点に戻るプロセスに分解できる.
+</div>
+
+<div class="remark">
+
+高次元エクスパンダーでは, これをより高次元の面に一般化したランダムウォークを考える.
+
+</div>
 
 
 ---
 layout: section
 ---
 
-# 高次元エクスパンダーとは?
+# 単体複体と高次元エクスパンダー
 
 ---
 layout: top-title
@@ -273,11 +395,42 @@ color: amber-light
 
 ::content::
 
-**単体複体**: 有限集合 $V$ と部分集合族 $\mathcal{F} \subseteq 2^V$の組 $X=(V,\mathcal{F})$ であり, 部分集合で閉じているもの.
-- 面$\sigma$に対し, その次元を$\dim(\sigma)=|\sigma|-1$で定め, 次元$i$の面の集合を$X(i)$とする.
-- $X$の次元を最大次元の面の次元で定める.
-- 全ての極大面の次元が等しいとき, $X$は**純粋**であるという.
+<div class="definition">
 
+非空な有限集合$V$と部分集合族$\mathcal{F}\subseteq 2^V$の組 $X=(V,\mathcal{F})$ であり, $\mathcal{F}$が部分集合で閉じているものを**単体複体**といい, $\mathcal{F}$の元を**面**という.
+
+</div>
+
+
+<v-click>
+
+- 面$\sigma$に対し, その次元を$\dim(\sigma)=|\sigma|-1$で定め, 次元$i$の面の集合を$X(i)$とする.
+
+  - 頂点=次元$0$, 辺=次元$1$, ...
+
+</v-click>
+
+<v-click>
+
+- $X$の次元を$\max\{\dim(\sigma)\colon \sigma\in\mathcal{F}\}$とする.
+
+</v-click>
+
+<v-click>
+
+- 全ての極大面の次元が等しいとき, $X$は**純粋**であるという.
+  - 例: マトロイド
+
+</v-click>
+
+<v-click>
+
+<div class="remark">
+
+以後は純粋な$d$次元単体複体のみを考える.
+</div>
+
+</v-click>
 
 
 
@@ -294,13 +447,11 @@ color: amber-light
 
 幾何的には, 点, 線分, 三角形, 四面体, ...を貼り合わせたもの.
 
-幾何学的な意味での次元と面の次元は一致.
-
 <div class="flex justify-center">
 <img src="/images/face.png" alt="幾何的" class="w-120"/>
 </div>
 
-
+幾何学的な意味での次元と面の次元は一致.
 
 ---
 layout: top-title
@@ -313,39 +464,28 @@ color: amber-light
 
 ::content::
 
-面上を遷移する二種類のランダムウォークを考える
-- 上昇ウォーク: 一つ上の次元の面に遷移
-- 下降ウォーク: 一つ下の次元の面に遷移
-
-<div class="rounded-lg border-2 border-gray-300 p-4 max-w-2xl mx-auto">
-
-面$\tau \in X(i)$からスタートして,
-1. $\tau$ から $u\sim \sigma$を一様ランダムに選び, $\sigma = \tau - u$とする.
-2. $\tau$ から $\sigma' \in X(i)$ を一様ランダムに選ぶ
-
-</div>
-
----
-layout: top-title
-color: amber-light
----
-
-::title::
-# 高次元エクスパンダーの定義
-
-::content::
+面上を遷移する二種類のランダムウォークを考える.
 
 <div class="definition">
-  マトロイドのエクスパンダー性
+
+次元$i\ge 0$を固定する.
+面$\tau \in X(i)$から開始して, 一様ランダムに$u\sim \tau$を選び, $\sigma:=\tau - u$に遷移するランダムウォークを**下降ウォーク**といい, 遷移確率行列を $P_i \in [0,1]^{X(i)\times X(i-1)}$ で表す.
 </div>
 
-<div class="theorem">
-定理の内容をここに書きます
+<v-click>
+
+下降ウォークを用いると各次元の面上の**定常分布**が定められる.
+
+<div class="definition">
+
+各次元 $-1 \le i\le d$ に対し, $X(i)$上の**定常分布** $\pi_i\in[0,1]^{X(i)}$ を次で定める:
+- $\pi_d$ を$X(d)$上の一様分布とする.
+- $i<d$ に対し, $\pi_i = \pi_{i+1}P_i$ と再帰的に定める.
 </div>
 
-<div class="note">
-注釈の内容をここに書きます
-</div>
+</v-click>
+
+
 
 
 
