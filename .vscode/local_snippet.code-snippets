@@ -78,4 +78,13 @@
 			"</div>"
 		]
 	},
+	"topic-box": {
+		"prefix": "topic-box",
+		"body": [
+			"<div class=\"topic-box\">",
+			"",
+			"$1",
+			"</div>"
+		]
+	},
 }

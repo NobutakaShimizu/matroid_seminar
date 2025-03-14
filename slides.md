@@ -95,11 +95,10 @@ color: amber-light
 <img src="/images/TCS_and_math.svg" alt="TCSと純粋数学の関係" class="w-170"/>
 </div>
 
-<v-clicks>
-<div class="text-center mt-4 text-xl font-bold">
-マトロイド: 理論計算機科学と純粋数学の間の架け橋の一つ
+<div class="caption">
+  マトロイドはTCSと純粋数学の間の架け橋の一つ
 </div>
-</v-clicks>
+
 
 ---
 layout: top-title-two-cols
@@ -133,11 +132,12 @@ color: amber-light
   - 有向マトロイド
 ::default::
 
-<div class="text-center">
-<div class="rounded-lg border-2 border-gray-300 p-4 max-w-2xl mx-auto">
-マトロイドは研究対象の「扱いやすい」性質を抽象化した時に見えてくることが多い
+<div class="remark mx-20">
+
+マトロイドは研究対象の「扱いやすい」性質を抽象化した時に見えてくることが多い.
+
 </div>
-</div>
+
 
 
 
@@ -152,11 +152,13 @@ color: amber-light
 
 ::content::
 
-- ランダムウォークの混交性に関する性質
-- 擬似ランダムネス
-- 計算量理論における非常に重要な道具
-  - エクスパンダーグラフをブラックボックスに証明に使う
-- 計算量下界の証明や行列演算の効率的な誤り訂正に応用 (Hirahara and S, STOC24)(Hirahara and S, STOC23)(Hirahara and S, STOC23)
+- ランダムウォークが早く「混ざり合う」ことを保証する性質
+- 計算量理論の擬似ランダムネスの文脈における非常に重要な道具
+  - 誤り訂正符号の構成, PCP定理の証明, 擬似乱数生成器の構成
+- 私の研究におけるエクスパンダー性の応用
+  - 平均時計算量の困難性増幅 <a href="https://dl.acm.org/doi/10.1145/3564246.3585189" target="_blank" class="cite-reference">Hirahara and S, STOC'23</a>
+  - 埋め込みクリーク問題の最適な探索から判定への帰着 <a href="https://dl.acm.org/doi/10.1145/3618260.3649751" target="_blank" class="cite-reference">[Hirahara and S, STOC'24]</a>
+  - 行列積アルゴリズムの誤り訂正 <span class="cite-reference"> [Hirahara and S, STOC'25] </span>
 
 ---
 layout: top-title
@@ -170,12 +172,22 @@ color: amber-light
 ::content::
 
 - エクスパンダー性は元々はグラフの性質だが, 近年は単体複体に拡張 (高次元エクスパンダー)
-- 計算量理論と誤り訂正符号への応用 (**私の専門**)
-  - 最適化問題の近似困難性のパラメータの改善
-  - 誤り訂正符号の構成
-  - エクスパンダー性を持つ立方複体が量子誤り訂正符号のブレイクスルーに用いられた
-- 実はマトロイドを特殊ケースとして含む (**今日の話**)
-  - 基のサンプリングと数え上げの近似が効率的に計算できる (Mihail-Vazirani予想の解決)
+- 計算量理論と誤り訂正符号におけるブレイクスルー
+  - PCP定理のパラメータ改善 <span class="cite-reference">\[Bafna, Minzer, Vyas, Yun, STOC'25]</span>
+  - 立方複体に基づく量子誤り訂正符号 <a href="https://dl.acm.org/doi/10.1145/3519935.3520024" class="cite-reference">\[Dinur, Evra, Livne, Lubotzky, Mozes, STOC'22\]</a><a href="https://dl.acm.org/doi/10.1145/3519935.3520017" class="cite-reference">\[Panteleev, Kalachev, STOC'22\]</a>
+  - マトロイドの基の数え上げ <a href="https://projecteuclid.org/journals/annals-of-mathematics/volume-199/issue-1/Log-concave-polynomials-II--High-dimensional-walks-and-an/10.4007/annals.2024.199.1.4.short" class="cite-reference">\[Anari, Liu, Gharan, Vinzant, Ann. of Math.(2024)\]</a>
+  
+<div class="topic-box">
+
+**今日の話題**
+
+- 高次元エクスパンダーとは何か?
+- マトロイドに関して何がわかるか?
+
+</div>
+
+
+
 
 ---
 layout: section
@@ -469,7 +481,7 @@ color: amber-light
 <div class="definition">
 
 次元$i\ge 0$を固定する.
-面$\tau \in X(i)$から開始して, 一様ランダムに$u\sim \tau$を選び, $\sigma:=\tau - u$に遷移するランダムウォークを**下降ウォーク**といい, 遷移確率行列を $P^{\downarrow}_i \in [0,1]^{X(i)\times X(i-1)}$ で表す.
+面$\tau \in X(i)$から開始して, 一様ランダムに$u\sim \tau$を選び, $\sigma:=\tau - u$に遷移するランダムウォークを**下降ウォーク**といい, 遷移確率行列を $\Pdown_i \in [0,1]^{X(i)\times X(i-1)}$ で表す.
 </div>
 
 <v-click>
@@ -480,7 +492,7 @@ color: amber-light
 
 各次元 $-1 \le i\le d$ に対し, $X(i)$上の**定常分布** $\pi_i\in[0,1]^{X(i)}$ を次で定める:
 - $\pi_d$ を$X(d)$上の一様分布とする.
-- $i<d$ に対し, $\pi_i = \pi_{i+1}P^{\downarrow}_i$ と再帰的に定める.
+- $i<d$ に対し, $\pi_i = \pi_{i+1}\Pdown_i$ と再帰的に定める.
 </div>
 
 </v-click>
@@ -502,24 +514,6 @@ $\pi_i(\sigma)$は$\sigma$を含む極大面の個数に比例する.
 </div>
 
 
-<details class="proof">
-<summary>証明 (クリックして展開)</summary>
-
-$\sigma \in X(i)$に対し, $\sigma$を含む極大面の個数を$m(\sigma)$とする.
-
-$\pi_d$は一様分布であるから, 任意の$\tau \in X(d)$に対し$\pi_d(\tau) = \frac{1}{|X(d)|}$である.
-
-$\pi_i = \pi_{i+1}P^{\downarrow}_{i+1}$より, 任意の$\sigma \in X(i)$に対し:
-
-$$
-\begin{align*}
-\pi_i(\sigma) &= \sum_{\tau \in X(d)} \pi_d(\tau)\cdot P^{\downarrow}_{d}\cdots P^{\downarrow}_{i+1}(\tau,\sigma) \\
-&= \frac{1}{|X(d)|}\cdot m(\sigma)
-\end{align*}
-$$
-
-したがって, $\pi_i(\sigma)$は$m(\sigma)$に比例する.
-</details>
 
 例えば, 単純ランダムウォークの定常分布$\pi$は
 
@@ -545,28 +539,72 @@ color: amber-light
 
 ::content::
 
-下降ウォークの「逆再生」を**上昇ウォーク**という.
+下降ウォークの「逆再生」を考える.
 
 <div class="definition">
 
-次元$i<d$を固定する. 以下の等式を満たす遷移確率行列$\textcolor{violet}{P^{\uparrow}_i}\in[0,1]^{X(i)\times X(i+1)}$に従うランダムウォークを**上昇ウォーク**という:
+次元$i<d$を固定する. 以下の等式を満たす遷移確率行列$\textcolor{violet}{\Pup_i}\in[0,1]^{X(i)\times X(i+1)}$に従うランダムウォークを**上昇ウォーク**という:
 
 $$
   \begin{align*}
-    \pi_i(\sigma)\textcolor{violet}{P^{\uparrow}_i(\sigma,\tau)} = \pi_{i+1}(\tau)P^{\downarrow}_{i+1}(\tau,\sigma).
+    \pi_i(\sigma)\textcolor{violet}{\Pup_i(\sigma,\tau)} = \pi_{i+1}(\tau)\Pdown_{i+1}(\tau,\sigma).
   \end{align*}
 $$
 
 
 </div>
 
-- 詳細釣り合い条件とも呼ばれる. これを解くと
+- 等式を詳細釣り合い条件という. これを解くと
+
 
 $$
-  P^{\uparrow}_i(\sigma,\tau) = \begin{cases}
+  \begin{align*}
+    \Pup_i(\sigma,\tau)  = 
+    \begin{cases}
     \frac{\pi_{i+1}(\tau)}{(i+2)\pi_i(\sigma)} & \text{if }\sigma\subset\tau,\\
     0 & \text{otherwise}.
-  \end{cases}
+    \end{cases}
+  \end{align*}
 $$
 
-すなわち定常分布の重みに比例した確率で遷移するランダムウォークであることがわかる.
+- つまり, 定常分布の重み$\pi_{i+1}(\tau)$に比例した確率で遷移する
+
+- 遅延単純RWの「頂点$\to$辺」の遷移に相当
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# 単体複体上のランダムウォーク
+
+::content::
+
+<div class="remark">
+
+下降ウォークと上昇ウォークは互いに「逆再生」の関係にある.
+</div>
+
+<div class="flex justify-center">
+<img src="/images/up_and_down.svg" alt="上昇ウォークと下降ウォークの関係図" class="w-80"/>
+</div>
+
+<details>
+<summary>形式的には...</summary>
+
+<div class="proof">
+
+$\Pdown_{i+1},\Pup_i$を線形写像とみなしたとき, 定常分布で重みつけた内積を考えると一方が他方の随伴である:
+
+$$
+  \begin{align*}
+  \inner{f,\Pup_{i} g}_{\pi_i} = \inner{\Pdown_{i+1} f,g}_{\pi_{i+1}}.
+  \end{align*}
+$$
+
+</div>
+
+</details>
+
