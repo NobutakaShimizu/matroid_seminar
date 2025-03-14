@@ -1,0 +1,1071 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{anyt/global//global/global/global}
+    \entry{AC88}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=3edac4372c25a87046c920ed898db8f6}{%
+           family={Alon},
+           familyi={A\bibinitperiod},
+           given={N},
+           giveni={N\bibinitperiod}}}%
+        {{hash=90065feb93420498c8f4e42f80b1c616}{%
+           family={Chung},
+           familyi={C\bibinitperiod},
+           given={F\bibnamedelima R\bibnamedelima K},
+           giveni={F\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{c914f6033c095f965579830250be4fb8}
+      \strng{fullhash}{c914f6033c095f965579830250be4fb8}
+      \strng{fullhashraw}{c914f6033c095f965579830250be4fb8}
+      \strng{bibnamehash}{c914f6033c095f965579830250be4fb8}
+      \strng{authorbibnamehash}{c914f6033c095f965579830250be4fb8}
+      \strng{authornamehash}{c914f6033c095f965579830250be4fb8}
+      \strng{authorfullhash}{c914f6033c095f965579830250be4fb8}
+      \strng{authorfullhashraw}{c914f6033c095f965579830250be4fb8}
+      \field{labelalpha}{AC88}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0012-365X}
+      \field{journaltitle}{Discrete Math.}
+      \field{month}{12}
+      \field{number}{1}
+      \field{title}{Explicit construction of linear sized tolerant networks}
+      \field{volume}{72}
+      \field{year}{1988}
+      \field{pages}{15\bibrangedash 19}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1016/0012-365X(88)90189-6
+      \endverb
+    \endentry
+    \entry{AKS87}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=b7e2ae2ab12b5713e81730f00bb755f2}{%
+           family={Ajtai},
+           familyi={A\bibinitperiod},
+           given={M},
+           giveni={M\bibinitperiod}}}%
+        {{hash=235d1e5e79912ba5d647695600db19df}{%
+           family={Komlos},
+           familyi={K\bibinitperiod},
+           given={J},
+           giveni={J\bibinitperiod}}}%
+        {{hash=8bdfb830925eef8d879965bcf4f64035}{%
+           family={Szemeredi},
+           familyi={S\bibinitperiod},
+           given={E},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, New York, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{0d6c4d3043ac76bcbb791ae455a75c4c}
+      \strng{fullhash}{0d6c4d3043ac76bcbb791ae455a75c4c}
+      \strng{fullhashraw}{0d6c4d3043ac76bcbb791ae455a75c4c}
+      \strng{bibnamehash}{0d6c4d3043ac76bcbb791ae455a75c4c}
+      \strng{authorbibnamehash}{0d6c4d3043ac76bcbb791ae455a75c4c}
+      \strng{authornamehash}{0d6c4d3043ac76bcbb791ae455a75c4c}
+      \strng{authorfullhash}{0d6c4d3043ac76bcbb791ae455a75c4c}
+      \strng{authorfullhashraw}{0d6c4d3043ac76bcbb791ae455a75c4c}
+      \field{labelalpha}{AKS87}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Symposium on Theory of Computing ({STOC})}
+      \field{isbn}{9780897912211}
+      \field{month}{1}
+      \field{series}{STOC '87}
+      \field{title}{Deterministic simulation in {LOGSPACE}}
+      \field{year}{1987}
+      \field{pages}{132\bibrangedash 140}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1145/28395.28410
+      \endverb
+    \endentry
+    \entry{AL20}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=34777cd722000849600d66370fdad8a2}{%
+           family={Alev},
+           familyi={A\bibinitperiod},
+           given={Vedat\bibnamedelima Levi},
+           giveni={V\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=94fd8646f31398db5725e7a7006e5b34}{%
+           family={Lau},
+           familyi={L\bibinitperiod},
+           given={Lap\bibnamedelima Chi},
+           giveni={L\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Chicago, IL, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{8cb2218d08cdfb26b33c3ca87e5e0da4}
+      \strng{fullhash}{8cb2218d08cdfb26b33c3ca87e5e0da4}
+      \strng{fullhashraw}{8cb2218d08cdfb26b33c3ca87e5e0da4}
+      \strng{bibnamehash}{8cb2218d08cdfb26b33c3ca87e5e0da4}
+      \strng{authorbibnamehash}{8cb2218d08cdfb26b33c3ca87e5e0da4}
+      \strng{authornamehash}{8cb2218d08cdfb26b33c3ca87e5e0da4}
+      \strng{authorfullhash}{8cb2218d08cdfb26b33c3ca87e5e0da4}
+      \strng{authorfullhashraw}{8cb2218d08cdfb26b33c3ca87e5e0da4}
+      \field{labelalpha}{AL20}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 52nd Annual {ACM} {SIGACT} Symposium on Theory of Computing}
+      \field{isbn}{9781450369794}
+      \field{month}{6}
+      \field{series}{STOC 2020}
+      \field{title}{Improved analysis of higher order random walks and applications}
+      \field{year}{2020}
+      \field{pages}{1198\bibrangedash 1211}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1145/3357713.3384317
+      \endverb
+    \endentry
+    \entry{ALOV24}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=68418edce5e8412262597ed7575628ef}{%
+           family={Anari},
+           familyi={A\bibinitperiod},
+           given={Nima},
+           giveni={N\bibinitperiod}}}%
+        {{hash=4bb792d114e79dd9c6e41e285156131f}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Kuikui},
+           giveni={K\bibinitperiod}}}%
+        {{hash=b81623ed388dadde4f70a0357d57b49c}{%
+           family={Gharan},
+           familyi={G\bibinitperiod},
+           given={Shayan\bibnamedelima Oveis},
+           giveni={S\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+        {{hash=d22daf4ce391683c9872ec445da78967}{%
+           family={Vinzant},
+           familyi={V\bibinitperiod},
+           given={Cynthia},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{publisher}{1}{%
+        {Department of Mathematics of Princeton University}%
+      }
+      \strng{namehash}{f7554fc39468f600de053ac8d62c0d2b}
+      \strng{fullhash}{f7554fc39468f600de053ac8d62c0d2b}
+      \strng{fullhashraw}{f7554fc39468f600de053ac8d62c0d2b}
+      \strng{bibnamehash}{f7554fc39468f600de053ac8d62c0d2b}
+      \strng{authorbibnamehash}{f7554fc39468f600de053ac8d62c0d2b}
+      \strng{authornamehash}{f7554fc39468f600de053ac8d62c0d2b}
+      \strng{authorfullhash}{f7554fc39468f600de053ac8d62c0d2b}
+      \strng{authorfullhashraw}{f7554fc39468f600de053ac8d62c0d2b}
+      \field{labelalpha}{ALGV24}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0003-486X, 1939-8980}
+      \field{journaltitle}{Annals of Mathematics}
+      \field{month}{1}
+      \field{number}{1}
+      \field{title}{Log-concave polynomials {II}: High-dimensional walks and an {FPRAS} for counting bases of a matroid}
+      \field{volume}{199}
+      \field{year}{2024}
+      \field{pages}{259\bibrangedash 299}
+      \range{pages}{41}
+      \verb{doi}
+      \verb 10.4007/annals.2024.199.1.4
+      \endverb
+    \endentry
+    \entry{Cayley1878}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=b4b169636ad3f1b110224f7f837aed1a}{%
+           family={{Cayley}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Johns Hopkins University Press}%
+      }
+      \strng{namehash}{b4b169636ad3f1b110224f7f837aed1a}
+      \strng{fullhash}{b4b169636ad3f1b110224f7f837aed1a}
+      \strng{fullhashraw}{b4b169636ad3f1b110224f7f837aed1a}
+      \strng{bibnamehash}{b4b169636ad3f1b110224f7f837aed1a}
+      \strng{authorbibnamehash}{b4b169636ad3f1b110224f7f837aed1a}
+      \strng{authornamehash}{b4b169636ad3f1b110224f7f837aed1a}
+      \strng{authorfullhash}{b4b169636ad3f1b110224f7f837aed1a}
+      \strng{authorfullhashraw}{b4b169636ad3f1b110224f7f837aed1a}
+      \field{labelalpha}{Cay78}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0002-9327, 1080-6377}
+      \field{journaltitle}{Amer. J. Math.}
+      \field{number}{2}
+      \field{title}{Desiderata and Suggestions: No. 2. The Theory of Groups: Graphical Representation}
+      \field{volume}{1}
+      \field{year}{1878}
+      \field{pages}{174\bibrangedash 176}
+      \range{pages}{3}
+      \verb{doi}
+      \verb 10.2307/2369306
+      \endverb
+    \endentry
+    \entry{Cheeger70}{incollection}{}{}
+      \name{author}{1}{}{%
+        {{hash=9d4dec812f0a7bc29f16736af5d41024}{%
+           family={Cheeger},
+           familyi={C\bibinitperiod},
+           given={Jeff},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{publisher}{1}{%
+        {Princeton University Press}%
+      }
+      \strng{namehash}{9d4dec812f0a7bc29f16736af5d41024}
+      \strng{fullhash}{9d4dec812f0a7bc29f16736af5d41024}
+      \strng{fullhashraw}{9d4dec812f0a7bc29f16736af5d41024}
+      \strng{bibnamehash}{9d4dec812f0a7bc29f16736af5d41024}
+      \strng{authorbibnamehash}{9d4dec812f0a7bc29f16736af5d41024}
+      \strng{authornamehash}{9d4dec812f0a7bc29f16736af5d41024}
+      \strng{authorfullhash}{9d4dec812f0a7bc29f16736af5d41024}
+      \strng{authorfullhashraw}{9d4dec812f0a7bc29f16736af5d41024}
+      \field{labelalpha}{Che70}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Problems in Analysis}
+      \field{isbn}{9781400869312}
+      \field{title}{A Lower Bound for the Smallest Eigenvalue of the Laplacian}
+      \field{year}{1970}
+      \field{pages}{195\bibrangedash 200}
+      \range{pages}{6}
+    \endentry
+    \entry{DELLM22}{inproceedings}{}{}
+      \name{author}{5}{}{%
+        {{hash=9a5f80a9b2b1359cbc50244c7816730c}{%
+           family={Dinur},
+           familyi={D\bibinitperiod},
+           given={Irit},
+           giveni={I\bibinitperiod}}}%
+        {{hash=cf4fd32be7d1575441dd8d7defeeebdc}{%
+           family={Evra},
+           familyi={E\bibinitperiod},
+           given={Shai},
+           giveni={S\bibinitperiod}}}%
+        {{hash=44bcc8e59af2adef781b86d28fd33616}{%
+           family={Livne},
+           familyi={L\bibinitperiod},
+           given={Ron},
+           giveni={R\bibinitperiod}}}%
+        {{hash=c6034c88f321d2d456e5baa592685826}{%
+           family={Lubotzky},
+           familyi={L\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+        {{hash=ddd2923715cd2343a4a8a5b46b1d295b}{%
+           family={Mozes},
+           familyi={M\bibinitperiod},
+           given={Shahar},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{c67aac9e30c171974c9fad2923260b03}
+      \strng{fullhash}{c67aac9e30c171974c9fad2923260b03}
+      \strng{fullhashraw}{c67aac9e30c171974c9fad2923260b03}
+      \strng{bibnamehash}{c67aac9e30c171974c9fad2923260b03}
+      \strng{authorbibnamehash}{c67aac9e30c171974c9fad2923260b03}
+      \strng{authornamehash}{c67aac9e30c171974c9fad2923260b03}
+      \strng{authorfullhash}{c67aac9e30c171974c9fad2923260b03}
+      \strng{authorfullhashraw}{c67aac9e30c171974c9fad2923260b03}
+      \field{labelalpha}{DELLM22}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Symposium on Theory of Computing ({STOC})}
+      \field{month}{6}
+      \field{series}{STOC 2022}
+      \field{title}{Locally testable codes with constant rate, distance, and locality}
+      \field{year}{2022}
+      \field{pages}{357\bibrangedash 374}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1145/3519935.3520024
+      \endverb
+    \endentry
+    \entry{balanced_matroids}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=6ca45a075214e3f9e1fc09e857374e6f}{%
+           family={Feder},
+           familyi={F\bibinitperiod},
+           given={Tom\'{a}s},
+           giveni={T\bibinitperiod}}}%
+        {{hash=b332f1bb36bc98d57538e9b568da7d52}{%
+           family={Mihail},
+           familyi={M\bibinitperiod},
+           given={Milena},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Victoria, British Columbia, Canada}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{cdf6c2faa0638b1216a9d441084abdd3}
+      \strng{fullhash}{cdf6c2faa0638b1216a9d441084abdd3}
+      \strng{fullhashraw}{cdf6c2faa0638b1216a9d441084abdd3}
+      \strng{bibnamehash}{cdf6c2faa0638b1216a9d441084abdd3}
+      \strng{authorbibnamehash}{cdf6c2faa0638b1216a9d441084abdd3}
+      \strng{authornamehash}{cdf6c2faa0638b1216a9d441084abdd3}
+      \strng{authorfullhash}{cdf6c2faa0638b1216a9d441084abdd3}
+      \strng{authorfullhashraw}{cdf6c2faa0638b1216a9d441084abdd3}
+      \field{labelalpha}{FM92}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the twenty-fourth annual {ACM} symposium on Theory of Computing}
+      \field{isbn}{9780897915113}
+      \field{month}{7}
+      \field{series}{STOC '92}
+      \field{title}{Balanced matroids}
+      \field{year}{1992}
+      \field{pages}{26\bibrangedash 38}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1145/129712.129716
+      \endverb
+    \endentry
+    \entry{Friedman_random_regular}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=131c59850de5a32c00bbfa3136032bf5}{%
+           family={Friedman},
+           familyi={F\bibinitperiod},
+           given={Joel},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{131c59850de5a32c00bbfa3136032bf5}
+      \strng{fullhash}{131c59850de5a32c00bbfa3136032bf5}
+      \strng{fullhashraw}{131c59850de5a32c00bbfa3136032bf5}
+      \strng{bibnamehash}{131c59850de5a32c00bbfa3136032bf5}
+      \strng{authorbibnamehash}{131c59850de5a32c00bbfa3136032bf5}
+      \strng{authornamehash}{131c59850de5a32c00bbfa3136032bf5}
+      \strng{authorfullhash}{131c59850de5a32c00bbfa3136032bf5}
+      \strng{authorfullhashraw}{131c59850de5a32c00bbfa3136032bf5}
+      \field{labelalpha}{Fri08}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Memoirs of the American Mathematical Society}
+      \field{title}{A Proof of Alon\textquoteright{}s Second Eigenvalue Conjecture and Related Problems}
+      \field{volume}{195}
+      \field{year}{2008}
+    \endentry
+    \entry{GG81}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=76b811ff140b0f2b4f3b31d044dffa3e}{%
+           family={Gabber},
+           familyi={G\bibinitperiod},
+           given={Ofer},
+           giveni={O\bibinitperiod}}}%
+        {{hash=917e5508e4e9db3eb7a6cd39888484dd}{%
+           family={Galil},
+           familyi={G\bibinitperiod},
+           given={Zvi},
+           giveni={Z\bibinitperiod}}}%
+      }
+      \strng{namehash}{017e941412d81fd111c98788c459fd70}
+      \strng{fullhash}{017e941412d81fd111c98788c459fd70}
+      \strng{fullhashraw}{017e941412d81fd111c98788c459fd70}
+      \strng{bibnamehash}{017e941412d81fd111c98788c459fd70}
+      \strng{authorbibnamehash}{017e941412d81fd111c98788c459fd70}
+      \strng{authornamehash}{017e941412d81fd111c98788c459fd70}
+      \strng{authorfullhash}{017e941412d81fd111c98788c459fd70}
+      \strng{authorfullhashraw}{017e941412d81fd111c98788c459fd70}
+      \field{labelalpha}{GG81}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0022-0000}
+      \field{journaltitle}{J. Comput. System Sci.}
+      \field{month}{6}
+      \field{number}{3}
+      \field{title}{Explicit constructions of linear-sized superconcentrators}
+      \field{volume}{22}
+      \field{year}{1981}
+      \field{pages}{407\bibrangedash 420}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1016/0022-0000(81)90040-4
+      \endverb
+    \endentry
+    \entry{Gharan_Lecture}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=b81623ed388dadde4f70a0357d57b49c}{%
+           family={Gharan},
+           familyi={G\bibinitperiod},
+           given={Shayan\bibnamedelima Oveis},
+           giveni={S\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+      }
+      \strng{namehash}{b81623ed388dadde4f70a0357d57b49c}
+      \strng{fullhash}{b81623ed388dadde4f70a0357d57b49c}
+      \strng{fullhashraw}{b81623ed388dadde4f70a0357d57b49c}
+      \strng{bibnamehash}{b81623ed388dadde4f70a0357d57b49c}
+      \strng{authorbibnamehash}{b81623ed388dadde4f70a0357d57b49c}
+      \strng{authornamehash}{b81623ed388dadde4f70a0357d57b49c}
+      \strng{authorfullhash}{b81623ed388dadde4f70a0357d57b49c}
+      \strng{authorfullhashraw}{b81623ed388dadde4f70a0357d57b49c}
+      \field{labelalpha}{Gha20}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{CSE 599: Polynomial Paradigm in Algorithm Design}
+      \field{year}{2020}
+      \verb{urlraw}
+      \verb https://homes.cs.washington.edu/~shayan/courses/polynomials/
+      \endverb
+      \verb{url}
+      \verb https://homes.cs.washington.edu/~shayan/courses/polynomials/
+      \endverb
+    \endentry
+    \entry{GS06}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=66aba379c7d3adb8af5b662a65c4c140}{%
+           family={Goldreich},
+           familyi={G\bibinitperiod},
+           given={Oded},
+           giveni={O\bibinitperiod}}}%
+        {{hash=8753fbfaaa4aa8a1195c657edc9daef4}{%
+           family={Sudan},
+           familyi={S\bibinitperiod},
+           given={Madhu},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{0a083d048fc3af28ba4c3ea1a0ab8256}
+      \strng{fullhash}{0a083d048fc3af28ba4c3ea1a0ab8256}
+      \strng{fullhashraw}{0a083d048fc3af28ba4c3ea1a0ab8256}
+      \strng{bibnamehash}{0a083d048fc3af28ba4c3ea1a0ab8256}
+      \strng{authorbibnamehash}{0a083d048fc3af28ba4c3ea1a0ab8256}
+      \strng{authornamehash}{0a083d048fc3af28ba4c3ea1a0ab8256}
+      \strng{authorfullhash}{0a083d048fc3af28ba4c3ea1a0ab8256}
+      \strng{authorfullhashraw}{0a083d048fc3af28ba4c3ea1a0ab8256}
+      \field{labelalpha}{GS06}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0004-5411}
+      \field{journaltitle}{Journal of the ACM}
+      \field{month}{7}
+      \field{number}{4}
+      \field{title}{Locally testable codes and {PCPs} of almost-linear length}
+      \field{volume}{53}
+      \field{year}{2006}
+      \field{pages}{558\bibrangedash 655}
+      \range{pages}{98}
+      \verb{doi}
+      \verb 10.1145/1162349.1162351
+      \endverb
+    \endentry
+    \entry{MaxHopkins_Lecture}{online}{}{}
+      \name{author}{2}{}{%
+        {{hash=b776138563e2356b8a7c5378200d5113}{%
+           family={Hopkins},
+           familyi={H\bibinitperiod},
+           given={Max},
+           giveni={M\bibinitperiod}}}%
+        {{hash=8f54cfe313362d53cf0715d5cf0b38e2}{%
+           family={Lovett},
+           familyi={L\bibinitperiod},
+           given={Shachar},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{225104692f56c4002f9fa032b9946140}
+      \strng{fullhash}{225104692f56c4002f9fa032b9946140}
+      \strng{fullhashraw}{225104692f56c4002f9fa032b9946140}
+      \strng{bibnamehash}{225104692f56c4002f9fa032b9946140}
+      \strng{authorbibnamehash}{225104692f56c4002f9fa032b9946140}
+      \strng{authornamehash}{225104692f56c4002f9fa032b9946140}
+      \strng{authorfullhash}{225104692f56c4002f9fa032b9946140}
+      \strng{authorfullhashraw}{225104692f56c4002f9fa032b9946140}
+      \field{labelalpha}{HL21}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{CSE 291 - Expander graphs and High-Dimensional Expanders (Lecture Note)}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://cseweb.ucsd.edu/classes/sp21/cse291-g/
+      \endverb
+      \verb{url}
+      \verb https://cseweb.ucsd.edu/classes/sp21/cse291-g/
+      \endverb
+    \endentry
+    \entry{HLW06}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=7a2e07605478413e89736ff680e2593c}{%
+           family={Hoory},
+           familyi={H\bibinitperiod},
+           given={Shlomo},
+           giveni={S\bibinitperiod}}}%
+        {{hash=3799f17b3ff4ed819996ef9220d1b820}{%
+           family={Linial},
+           familyi={L\bibinitperiod},
+           given={Nathan},
+           giveni={N\bibinitperiod}}}%
+        {{hash=94bdc407739d530448ac88956c6c98a5}{%
+           family={Wigderson},
+           familyi={W\bibinitperiod},
+           given={Avi},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{36b43dceaf100b79205ddd9a0fd9c257}
+      \strng{fullhash}{36b43dceaf100b79205ddd9a0fd9c257}
+      \strng{fullhashraw}{36b43dceaf100b79205ddd9a0fd9c257}
+      \strng{bibnamehash}{36b43dceaf100b79205ddd9a0fd9c257}
+      \strng{authorbibnamehash}{36b43dceaf100b79205ddd9a0fd9c257}
+      \strng{authornamehash}{36b43dceaf100b79205ddd9a0fd9c257}
+      \strng{authorfullhash}{36b43dceaf100b79205ddd9a0fd9c257}
+      \strng{authorfullhashraw}{36b43dceaf100b79205ddd9a0fd9c257}
+      \field{labelalpha}{HLW06}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0273-0979, 1088-9485}
+      \field{journaltitle}{Bull. Am. Math. Soc.}
+      \field{number}{4}
+      \field{title}{Expander graphs and their applications}
+      \field{volume}{43}
+      \field{year}{2006}
+      \field{pages}{439\bibrangedash 561}
+      \range{pages}{123}
+      \verb{doi}
+      \verb 10.1090/S0273-0979-06-01126-8
+      \endverb
+    \endentry
+    \entry{KO20}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=917b86b4872b94aef0df53fb3ab081e2}{%
+           family={Kaufman},
+           familyi={K\bibinitperiod},
+           given={Tali},
+           giveni={T\bibinitperiod}}}%
+        {{hash=fc2fac5ff4f7a72c719f92f990214abe}{%
+           family={Oppenheim},
+           familyi={O\bibinitperiod},
+           given={Izhar},
+           giveni={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{8a63707ce4f45e4a4673daa9edae18a4}
+      \strng{fullhash}{8a63707ce4f45e4a4673daa9edae18a4}
+      \strng{fullhashraw}{8a63707ce4f45e4a4673daa9edae18a4}
+      \strng{bibnamehash}{8a63707ce4f45e4a4673daa9edae18a4}
+      \strng{authorbibnamehash}{8a63707ce4f45e4a4673daa9edae18a4}
+      \strng{authornamehash}{8a63707ce4f45e4a4673daa9edae18a4}
+      \strng{authorfullhash}{8a63707ce4f45e4a4673daa9edae18a4}
+      \strng{authorfullhashraw}{8a63707ce4f45e4a4673daa9edae18a4}
+      \field{labelalpha}{KO20}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0209-9683, 1439-6912}
+      \field{journaltitle}{Combinatorica}
+      \field{month}{4}
+      \field{number}{2}
+      \field{title}{High Order Random Walks: Beyond Spectral Gap}
+      \field{volume}{40}
+      \field{year}{2020}
+      \field{pages}{245\bibrangedash 281}
+      \range{pages}{37}
+      \verb{doi}
+      \verb 10.1007/s00493-019-3847-0
+      \endverb
+    \endentry
+    \entry{LapChiLau_Lecture}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=94fd8646f31398db5725e7a7006e5b34}{%
+           family={Lau},
+           familyi={L\bibinitperiod},
+           given={Lap\bibnamedelima Chi},
+           giveni={L\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{94fd8646f31398db5725e7a7006e5b34}
+      \strng{fullhash}{94fd8646f31398db5725e7a7006e5b34}
+      \strng{fullhashraw}{94fd8646f31398db5725e7a7006e5b34}
+      \strng{bibnamehash}{94fd8646f31398db5725e7a7006e5b34}
+      \strng{authorbibnamehash}{94fd8646f31398db5725e7a7006e5b34}
+      \strng{authornamehash}{94fd8646f31398db5725e7a7006e5b34}
+      \strng{authorfullhash}{94fd8646f31398db5725e7a7006e5b34}
+      \strng{authorfullhashraw}{94fd8646f31398db5725e7a7006e5b34}
+      \field{labelalpha}{Lau22}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{CS 860: Eigenvalues and Polynomials (Lecture Note)}
+      \field{year}{2022}
+      \verb{urlraw}
+      \verb https://cs.uwaterloo.ca/~lapchi/cs860/notes.html
+      \endverb
+      \verb{url}
+      \verb https://cs.uwaterloo.ca/~lapchi/cs860/notes.html
+      \endverb
+    \endentry
+    \entry{LH22}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=99e74aa18ceae927174b3cf3971bc3eb}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Ting-Chun},
+           giveni={T\bibinithyphendelim C\bibinitperiod}}}%
+        {{hash=c1d12822588c40116865d28a9c538739}{%
+           family={Hsieh},
+           familyi={H\bibinitperiod},
+           given={Min-Hsiu},
+           giveni={M\bibinithyphendelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{b34cf1a9ce12c0ea15522faba78c8fd5}
+      \strng{fullhash}{b34cf1a9ce12c0ea15522faba78c8fd5}
+      \strng{fullhashraw}{b34cf1a9ce12c0ea15522faba78c8fd5}
+      \strng{bibnamehash}{b34cf1a9ce12c0ea15522faba78c8fd5}
+      \strng{authorbibnamehash}{b34cf1a9ce12c0ea15522faba78c8fd5}
+      \strng{authornamehash}{b34cf1a9ce12c0ea15522faba78c8fd5}
+      \strng{authorfullhash}{b34cf1a9ce12c0ea15522faba78c8fd5}
+      \strng{authorfullhashraw}{b34cf1a9ce12c0ea15522faba78c8fd5}
+      \field{labelalpha}{LH22}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{International Symposium on Information Theory ({ISIT})}
+      \field{issn}{2157-8117}
+      \field{month}{6}
+      \field{title}{c3-Locally Testable Codes from Lossless Expanders}
+      \field{year}{2022}
+      \field{pages}{1175\bibrangedash 1180}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/ISIT50566.2022.9834679
+      \endverb
+    \endentry
+    \entry{LP17}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=32ad21054f07b38c5fef8dcf472ca73c}{%
+           family={Levin},
+           familyi={L\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=be791fcf2bac698f7a6b715cdf5d5d51}{%
+           family={Peres},
+           familyi={P\bibinitperiod},
+           given={Yuval},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Providence, Rhode Island}%
+      }
+      \list{publisher}{1}{%
+        {American Mathematical Society}%
+      }
+      \strng{namehash}{8202b22adac9a1a16e73501c278aade3}
+      \strng{fullhash}{8202b22adac9a1a16e73501c278aade3}
+      \strng{fullhashraw}{8202b22adac9a1a16e73501c278aade3}
+      \strng{bibnamehash}{8202b22adac9a1a16e73501c278aade3}
+      \strng{authorbibnamehash}{8202b22adac9a1a16e73501c278aade3}
+      \strng{authornamehash}{8202b22adac9a1a16e73501c278aade3}
+      \strng{authorfullhash}{8202b22adac9a1a16e73501c278aade3}
+      \strng{authorfullhashraw}{8202b22adac9a1a16e73501c278aade3}
+      \field{labelalpha}{LP17}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2nd}
+      \field{isbn}{9781470429621}
+      \field{month}{10}
+      \field{title}{Markov Chains and Mixing Times}
+      \field{year}{2017}
+      \verb{doi}
+      \verb 10.1090/mbk/107
+      \endverb
+    \endentry
+    \entry{LPS88}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=99a2aac5c1f8a85a8b9d1f8fbe5a59f1}{%
+           family={Lubotzky},
+           familyi={L\bibinitperiod},
+           given={A},
+           giveni={A\bibinitperiod}}}%
+        {{hash=5494d15bf30c6045a1114407eca4252b}{%
+           family={Phillips},
+           familyi={P\bibinitperiod},
+           given={R},
+           giveni={R\bibinitperiod}}}%
+        {{hash=ea78b04077f0596f70f50f0559b2a1f2}{%
+           family={Sarnak},
+           familyi={S\bibinitperiod},
+           given={P},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{80cd1de6bd5158144dd1bcbcd1fe96cc}
+      \strng{fullhash}{80cd1de6bd5158144dd1bcbcd1fe96cc}
+      \strng{fullhashraw}{80cd1de6bd5158144dd1bcbcd1fe96cc}
+      \strng{bibnamehash}{80cd1de6bd5158144dd1bcbcd1fe96cc}
+      \strng{authorbibnamehash}{80cd1de6bd5158144dd1bcbcd1fe96cc}
+      \strng{authornamehash}{80cd1de6bd5158144dd1bcbcd1fe96cc}
+      \strng{authorfullhash}{80cd1de6bd5158144dd1bcbcd1fe96cc}
+      \strng{authorfullhashraw}{80cd1de6bd5158144dd1bcbcd1fe96cc}
+      \field{labelalpha}{LPS88}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0209-9683, 1439-6912}
+      \field{journaltitle}{Combinatorica}
+      \field{month}{9}
+      \field{number}{3}
+      \field{title}{Ramanujan graphs}
+      \field{volume}{8}
+      \field{year}{1988}
+      \field{pages}{261\bibrangedash 277}
+      \range{pages}{17}
+      \verb{doi}
+      \verb 10.1007/BF02126799
+      \endverb
+    \endentry
+    \entry{LZ22}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=2d605fd2991e3f3a2f5837f1de6c41f1}{%
+           family={{Leverrier}},
+           familyi={L\bibinitperiod}}}%
+        {{hash=16dbfa18ada0070fd07a536aed2af62e}{%
+           family={{Z\'{e}mor}},
+           familyi={Z\bibinitperiod}}}%
+      }
+      \strng{namehash}{cfeb1a53827e87fb8953a1d33c08a93c}
+      \strng{fullhash}{cfeb1a53827e87fb8953a1d33c08a93c}
+      \strng{fullhashraw}{cfeb1a53827e87fb8953a1d33c08a93c}
+      \strng{bibnamehash}{cfeb1a53827e87fb8953a1d33c08a93c}
+      \strng{authorbibnamehash}{cfeb1a53827e87fb8953a1d33c08a93c}
+      \strng{authornamehash}{cfeb1a53827e87fb8953a1d33c08a93c}
+      \strng{authorfullhash}{cfeb1a53827e87fb8953a1d33c08a93c}
+      \strng{authorfullhashraw}{cfeb1a53827e87fb8953a1d33c08a93c}
+      \field{labelalpha}{LZ22}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Symposium on Foundations of Computer Science ({FOCS})}
+      \field{month}{10}
+      \field{title}{Quantum Tanner codes}
+      \field{volume}{0}
+      \field{year}{2022}
+      \field{pages}{872\bibrangedash 883}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1109/FOCS54457.2022.00117
+      \endverb
+    \endentry
+    \entry{Margulis1973}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=96b4103d88e11b134b7f94aa202f2bc4}{%
+           family={Margulis},
+           familyi={M\bibinitperiod},
+           given={Grigorii\bibnamedelima Aleksandrovich},
+           giveni={G\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{96b4103d88e11b134b7f94aa202f2bc4}
+      \strng{fullhash}{96b4103d88e11b134b7f94aa202f2bc4}
+      \strng{fullhashraw}{96b4103d88e11b134b7f94aa202f2bc4}
+      \strng{bibnamehash}{96b4103d88e11b134b7f94aa202f2bc4}
+      \strng{authorbibnamehash}{96b4103d88e11b134b7f94aa202f2bc4}
+      \strng{authornamehash}{96b4103d88e11b134b7f94aa202f2bc4}
+      \strng{authorfullhash}{96b4103d88e11b134b7f94aa202f2bc4}
+      \strng{authorfullhashraw}{96b4103d88e11b134b7f94aa202f2bc4}
+      \field{extraname}{1}
+      \field{labelalpha}{Mar73}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0555-2923}
+      \field{journaltitle}{Problemy Peredachi Informatsii}
+      \field{number}{4}
+      \field{title}{Explicit constructions of concentrators}
+      \field{volume}{9}
+      \field{year}{1973}
+      \field{pages}{71\bibrangedash 80}
+      \range{pages}{10}
+    \endentry
+    \entry{Mar88}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=1fb84a2850db48d43e1f2fcc00952b37}{%
+           family={Margulis},
+           familyi={M\bibinitperiod},
+           given={Grigory\bibnamedelima Aleksandrovich},
+           giveni={G\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{1fb84a2850db48d43e1f2fcc00952b37}
+      \strng{fullhash}{1fb84a2850db48d43e1f2fcc00952b37}
+      \strng{fullhashraw}{1fb84a2850db48d43e1f2fcc00952b37}
+      \strng{bibnamehash}{1fb84a2850db48d43e1f2fcc00952b37}
+      \strng{authorbibnamehash}{1fb84a2850db48d43e1f2fcc00952b37}
+      \strng{authornamehash}{1fb84a2850db48d43e1f2fcc00952b37}
+      \strng{authorfullhash}{1fb84a2850db48d43e1f2fcc00952b37}
+      \strng{authorfullhashraw}{1fb84a2850db48d43e1f2fcc00952b37}
+      \field{extraname}{2}
+      \field{labelalpha}{Mar88}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Problems Inform. Transmission}
+      \field{title}{Explicit group-theoretic constructions of combinatorial schemes and their applications in the construction of expanders and concentrators}
+      \field{year}{1988}
+    \endentry
+    \entry{Mor94}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=e7c11d8859efc442f64c79f2cb33e322}{%
+           family={Morgenstern},
+           familyi={M\bibinitperiod},
+           given={M},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{e7c11d8859efc442f64c79f2cb33e322}
+      \strng{fullhash}{e7c11d8859efc442f64c79f2cb33e322}
+      \strng{fullhashraw}{e7c11d8859efc442f64c79f2cb33e322}
+      \strng{bibnamehash}{e7c11d8859efc442f64c79f2cb33e322}
+      \strng{authorbibnamehash}{e7c11d8859efc442f64c79f2cb33e322}
+      \strng{authornamehash}{e7c11d8859efc442f64c79f2cb33e322}
+      \strng{authorfullhash}{e7c11d8859efc442f64c79f2cb33e322}
+      \strng{authorfullhashraw}{e7c11d8859efc442f64c79f2cb33e322}
+      \field{labelalpha}{Mor94}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0095-8956}
+      \field{journaltitle}{Journal of Combinatorial Theory Series B}
+      \field{month}{9}
+      \field{number}{1}
+      \field{title}{Existence and Explicit Constructions of q + 1 Regular Ramanujan Graphs for Every Prime Power q}
+      \field{volume}{62}
+      \field{year}{1994}
+      \field{pages}{44\bibrangedash 62}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1006/jctb.1994.1054
+      \endverb
+    \endentry
+    \entry{Oppenheim_tricling_down}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=fc2fac5ff4f7a72c719f92f990214abe}{%
+           family={Oppenheim},
+           familyi={O\bibinitperiod},
+           given={Izhar},
+           giveni={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{fc2fac5ff4f7a72c719f92f990214abe}
+      \strng{fullhash}{fc2fac5ff4f7a72c719f92f990214abe}
+      \strng{fullhashraw}{fc2fac5ff4f7a72c719f92f990214abe}
+      \strng{bibnamehash}{fc2fac5ff4f7a72c719f92f990214abe}
+      \strng{authorbibnamehash}{fc2fac5ff4f7a72c719f92f990214abe}
+      \strng{authornamehash}{fc2fac5ff4f7a72c719f92f990214abe}
+      \strng{authorfullhash}{fc2fac5ff4f7a72c719f92f990214abe}
+      \strng{authorfullhashraw}{fc2fac5ff4f7a72c719f92f990214abe}
+      \field{labelalpha}{Opp18}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0179-5376, 1432-0444}
+      \field{journaltitle}{Discrete Comput. Geom.}
+      \field{month}{3}
+      \field{number}{2}
+      \field{title}{Local Spectral Expansion Approach to High Dimensional Expanders Part I: Descent of Spectral Gaps}
+      \field{volume}{59}
+      \field{year}{2018}
+      \field{pages}{293\bibrangedash 330}
+      \range{pages}{38}
+      \verb{doi}
+      \verb 10.1007/s00454-017-9948-x
+      \endverb
+    \endentry
+    \entry{PK22}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=2045547a573a8653a385a24802d84861}{%
+           family={Panteleev},
+           familyi={P\bibinitperiod},
+           given={Pavel},
+           giveni={P\bibinitperiod}}}%
+        {{hash=965427f6d0d037e6e3f530bc87ae1a30}{%
+           family={Kalachev},
+           familyi={K\bibinitperiod},
+           given={Gleb},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Rome, Italy}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{0798ba004634ed1d7aa919b68cddb863}
+      \strng{fullhash}{0798ba004634ed1d7aa919b68cddb863}
+      \strng{fullhashraw}{0798ba004634ed1d7aa919b68cddb863}
+      \strng{bibnamehash}{0798ba004634ed1d7aa919b68cddb863}
+      \strng{authorbibnamehash}{0798ba004634ed1d7aa919b68cddb863}
+      \strng{authornamehash}{0798ba004634ed1d7aa919b68cddb863}
+      \strng{authorfullhash}{0798ba004634ed1d7aa919b68cddb863}
+      \strng{authorfullhashraw}{0798ba004634ed1d7aa919b68cddb863}
+      \field{labelalpha}{PK22}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Symposium on Theory of Computing ({STOC})}
+      \field{isbn}{9781450392648}
+      \field{month}{6}
+      \field{series}{STOC 2022}
+      \field{title}{Asymptotically good Quantum and locally testable classical {LDPC} codes}
+      \field{year}{2022}
+      \field{pages}{375\bibrangedash 388}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1145/3519935.3520017
+      \endverb
+    \endentry
+    \entry{SS96}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=75a9e61254fc449d4886b6ee4cff0b22}{%
+           family={Sipser},
+           familyi={S\bibinitperiod},
+           given={M},
+           giveni={M\bibinitperiod}}}%
+        {{hash=bee66c6e4cf38d7e693ca851c40c42ba}{%
+           family={Spielman},
+           familyi={S\bibinitperiod},
+           given={D\bibnamedelima A},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{ff59c81166644da08ea82fb925631c54}
+      \strng{fullhash}{ff59c81166644da08ea82fb925631c54}
+      \strng{fullhashraw}{ff59c81166644da08ea82fb925631c54}
+      \strng{bibnamehash}{ff59c81166644da08ea82fb925631c54}
+      \strng{authorbibnamehash}{ff59c81166644da08ea82fb925631c54}
+      \strng{authornamehash}{ff59c81166644da08ea82fb925631c54}
+      \strng{authorfullhash}{ff59c81166644da08ea82fb925631c54}
+      \strng{authorfullhashraw}{ff59c81166644da08ea82fb925631c54}
+      \field{labelalpha}{SS96}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0018-9448, 1557-9654}
+      \field{journaltitle}{IEEE Transactions on Information Theory}
+      \field{month}{11}
+      \field{number}{6}
+      \field{title}{Expander codes}
+      \field{volume}{42}
+      \field{year}{1996}
+      \field{pages}{1710\bibrangedash 1722}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1109/18.556667
+      \endverb
+    \endentry
+    \entry{Whitney1935}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=14cb77dee3837480e61347c808ea6416}{%
+           family={Whitney},
+           familyi={W\bibinitperiod},
+           given={Hassler},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Johns Hopkins University Press}%
+      }
+      \strng{namehash}{14cb77dee3837480e61347c808ea6416}
+      \strng{fullhash}{14cb77dee3837480e61347c808ea6416}
+      \strng{fullhashraw}{14cb77dee3837480e61347c808ea6416}
+      \strng{bibnamehash}{14cb77dee3837480e61347c808ea6416}
+      \strng{authorbibnamehash}{14cb77dee3837480e61347c808ea6416}
+      \strng{authornamehash}{14cb77dee3837480e61347c808ea6416}
+      \strng{authorfullhash}{14cb77dee3837480e61347c808ea6416}
+      \strng{authorfullhashraw}{14cb77dee3837480e61347c808ea6416}
+      \field{labelalpha}{Whi35}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0002-9327, 1080-6377}
+      \field{journaltitle}{Amer. J. Math.}
+      \field{number}{3}
+      \field{title}{On the Abstract Properties of Linear Dependence}
+      \field{volume}{57}
+      \field{year}{1935}
+      \field{pages}{509\bibrangedash 533}
+      \range{pages}{25}
+      \verb{doi}
+      \verb 10.2307/2371182
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

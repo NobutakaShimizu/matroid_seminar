@@ -1,0 +1,985 @@
+\chapter{ランダムウォーク概論}
+本講義では斉時性をもつ有限状態離散時間マルコフ連鎖をランダムウォークと呼び,
+ランダムウォークが収束するために必要な条件を与える.
+本チャプターで説明される内容は多くはランダムウォークの非常に有名な教科書\cite[Chapter 4,12]{LP17}にも載っている.
+
+\section{記号}
+まず, 本講義の全てのチャプターで共通する記法とその定義を与える.
+\begin{itemize}
+\item 有限集合$V$上の確率分布$\mu$を$V$次元ベクトルと同一視する.
+すなわち, 固定した$u\in V$に対し, 分布$\mu$に従ってランダムに選ばれた元が$u$である確率を$\mu(u)$で表す.
+\item 分布$\mu \in [0,1]^V$と部分集合$S\subseteq V$に対し$\mu(S) = \sum_{u\in S}\mu(u)$とする.
+\item 有限集合$V$に対して$u\sim V$と書いたとき
+\begin{itemize}
+\item 集合$V$に何かしらの分布$\mu$が付随しているときは$u$は分布$\mu$に従ってランダムに選ばれた要素であることを意味する. このとき, $u\sim V$の代わりに$u \sim \mu$と書くこともある.
+\item そうでない (分布$\mu$が明示的に指定されていない)場合, $u$は$V$上一様ランダムに選ばれたことを意味する.
+\end{itemize}
+\item 全ての行和が$1$に等しい非負行列を\emph{確率行列 (stochastic matrix)}と呼ぶ.
+すなわち, $P \in [0,1]^{U\times V}$が確率行列であるとは, 全ての$u\in U$に対し$\sum_{v \in V} P(u,v) = 1$が成り立つことを意味する.
+\item 確率行列$P\in [0,1]^{U\times V}$と$u\in U$に対し, $P(u,\cdot) \in [0,1]^V$を$P$の第$u$行ベクトルから定まる分布とする. 例えば, $v \sim P(u,\cdot)$は分布$P(u,\cdot)$に従ってランダムに選ばれた元を意味する.
+\end{itemize}
+\section{定義}
+%
+\begin{definition}{ランダムウォーク}{random walk}
+  有限集合$V$と確率行列$P\in[0,1]^{V\times V}$に対し,
+  $V$上に値をとる確率変数列$(X_t)_{t\ge 0}$であって, 任意の$t\ge 0$, 頂点列$(v_0,\dots,v_{t-1})\in V^t$,
+  および$v\in V$に対して
+  \[
+    \Pr\sbra*{X_t = v \condition X_0 = v_0,\dots,X_{t-1} = v_{t-1}} = \Pr\sbra*{X_t = v \condition X_{t-1} = u} = P(u,v)
+  \]
+  を満たすものを$V$上の\emph{ランダムウォーク (random walk)}という.
+  特に確率行列$P$をランダムウォーク$(X_t)_{t\ge 0}$の\emph{遷移確率行列 (transition matrix)}と呼ぶ.
+\end{definition}
+%
+初期地点$X_0$もまた確率変数であるためランダムに決まることに注意されたい.
+また, 決定的に$X_0=u$からスタートしていても良い.
+%
+初期頂点$X_0$の分布が決まれば各時刻$t$における$X_t$の分布は一意に定まる.
+実際, $t\ge 0$に対し$p_t \in [0,1]^{V}$を$X_t$の分布とする
+(すなわち, $p_t(u) = \Pr\sbra*{X_t = u}$).
+任意の$t\ge 1$に対し
+\begin{align*}
+  p_t(v) & = \Pr\sbra*{X_t = v}                                                             \\
+         & = \sum_{u\in V}\Pr\sbra*{ X_t = v \tand X_{t-1} = u}                             \\
+         & = \sum_{u\in V}\Pr\sbra*{ X_t = v \condition X_{t-1} = u} \Pr\sbra*{X_{t-1} = u} \\
+         & = \sum_{u\in V} P(u,v) p_{t-1}(u)
+\end{align*}
+という漸化式を得る.
+これは$p_{t} = p_{t-1} P$とも表せる (ここで$p_t$は行ベクトルとして扱う) ので
+\begin{align}
+  p_t = p_0 P^t \label{eq:p_t}
+\end{align}
+を得る.
+
+厳密には初期分布$X_0$と遷移確率行列$P$を定めないとランダムウォークは一意に定まらないが,
+しばし遷移確率行列$P$だけを指定して「$P$に従うランダムウォーク」という言い回しをする.
+このとき, 暗に初期分布$X_0$は任意の分布を考えており, 例えば「$P$に従うランダムウォークは性質$\mathcal{P}$を満たす」と言ったときは「遷移確率行列が$P$で与えられた任意のランダムウォークは性質$\mathcal{P}$を満たす」ということを意味する.
+
+\section{収束性}
+ランダムウォーク$(X_t)_{t\ge 0}$を考え, 時刻$t$における$X_t$の周辺分布を$p_t$とする.
+すなわち, $p_t \in [0,1]^V$は$p_t(v) = \Pr\sbra{X_t = v}$で定義されるベクトルである.
+本講義では総じて時刻$t$を大きくしていくときの$p_t$の収束性とそのスピードについて議論していく.
+
+まずは収束性について議論するために分布間の距離として全変動距離を導入する.
+\begin{definition}{全変動距離}{total variation distance}
+  有限集合$V$上の二つの分布$\mu,\nu \in[0,1]^V$に対し, \emph{全変動距離 (total variation distance)}を
+  \[
+    \dtv (\mu ,\nu ) \defeq \frac{1}{2} \sum_{u\in V}\abs{\mu(u) - \nu(u)} = \frac{1}{2} \norm{\mu - \nu}_1
+  \]
+  で定める.
+\end{definition}
+全変動距離は単に$\ell^1$ノルムを$2$で割った値だが, 次の性質を持つがゆえに統計学, 情報理論, 機械学習, 計算機科学を含む様々な分野で非常に重要な役割を果たしている.
+\begin{proposition}{}{dtv}
+  有限集合$V$を考え, 分布$\pi\in[0,1]^V$と部分集合$U\subseteq V$に対し$\pi(U)\defeq\sum_{u\in U}\pi(u)$とする.
+  任意の二つの分布$\mu,\nu\in[0,1]^V$と任意の部分集合$U\subseteq V$に対して
+  \[
+    \abs*{ \mu(U) - \nu(U) } \le \dtv(\mu,\nu).
+  \]
+\end{proposition}
+すなわち,
+全変動距離が小さいということは任意の事象の発生確率の差が小さいことを意味する.
+なお, この不等式はタイトである.
+実際, $U=\cbra*{ u\in V \colon \mu(u) > \nu(u) }$とすれば等号が成り立つ.
+
+次に, ランダムウォークが収束するための条件を与える.
+\begin{definition}{既約性、非周期性}{irreducibility and aperiodicity}
+  遷移確率行列$P \in [0,1]^{V\times V}$をもつランダムウォークを考える.
+  \begin{itemize}
+    \item 任意の頂点対$u,v\in V$に対しある$t \ge 0$が存在して$P^t(u,v)>0$を満たすとき, ランダムウォーク$(X_t)_{t\ge 0}$は\emph{既約 (irreducible)}であるという.
+    \item 各頂点$u\in V$に対し, 有向閉路長の集合$L_u = \cbra*{ t \ge 1 \colon P^t(u,u) > 0}$を考え, その最大公約数を頂点$u$の\emph{周期 (period)} と呼ぶ. 全ての頂点の周期が$1$であるとき, ランダムウォーク$(X_t)_{t\ge 0}$は\emph{非周期的 (aperiodic)}であるという.
+  \end{itemize}
+\end{definition}
+%
+既約性は任意の頂点対$u,v$に対し$u$からスタートしたランダムウォークが$v$に到達可能であることを意味している.
+
+非周期性は, ランダムウォークが「振動」しないことを意味する性質である.
+例えば遷移確率行列が
+\[
+  P = \begin{bmatrix}
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    1 & 0 & 0
+  \end{bmatrix}
+\]
+で与えられるランダムウォークは全ての有向閉路の長さは$3$の倍数であるためどの頂点の周期も$3$に等しい.
+特に, ランダムウォーク$X_t$は周期$3$でループしており, 例えば確率$1$で特定の頂点からスタートしたときに$p_t$は収束しないことがわかる.
+非周期性はこのようなケースを排除するという意味を持つ.
+
+
+\subsection{定常分布}
+ランダムウォークの分布$p_t$がある分布$\pi\in[0,1]^V$に収束するならば, 分布の漸化式$p_t = p_{t-1}P$より収束先の分布$\pi$は
+\begin{align}
+  \pi = \pi P \label{eq:stationary equation}
+\end{align}
+を満たすはずである.
+%
+\begin{definition}{定常分布}{stationary distribution}
+  遷移確率行列$P$をもつ$V$上のランダムウォークに対し, \cref{eq:stationary equation}を満たす分布$\pi$を\emph{定常分布 (stationary distribution)}と呼ぶ.
+\end{definition}
+%
+任意のランダムウォークは必ず定常分布をもつ.
+(有限集合上の分布を考えているので)分布全体から分布全体への連続関数$x \mapsto xP$に対しブラウアーの不動点定理を適用すればすぐに示せる.
+\begin{theorem}{ブラウアーの不動点定理}{Brouwer fixed point}
+  Euclid空間の非空なコンパクト凸部分集合$K$からそれ自身への任意の連続関数は不動点をもつ.
+\end{theorem}
+また, 詳細は省くがこれは以下の議論からも証明できる:
+\begin{itemize}
+  \item 定常分布$\pi$は転置行列$P^{\top}$の固有値$1$の固有ベクトルに対応する.
+  \item $P$と$P^\top$の固有値は全て同じ (転置をとっても行列式は変わらないから)であり, 最大固有値$1$を持つ.
+  \item Perron--Frobeniusの定理から$P^\top$の最大固有値$1$に対応する固有ベクトルの成分は非負なので, 正規化すると分布になる.
+\end{itemize}
+%
+%
+\begin{theorem}{ランダムウォークの収束性}{random walk convergence}
+  遷移確率行列$P$を持つ$V$上の任意のランダムウォークは定常分布$\pi \in [0,1]^V$を持つ.
+  さらに,
+  \begin{itemize}
+    \item ランダムウォークが既約的ならば, 定常分布$\pi$は一意に存在し, 全ての頂点$v\in V$に対し$\pi(v)>0$である.
+    \item ランダムウォークが既約的かつ非周期的ならば, 定常分布$\pi$が一意に存在して$\dtv(p_t,\pi)\to 0$ ($t\to\infty$)が成り立つ.
+  \end{itemize}
+\end{theorem}
+\cref{thm:random walk convergence}は一つ目の主張は定常分布の定義を使えば簡単に示せるが二つ目の主張の証明は難しい.
+そのためにまず, 以下の三つの補題を証明する.
+\begin{lemma}{Shurの補題}{Schur lemma}
+  $S\subseteq \Nat$が$\gcd(S)=1$ならば, ある$N\in\Nat$が存在して任意の自然数$M\ge N$は$S$の要素の非負結合で表せる.
+\end{lemma}
+\begin{proof}
+  一般性を失わず$S$は有限集合としてよい.
+  実際, $S_n = S \cap \{1,\dots,n\}$とすると$\gcd(S_n)$は$n$を大きくしていくにつれて減少していくが, 減少する回数は有限回なので, 十分大きな$n$に対して$\gcd(S_n)=1$となる.
+  このとき, $S$の代わりに$S_n$を考えればよい.
+
+  簡単のため$|S|=3$で$S=\{a,b,c\}$のときに証明する.
+  一般の$S$の場合も同様に証明できる.
+  $\gcd(a,b,c)=1$より,
+  任意の$M\in\Nat$に対し
+  ある整数$x,y,z\in \Int$が存在して$ax+by+cz=M$を満たす.
+  このような$x,y,z$は一意ではなく,
+  $i+j+k=0$を満たす任意の$i,j,k\in\Int$に対して
+  \[
+    a(x+ibc) + b(y+jac) + c(z+kab) = M
+  \]
+  である.
+  ここで, $i,j\in\Int$は任意に決めてよいので, $0\le x+ibc < bc, 0\le y+jac < ac$とできる.
+  このときもしも$M\ge 2abc$ならば
+  \[
+    c(z+kab) = M - a(x+ibc) - b(y+jac) > M - 2abc \ge 0
+  \]
+  なので, $z+kab \ge 0$であり, 確かに$M$は$a,b,c$の非負結合で表せた.
+\end{proof}
+\begin{lemma}{}{P bekijou}
+  任意の既約的かつ非周期的なランダムウォークの遷移確率行列$P$に対し, ある整数$L \ge 1$が存在して, $P^L$の全ての成分は正となる.
+\end{lemma}
+\begin{proof}
+  遷移確率行列$P$に対し有向グラフ$\vG=(V,\vec{E})$を,
+  $P(u,v)>0$のときかつその時に限り有向辺$(u,v)$を追加して得られる有向グラフとする.
+  $P^L(u,v)$は, $u$から開始したランダムウォークがちょうど$L$回の遷移の後に$v$にいる確率である.
+  この値が正であるということは, $\vG$上で
+  $u$から$v$への長さちょうど$L$の有向路が存在することを意味する.
+
+  頂点$w\in V$を任意に固定し, $S\subseteq \Nat$を
+  $S = \cbra*{i\ge 0\colon P^i(w,w)>0}$
+  とする.
+  非周期性より$\gcd(S)=1$である.
+  この集合$S$に対し\cref{lem:Schur lemma}により存在性が保証される自然数$N\in\Nat$を考える.
+  すると, 任意の$M\ge N$に対して$\vG$は$w$を通る長さ$M$の有向閉路をもつ (つまり$P^M(w,w)>0$).
+  
+  $L=2|V|+N$が主張を満たすことを示す.
+  すなわち, 任意の$u,v\in V$に対し, $\vG$は$u$から$v$への長さ$L$の有向路を含むことを示す.
+  既約性の仮定より$\vG$は途中で$w$を経由する長さ$\ell \le 2|V|$の$uv$-有向路$p$を持つ.
+  この有向路$p$に沿って$u$から$w$に進み, そこから長さ$L - \ell \ge N$の閉路に沿って進み, さらに再び$p$に沿って$w$から$v$に進む有向路を考えると, その長さはちょうど$L$であり, すなわち$P^L(u,v)>0$を意味する.
+\end{proof}
+\begin{lemma}{}{ellone norm}
+  任意の確率行列$P\in[0,1]^{V\times V}$とベクトル$x\in\Real^V$に対し,
+  $\norm{xP}_{1} \le \norm{x}_{1}$.
+\end{lemma}
+\begin{proof}
+  任意の$u\in V$に対し
+  \begin{align*}
+    \norm{xP}_1 &= \sum_{u\in V} \abs*{(xP)(u)} \\
+    &= \sum_{u\in V} \abs*{ \sum_{v\in V} x(v) P(v,u) } \\
+    &\le \sum_{u,v\in V}\abs{x(v)}\cdot P(v,u) \\
+    &= \sum_{v\in V}\abs{x(v)}\cdot \sum_{u\in V}P(v,u) \\
+    &= \norm{x}_1.
+  \end{align*}
+\end{proof}
+\begin{proof}[\textbf{\cref{thm:random walk convergence}の証明.}]
+  考えるランダムウォークの遷移確率行列を$P$とする.
+
+  一つ目の主張を示す.
+  $P$が既約として, 定常分布の一つを$\pi \in [0,1]^V$とし,
+  ある頂点$u\in V$に対し$\pi(u)=0$が成り立つとする.
+  $\pi$は分布なのである$v\in V$に対し$\pi(v)>0$となる.
+  既約性より, この$v$に対してある$\ell\in\Nat$が存在して$P^\ell(u,v)>0$となる.
+  $\pi =\pi P^\ell$より,
+  \[
+    0 = \pi(u) = \sum_{w\in V}\pi(w)P^\ell(w,u) \ge \pi(v)P^\ell(v,u)>0
+  \]
+  となり矛盾を得る.
+
+  二つ目の主張を示す.
+  $P$は非周期的なので, \cref{lem:P bekijou}より, ある$L\ge 1$に対して$Q\defeq P^L$の全ての成分は正である.
+  従って, ある$0<\delta<1$, 全成分が$1/|V|$の確率行列$J$, 適当な確率行列$R$を用いて
+  \[
+    Q = \delta J + (1-\delta)R
+  \]
+  と表せる.
+  まず定常分布の一意性を示す.
+  二つの相異なる定常分布$\pi,\pi'$が存在すると仮定すると
+  \begin{align*}
+    \norm{\pi - \pi'}_1 = \norm{\pi Q -  \pi' Q}_1 = (1-\delta)\norm{(\pi - \pi')R}_1 \le  (1-\delta)\norm{\pi - \pi'}_1
+  \end{align*}
+  となるが, これは$\norm{\pi - \pi'}_1>0$に矛盾する (最後の不等号で\cref{lem:ellone norm}を用いた).
+  以上より一意性が示された.
+
+  次に収束性を示す.
+  $\allone$に直交する任意のベクトルに対し$xQ^t$を考える.
+  まず, $t=1$のときは$xQ = (1-\delta) xR$となり, このベクトルもまた$\allone$に直交している.
+  実際, $\abra{xR,\allone} = x^\top R \allone = x^\top \allone = 0$である.
+  このことから
+  $t=2$のときは$xQ^2 = (1-\delta)xR \cdot (\delta J + (1-\delta) R) =(1-\delta)^2 xR^2$を得る.
+  これを繰り返していくと, 一般の$t$に対して$xQ^t = (1-\delta)^txR^t$を得る.
+  初期分布$p_0\in[0,1]^V$に対し, $x\defeq p_0 - \pi$は$\allone$に直交するので
+  \begin{align*}
+    \norm{p_t - \pi}_{1} &= \norm{(p_0-\pi)P^t}_{1} \\
+    &\le \norm{xQ^{\floor{t/L}}}_{1} & & \text{$\because$\cref{lem:ellone norm}}\\
+    &= (1-\delta)^{\floor{t/L}}\cdot \norm{x R^{\floor{t/L}}}_1 \\
+    & \le (1-\delta)^{\floor{t/L}} \norm{x}_{1} & & \text{$\because$\cref{lem:ellone norm}} \\
+    & \to 0
+  \end{align*}
+  を得る.
+  よって, 確かにランダムウォークの分布$(p_t)$は定常分布$\pi$に収束する.
+\end{proof}
+
+\subsection{混交時間}
+\cref{thm:random walk convergence}ではランダムウォークの一意収束性の条件を与えた.
+では, その収束の速さはどれくらいだろうか?
+この問題は日常的には例えば次のような状況で現れる:
+\begin{itemize}
+  \item トランプカードで遊ぶとき, 何回シャッフルすればカードが「混ざり合う」か?
+  \item 料理で調味料をスープに入れたとき, 何回かき回せば味が「混ざり合う」か？
+\end{itemize}
+
+ここでは「混ざり合う」とは定常分布への全変動距離の意味での収束性で定義し,
+ランダムウォークの混交時間を次で定義する:
+\begin{definition}{混交時間}{mixing time}
+  既約なランダムウォーク$(X_t)_{t\ge 0}$を考え, $t\ge 0$に対し
+  $p_t \in [0,1]^V$を時刻$t$における$X_t$の分布とする.
+  定常分布を$\pi \in [0,1]^V$とする.
+  正の実数$\varepsilon > 0$に対し, $\varepsilon$-混交時間$\tmix(\varepsilon)$を
+  \[
+    \tmix(\varepsilon) \defeq \inf\cbra*{ t \ge 0 \colon \dtv(p_t, \pi) \le \varepsilon}
+  \]
+  とする.
+  また, $(1/2)$-混交時間を単に\emph{混交時間 (mixing time)}と呼ぶ.\footnote{$1/2$という数字に特に本質的な意味はない.}
+\end{definition}
+\begin{remark}{初期分布}{mixing time initial distribution}
+  ランダムウォークの混交時間はその初期分布に依存する.
+  例えば初期分布が定常分布$\pi$であった場合, 混交時間は$0$である.
+  基本的には任意の初期分布を考え, その中で混交時間の最大値を考える.
+  任意の分布はディラック測度の凸結合で表せるため,
+  全ての初期分布での最大を考える代わりに,
+  各ディラック測度(確率$1$で特定の頂点を選択する測度)に関する最大値だけ考えればよい.
+  すなわち, 本講義で初期分布を指定していないランダムウォークに対して混交時間の上界を議論する際は
+  \[
+    \max_{u\in U} \inf\cbra*{ t\ge 0 \colon \dtv(P^t(u,\cdot),\pi) \le \varepsilon }
+  \]
+  を上から抑えることを意味する.
+\end{remark}
+
+本講義では全体を通じてランダムウォークの混交時間(特にその上界)を評価することに取り組む.
+中でも特に強力な固有値に基づく解析について説明し,
+これに基づいてグラフや単体複体のエクスパンダー性を定義し, その性質を解説していく.
+最後にマトロイドと呼ばれる重要な離散構造上のランダムウォークを解析し,
+重要な未解決問題であり近年ようやく解決されたMihail--Vazirani予想の証明を与える.
+
+\section{グラフ上のランダムウォーク}
+まずグラフ理論の基礎的な概念の定義を与える.
+読者は\cref{def:SRW}まで読み飛ばし, 必要に応じて後から定義を参照してもよい.
+%
+\begin{definition}{グラフ}{graph}
+  有限単純無向グラフを単に\emph{グラフ (graph)}と呼ぶ.
+  すなわち, グラフとは有限集合$V$とその二元部分集合$E\subseteq \binom{V}{2}$の組 $G = (V, E)$ である.
+  $V$の元を\emph{頂点(vertex)}, $E$の元を\emph{辺(edge)}と呼ぶ.
+  \begin{itemize}
+    \item 二頂点$u,v\in V$が$\{u,v\}\in E$を満たすとき, $u$は$v$に\emph{隣接 (adjacent)}しているという ($v$もまた$u$に隣接している).
+          頂点$u$と辺$e\in E$が$u\in e$を満たすとき, $e$は$u$に\emph{接続 (incident)}しているという.
+          頂点$u$に隣接している頂点の集合を$N_G(u)$で表す.
+          頂点$u$に接続している辺の本数を$u$の\emph{次数(degree)}といい, $\deg(u)$で表す.
+          全ての頂点の次数が$d$に等しいとき, $G$は\emph{$d$-正則 ($d$-regular)}であるという.
+    \item 二つのグラフ$G=(V,E),H=(U,F)$に対して$U\subseteq V,F\subseteq E \cap \binom{U}{2}$を満たすとき$G$は$H$を\emph{部分グラフ (subgraph)}として含むといい, $H\subseteq G$で表す.
+    特に$F=\binom{U}{2}\cap E$となる部分グラフを誘導部分グラフと呼び, $G[U]$と表す.
+    \item 隣接行列$A \in \Real^{V\times V}$を以下で定義する:
+          \[
+            A(u,v) = \indicator{\{u,v\}\in E} =
+            \begin{cases}
+              1 & \tif\{u,v\}\in E, \\
+              0 & \totherwise.
+            \end{cases}
+          \]
+    \item 頂点列$(v_0,\dots,v_\ell) \in V^{\ell+1}$は
+          $\{v_0,v_1\},\dots,\{v_{\ell-1},v_\ell\}\in E$を満たすとき,
+          $v_0$から$v_\ell$への\emph{路 (walk)} といい, $\ell$を長さと呼ぶ.
+          路$(v_0,\dots,v_\ell)$に対し$v_0$と$v_\ell$をそれぞれ始点, 終点と呼ぶ.
+          路$(v_0,\dots,v_\ell)$が$v_0=v_\ell$であって満たすものを\emph{閉路 (cycle)}という.
+    \item  二頂点$u,v \in V$に対し,
+          $u$から$v$への路が存在しかつそのときに限り$u\sim v$
+          とすることで頂点集合$V$上の同値関係$\sim$を定義する.
+          このとき, 商集合$V / \sim$の各同値類を$G$の\emph{連結成分 (connected component)}という.
+          商集合$V / \sim$が単一の連結成分からなるとき, $G$は\emph{連結 (connected)}であるという.
+    \item 二頂点$u,v$の間の\emph{距離 (distance)}を, $uv$間の路のうちの最小長さで定義し, $\dist(u,v)$で表す($uv$路が存在しない場合は$\dist(u,v)=\infty$とする). グラフ$G$の\emph{直径 (diameter)}を$\diam(G)=\max_{u,v\in V}\dist(u,v)$で定める.
+    \item グラフ$G=(V,E)$を考える.
+          二頂点$u,v \in V$に対し,
+          $u$から$v$への路が存在しかつそのときに限り$u\sim v$
+          とすることで頂点集合$V$上の同値関係$\sim$を定義する.
+          このとき, 商集合$V / \sim$の各同値類を$G$の\emph{連結成分 (connected component)}という.
+          商集合$V / \sim$が単一の連結成分からなるとき, $G$は\emph{連結 (connected)}であるという.
+    \item   グラフ$G=(V,E)$を考える.
+          ある頂点分割$V=L\sqcup R$が存在して$E\cap \binom{L}{2}=\emptyset$かつ$E\cap \binom{R}{2}=\emptyset$が成り立つとき, $G$は\emph{二部 (bipartite)}であるといい,
+          頂点部分集合$L,R$を$G$の\emph{部集合 (partite set)}と呼ぶ.
+  \end{itemize}
+\end{definition}
+路とは辺を辿って始点から終点に至るまでの経路を表す.
+なお, 同じ頂点や辺を2回以上通ってもよいことに注意せよ.
+
+直感的には, $G$が二部グラフであるというのは, ある頂点分割$V=L\sqcup R$に対して
+$G$の全ての辺が$L$と$R$の間を跨いでいることを意味する.
+なお, 部集合への分割$V = L\sqcup R$は必ずしも一意であるとは限らない.
+よく知られる事実として, グラフ$G$が二部グラフであることの必要十分条件は$G$の全ての閉路の長さが偶数であることである.
+
+隣接行列$A$に対し, $A^\ell$の各成分は長さ$\ell$の路の個数に等しい.
+\begin{lemma}{}{adjacency walk count}
+  グラフ$G=(V,E)$の隣接行列$A$と$\ell\in\Nat$を考える.
+  任意の$u,v\in V$に対し, $A^\ell(u,v)$は頂点$u$から$v$への長さ$\ell$の路の個数に等しい.
+\end{lemma}
+\begin{proof}
+  長さ$\ell\ge 1$に関する帰納法で示す. $\ell=1$のときは明らか.
+  $W_\ell(u,v)$を頂点$u$から$v$への長さ$\ell$の路の個数とすると, $A^\ell = W_\ell$を示せばよい.
+  帰納法の仮定として$A^{\ell - 1} = W_{\ell - 1}$とする.
+  $W_{\ell}$に関する漸化式を考える.
+  頂点$u$から$v$への長さ$\ell$の任意の路は,
+  ある$w\in V$に対して$uw$間の長さ$\ell-1$の路と辺$wv$を連結させることによって得られる.
+  従って漸化式$W_\ell(u,v) = \sum_{w \in V} W_{\ell-1}(u,w) \cdot A(w,v)$が成り立つので, 帰納法の仮定より$W_\ell = W_{\ell-1}A = A^\ell$を得る.
+\end{proof}
+
+\subsection{単純ランダムウォーク}
+単純ランダムウォークとは, 初期地点$X_0$を選び, 現在いる頂点から一様ランダムな隣接点を選びそこに遷移するという
+確率的な操作を繰り返して得られるランダムウォークである.
+%
+\begin{definition}{単純ランダムウォーク}{SRW}
+  グラフ$G=(V,E)$を考える.
+  遷移確率行列が
+  \[
+    P_{\SRW}(u,v) \defeq \begin{cases}
+      \frac{1}{\deg(u)} & \text{if }\{u,v\}\in E, \\
+      0                 & \text{otherwise}
+    \end{cases}
+  \]
+  で与えられる$V$上のランダムウォークを
+  $G$上の\emph{単純ランダムウォーク (simple random walk)}という.
+\end{definition}
+%
+
+単純ランダムウォークの定常分布はの一つは
+\begin{align}
+  \pi(u) = \frac{\deg(u)}{2|E|}. \label{eq:SRW stationary distribution}
+\end{align}
+で与えられる.
+一般に単純ランダムウォークは既約性や非周期性を持つとは限らない.
+既約的であることの必要十分条件はグラフ$G$が連結であることであり,
+非周期的であることの必要十分条件はグラフ$G$の全ての連結成分のなす誘導部分グラフが二部グラフでないことである.
+実際, 全ての連結成分が二部グラフでないならばそれぞれに長さ奇数の閉路$C$が存在する.
+各頂点$u$について, 辺$\{u,v\}$上で$u\to v \to u$という遷移を考えれば長さ$2$の閉路になっている.
+また, 頂点$u$から奇閉路$C$に向い, $C$に沿って遷移した後に再び$u$に戻るという経路を考えればこれは奇数長の閉路である.
+すなわち$P^2(u,u)>0$かつある奇数$\ell$に対し$P^{\ell}(u,u)>0$となるため頂点$u$の周期は$1$である.
+逆に二部グラフならば全ての閉路が偶数長なので任意の奇数$\ell$と頂点$u\in V$に対し$P^\ell(u,u)=0$である.
+
+\subsection{遅延単純ランダムウォーク.}
+単純ランダムウォークは二部グラフ上では分布が収束しないという問題点があったが,
+これは以下のようにランダムウォークの遷移に自己ループを許容することによって解決することができる.
+%
+\begin{definition}{遅延単純ランダムウォーク}{lazy SRW}
+  グラフ$G=(V,E)$上の単純ランダムウォークの遷移確率行列を$P_{\SRW}$とする.
+  確率行列$P_{\LSRW} \defeq \frac{1}{2}(I+P_{\SRW})$を遷移確率行列とする$V$上のランダムウォークを\emph{遅延単純ランダムウォーク (lazy simple random walk)}という. ここで$I$は単位行列.
+\end{definition}
+要するに遅延単純ランダムウォークとは各頂点に確率$1/2$の自己ループの遷移を許したランダムウォークである.
+遷移確率行列の定義より単純ランダムウォークと同じ定常分布を持つ.
+自己ループの遷移を許すことによって各頂点の周期が必ず$1$となるため, 遅延単純ランダムウォークは必ず非周期的である.
+従って, 連結グラフ上の遅延単純ランダムウォークは\cref{eq:SRW stationary distribution}で与えられる定常分布に一意収束する.
+
+\subsection{グラフ上での上昇ウォークと下降ウォーク} \label{sec:graph up and down walk}
+グラフ$G=(V,E)$上の遅延単純ランダムウォークの1回の遷移は次の2つのステップに分解して考えることができる:
+\begin{enumerate}
+  \item 現在いる頂点$u\in V$に接続している辺$e \in E$を一様ランダムに選ぶ.
+  \item 選んだ辺$e$に含まれる二頂点を一様ランダムに選び, その頂点に遷移する.
+\end{enumerate}
+ステップ1でどの辺を選んだとしてもステップ2で確率$1/2$で元の頂点$u$に戻る.
+一方でステップ2で$u$でない方の頂点を選んだ場合は, $u$にとって一様ランダムな隣接点に遷移したことになる.
+従ってこの2ステップに基づく遷移は遅延単純ランダムウォークと同じ遷移確率行列をもつ.
+ステップ1を頂点$u$から開始したときに辺$e$が選ばれる確率を$\Pup_0(u,e) \in [0,1]^{V \times E}$とし,
+同様にステップ2を辺$e$から開始したときに頂点$w \in \{u,v\}$が選ばれる確率を$\Pdown_1(e,w)$とする.
+すなわち
+\begin{align*}
+   & \Pup_0(u,e) = \begin{cases}
+                     \frac{1}{\deg(u)} & \text{if }u \in e, \\
+                     0                 & \text{otherwise}.
+                   \end{cases} \\
+   & \Pdown_1(e,w) = \begin{cases}
+                       \frac{1}{2} & \text{if }e \ni w, \\
+                       0           & \text{otherwise}.
+                     \end{cases}
+\end{align*}
+このとき, 遅延単純ランダムウォークの遷移確率行列$P_{\LSRW}$は$P_{\LSRW} = \Pup_0 \Pdown_1$と表せる.
+
+逆に, 二つのステップを入れ替え, $P'\defeq \Pdown_1 \Pup_0 \in [0,1]^{E\times E}$を遷移確率行列としてもつ$E$上のランダムウォークも考えることができる.
+このランダムウォークの遷移は次の2ステップで与えられる:
+\begin{enumerate}
+  \item 現在いる辺$e = \{u,v\}$に含まれる頂点を一様ランダムに選び$w \in e$とする.
+  \item 選んだ頂点$w$に接続している辺$e'\in E$を一様ランダムに選び, その辺に遷移する.
+\end{enumerate}
+このランダムウォークの遷移確率行列$P'$の対角成分は全て正なので非周期的である.
+さらに元のグラフ$G$が連結ならば既約的である.
+従って\cref{thm:random walk convergence}より定常分布が一意に存在し, その分布への収束性が成り立つ.
+%
+\begin{exercise}{}{prob1}
+  グラフ$G$が連結であるとする.
+  上記の$P'$を遷移確率行列としてもつ辺集合$E$上のランダムウォークの定常分布を求めよ.
+  答えだけでよい.
+\end{exercise}
+%
+\begin{proof}[\textbf{解答}]
+  定常分布$\pi_E$は$E$上の一様分布となる.
+  一意収束性より, $\pi_E(e)\equiv \frac{1}{|E|} $が定常分布の条件を満たすことを確認すればよい.　実際, 各辺$ e\in E $に対して
+  \begin{align*} 
+      (\pi_E P')(e) &= \rbra*{ \pi_E \Pdown_1 \Pup_0}(e) \\
+      &= \sum_{\substack{e' \in E \\ u \in V}} \pi_E(e')\cdot \Pdown_1(e',u)\cdot \Pup_0(u,e) \\
+      &= \frac{1}{|E|}\sum_{\substack{e'\in E \\ u \in V}} \frac{\indicator{u\in e'}\cdot \indicator{u\in e}}{2\deg(u)} \\
+      &= \frac{1}{|E|}\sum_{u\in e}\frac{1}{2}\sum_{e'\in E\colon e'\ni u}\frac{1}{\deg(u)} \\
+      &= \frac{1}{|E|} \\
+      &= \pi_E(e)
+  \end{align*}
+  より, 確かに一様分布$\pi_E$は定常分布である.  
+\end{proof}
+\subsection{重み付きグラフ上のランダムウォーク}
+単純ランダムウォークでは接続している全ての辺は同じ重みを持っている.
+各辺に重みと呼ばれる正の実数を割り当てることによって,
+重みの大きい辺がより選ばれやすくなるようなランダムウォークを考えることができる.
+%
+\begin{definition}{重み付きランダムウォーク}{weighted random walk}
+  グラフ$G=(V,E)$に対し, 関数$w\colon E\to \Real_{> 0}$を\emph{辺重み (edge weight)}という.
+  頂点$u$から$v$に遷移する確率$P(u,v)$が辺重み$w(\{u,v\})$に比例するような$V$上のランダムウォークを\emph{重み付きランダムウォーク (weighted random walk)}と呼ぶ.
+  すなわち, 重み付きランダムウォークとは以下の定常分布$P$を持つランダムウォークである:
+  \[
+    P(u,v) = \begin{cases}
+        \frac{w(\{u,v\})}{\deg_w(u)} & \tif \{u,v\}\in E,\\
+        0 & \totherwise.
+      \end{cases}
+  \]
+  ここで, $\deg_w(u)=\sum_{v\colon \{u,v\}\in E} w(\{u,v\})$は頂点$u$の重み付き次数とする.
+\end{definition}
+辺重み$w$を常に$1$を返す関数とすれば, $G$上の単純ランダムウォークと同一である.
+自己遷移は発生しないので単純遅延ランダムウォークは表現できない.
+重み付きランダムウォークの概念は後で単体複体上での局所的なランダムウォークの定義(\cref{def:local random walk})で用いる.
+
+\begin{comment}
+\section{混交時間解析の実例}
+講義とは直接な関係はないが,
+最後にランダムウォークの混交性解析の応用例をいくつか簡単に説明する.
+より深く知りたい読者はLevinとPeresによるこの分野の標準的な教科書\cite{LP17}を参照されたい.
+
+\subsection{到達時間, 全訪問時間の解析}
+\subsection{マルコフ連鎖モンテカルロ法}
+\subsection{イジングモデル}
+\end{comment}
+
+\section{ランダムウォークの固有値と可逆性}
+遷移確率行列$P \in [0,1]^{V \times V}$に従う$V$上の既約的かつ非周期的なランダムウォーク$(X_t)_{t\ge 0}$を考え,
+その一意な定常分布を$\pi$とする.
+\Cref{thm:random walk convergence}より収束性が保証されるが, その速さを遷移確率行列の固有値に基づいて評価できる.
+
+遷移確率行列$P \in [0,1]^{n \times n}$の固有値
+\footnote{本講義では左固有値, すなわち$Px=\lambda x$を満たす$\lambda\in \Comp$を考える.}
+$\lambda_1,\dots,\lambda_n$について考える.
+全ての成分が$1$であるベクトル$\allone\in \Real^n$を考えると$P\allone = \allone$であるから
+$P$は固有値$1$を持つ.
+さらに, 以下が成り立つ:
+\begin{theorem}{遷移確率行列の固有値}{random walk eigenvalue}
+    任意の遷移確率行列$P\in [0,1]^{n\times n}$の固有値を$\lambda_1,\dots,\lambda_n$とすると,
+    全ての$i\in\{1,\dots,n\}$に対して$\abs{\lambda_i} \le 1$を満たす.
+
+    さらに, $P$が既約的かつ非周期的なランダムウォークの遷移確率行列とすると,
+    固有値$1$の多重度は$1$であり, 他の固有値は全て絶対値が真に$1$より小さい.
+\end{theorem}
+\begin{proof}
+  まず一つ目の主張を示す.
+  $P$の任意の固有値$\lambda \in \Comp$を考え, 対応する固有ベクトルを$f \in \Comp^V$とする.
+  頂点$u\in V$を, $\abs{f(u)}$が最大となる頂点とすると
+  \begin{align*}
+    \abs{\lambda} \abs{f(u)} &= \abs*{(Pf)(u)} \\
+    &\le \sum_{v\in V} P(u,v) \abs*{f(v)} \\
+    &\le \abs{f(u)}\cdot \sum_{v\in V} P(u,v) \\
+    &= \abs{f(u)}
+  \end{align*}
+  より, 両辺を$\abs{f(u)}>0$で割ると$\abs{\lambda}\le 1$を得る.
+
+  二つ目の主張を示す.
+  $P$を既約的かつ非周期的なランダムウォークの遷移確率行列とする.
+  $J\in\Real^{V\times V}$を全成分が$1/n$の行列とする.
+  \cref{lem:P bekijou}より, ある$L\in\Nat,\delta\in (0,1)$および確率行列$R\in[0,1]^{V\times V}$が存在して, $Q\defeq P^L$は
+  \[
+    Q = \delta J + (1 - \delta) R
+  \]
+  と表せる (ここで$J$は全成分が$1/|V|$の確率行列).
+  $f\in \Comp^V$を$P$の第一以外の任意の固有値$\lambda$に対する固有ベクトルとする.
+  すなわち, $f$は何らかの定数$c\in\Comp$に対し$f=c\allone$の形になって\emph{いない}固有ベクトルである.
+  二頂点$u,v\in V$を$\abs{f(u) - f(v)}$が最大となるようにとる.
+  $f$の取り方の仮定から$\abs{f(u) - f(v)} > 0$である.
+  すると, $f$は$Q$の固有値$\lambda^L$に対応する固有ベクトルなので
+  \begin{align*}
+    \abs{\lambda^L}\abs{f(u) - f(v)} &= \abs*{(Qf)(u) - (Qf)(v)} \\
+    &= (1-\delta)\abs*{(Rf)(u) - (Rf)(v)} \\
+    &= (1-\delta) \abs*{ \sum_{w\in V}R(u,w)f(w) - \sum_{w\in V} R(v,w)f(w)} \\
+    &\le (1-\delta)\max_{w,w'\in V}\abs*{f(w) - f(w')} \\
+    &=(1-\delta)\abs{f(u) - f(v)}.
+  \end{align*}
+  四行目の不等号では$\sum_{w\in V}R(u,w)f(w)$が各$f(w)$の凸結合で表せることを用いた.
+  両辺を$\abs{f(u) - f(v)} > 0$で割って整理すれば$\abs{\lambda^L}<1$を得る.
+\end{proof}
+%
+
+ランダムウォークの固有値の議論の土台となるのが可逆性という概念である.
+一般の遷移確率行列は対称とは限らないが, 可逆性を仮定することによって
+遷移確率行列を対称行列として扱うことができ,
+対称行列に対して展開される固有値分解などの理論を同じように
+遷移確率行列に対しても適用することができる.
+%
+\begin{definition}{可逆性}{reversible}
+    遷移確率行列$P$を持つ$V$上のランダムウォークは,
+    ある$V$上の分布$\pi \in [0,1]^V$が存在して
+    \begin{align}
+        \forall u,v\in V,\pi(u) P(u,v) = \pi(v) P(v,u) \label{eq:reversible}
+    \end{align}
+    を満たすとき\emph{可逆 (reversible)}であるという.
+\end{definition}
+\cref{eq:reversible}で表される条件を\emph{詳細釣り合い条件 (detailed balanced equation)}という.
+分布$\pi\in [0,1]^V$を対角成分に並べた対角行列$\Pi\in[0,1]^{V\times V}$を用いると
+$(\ref{eq:reversible}) \iff \Pi P = (\Pi P)^{\top}$
+となる.
+
+可逆性とは直感的に言うと, 逆再生しても同じ分布のランダムウォークになるという性質である.
+ランダムウォーク$(X_t)_{t\ge 0}$であって初期頂点$X_0$が分布$\pi$に従って選ばれたものを考えよう.
+適当な時刻$t=T$で打ち切って得られる頂点列$(X_0,\dots,X_T)$に対し, 順序を逆にした系列
+$(X_T,\dots,X_0)$はランダムウォークから得られた系列と見做せるだろうか?
+仮にこれがある遷移確率行列$P^*\in[0,1]^{V\times V}$に従うランダムウォークであったとしよう.
+簡単のため$T=1$とする ($T\ge 2$に関しても同じ議論が適用できる).
+初期頂点$X_0$の分布$\pi$が定常分布だとすると, $X_1$の分布も$\pi$である.
+また, ランダムウォークの条件から$\Pr[X_1 = v \tand X_0=u] = \pi(u)P(u,v)$である.
+従って条件付き確率の定義より
+\begin{align}
+    P^*(v,u) = \Pr[X_0 = u | X_1 = v] = \frac{\Pr[X_0 = u \tand X_1 = v]}{\Pr[X_1 = v]} = \frac{\pi(u)P(u,v)}{\pi(v)} \label{eq:reversal chain}
+\end{align}
+が得られる.
+もし元のランダムウォークが可逆ならば, \cref{eq:reversible}から$P^*=P$を得る.
+すなわち, ランダムウォークの可逆性とはそのランダムウォークが時間反転に関して対称性を持つことを意味する.
+なお, \cref{eq:reversal chain}で得られる遷移確率行列に従って生成されるランダムウォークを\emph{時間反転ランダムウォーク (time-reversal random walk)}と呼ぶ.
+
+なお, 後の節(\cref{sec:Rayleigh quotient})で可逆なランダムウォークに対する\cref{thm:random walk eigenvalue}を証明する.
+
+\paragraph*{例1.単純ランダムウォーク}
+連結グラフ$G=(V,E)$上の単純ランダムウォークを考えよう.
+\cref{eq:SRW stationary distribution}で与えられる定常分布を$\pi$とすると
+任意の二頂点$u,v\in V$に対して
+\[
+    \pi(u) P(u,v) = \frac{\deg(u)}{2|E|} \cdot \frac{\indicator{\{u,v\}\in E}}{\deg(u)}
+    = \frac{\deg(v)}{2|E|} \cdot \frac{\indicator{\{u,v\}\in E}}{\deg(v)}
+    = \pi(v) P(v,u)
+\]
+より, 単純ランダムウォークは可逆である (連結なので全ての頂点に対して$\deg(u)>0$である).
+ここで, $\indicator{\dots}$は指示関数である.
+同様に, 重み付きランダムウォークもまた可逆である.
+
+\paragraph*{例2.有向グラフ上のランダムウォーク}
+可逆で\emph{ない}例として次の遷移確率行列で与えられるランダムウォークを考えてみよう:
+\begin{align*}
+    P = \begin{pmatrix}
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
+            1 & 0 & 0
+        \end{pmatrix}.
+\end{align*}
+この例は遷移が決定的なのでランダムウォークとしては面白くないが,
+次のようにして可逆でないことが確認できる:
+頂点集合を$V=\{0,1,2\}$とし, $i\in V$に対して$(i+1)\bmod 3$を省略して$i+1 \in V$と書くと
+\begin{align*}
+    \pi(i) = \pi(i) P(i, i+1) = \pi(i+1)P(i+1,i) = 0
+\end{align*}
+より$\pi=0$となってしまい, 分布であることに矛盾.
+
+\begin{exercise}{}{prob2}
+    可逆なランダムウォークの遷移確率行列を$P$とする.
+    \cref{eq:reversible}を満たす分布$\pi$は定常分布であることを示せ.
+\end{exercise}
+\begin{proof}[\textbf{解答}]
+  等式$\pi P = \pi$を示せばよい.
+  各頂点$u \in V$に対し,
+    \begin{align*} 
+       (\pi P) (u) &= \sum_{v\in V}\pi(v) P(v,u) \\
+       &= \sum_{v\in V} \pi(u)P(u,v) & & \because\text{\cref{eq:reversible}} \\
+       &= \pi(u) & & \because \sum_{v\in V}P(u,v)=1
+    \end{align*}
+    より主張を得る.
+\end{proof}
+
+\section{定常分布から定まる内積とノルム}
+可逆なランダムウォークは遷移確率行列の固有値を考える上で非常に扱いやすいランダムウォークのクラスとなっている.
+ランダムウォークの分布は遷移確率$P$を右から掛けて得られるのに対し,
+固有値に基づく議論では左固有値を考えており,
+この左右の差異に違和感を覚える読者もいるであろう.
+実は可逆なランダムウォークでは遷移確率行列を対称行列のように扱うことができ,
+ゆえに左右どちらから作用させようが本質的に同じとなる.
+このことを説明するために, $\Real^V$に次の内積を導入する.
+\begin{definition}{}{naiseki}
+    有限集合$V$上の分布$\pi\in(0,1]^V$に対し,
+    $\Real^V$に以下の内積$\piprod{\cdot,\cdot}$を定めた内積空間を$\pispace$で表す:
+    \begin{align*}
+        \piprod{f,g} \defeq \sum_{u \in V} \pi(u) f(u) g(u)
+        = f^\top \Pi g.
+    \end{align*}
+    ここで$f,g$は列ベクトルとして扱い, $\Pi=\mathrm{diag}(\pi)$はベクトル$\pi$の成分を対角に並べた行列である.
+    また, 内積$\piprod{\cdot,\cdot}$が誘導するノルムを$\pinorm{\cdot}$で表す.
+    すなわち, $f\in\Real^V$に対して
+    \[
+        \pinorm{f} \defeq \sqrt{\piprod{f,f}}.
+    \]
+    %    二つのベクトル$f,g \in \Real^V$が$\piprod{f,g} = 0$であるとき, $f \piorth g$で表す.
+\end{definition}
+\cref{def:naiseki}で考える分布$\pi$は全ての成分が正であるため,
+上記の内積$\piprod{\cdot,\cdot}$はちゃんと実ベクトル空間の内積の公理(対称双線形性, 非退化性, 半正定値性)を満たしており,
+確かに$\pispace$は内積空間である.
+
+$\Real^V$上の通常の内積$\abra{\cdot,\cdot}$を考えたとき, 任意の対称行列$M \in \Real^{V\times V}$とベクトル$f,g\in \Real^V$に対して $\abra{f,Ag} = \abra{Af,g}$
+が成り立っていたが,
+可逆なランダムウォークの遷移確率行列$P$は内積$\piprod{\cdot,\cdot}$に関して同様の性質を持つ.
+\begin{lemma}{}{reversible adjoint}
+    定常分布$\pi$をもつ既約的かつ可逆なランダムウォークの遷移確率行列$P$は,
+    任意の$f,g\in\Real^V$に対して
+    \[ \piprod{f,Pg} = \piprod{Pf,g} \]
+    を満たす.
+\end{lemma}
+\begin{proof}
+    定常分布$\pi$を対角成分に並べた対角行列$\Pi$を考えると
+    \begin{align*}
+        \piprod{f,Pg} & = f^\top \Pi P g                                              \\
+                      & = f^\top (\Pi P)^\top g &  & \text{$\because$可逆性より$\Pi P$は対称} \\
+                      & = (Pf)^\top \Pi g       &  & \text{$\because\Pi^\top = \Pi$}  \\
+                      & = \piprod{Pf,g}.
+    \end{align*}
+\end{proof}
+一般に$P$が可逆とは限らない場合,
+\cref{eq:reversal chain}で与えられる時間反転ランダムウォークの遷移確率行列$P^*$に対し$\piprod{f,Pg} = \piprod{P^*f,g}$が成り立つ.
+この意味で$P^*$は$P$の随伴とみなすことができる.
+
+
+対称行列に対して展開される固有値分解などの理論は可逆なランダムウォークの遷移確率行列に対しても同様に展開できる.
+例えば, 対称行列と同様に可逆なランダムウォークの遷移確率行列は実固有値をもつ.
+\begin{lemma}{実固有値性}{reversible real eigenvalue}
+    既約的かつ可逆なランダムウォークの遷移確率行列$P$と定常分布$\pi$に対し,
+    行列
+    \begin{align}
+        A \defeq \sqrt{\Pi} P \sqrt{\Pi}^{-1} \label{eq: symmetrized P}
+    \end{align}
+    を考える.
+    $P$と$A$は(多重度も含め)同じ固有値をもち, これらは全て実数である.
+\end{lemma}
+\begin{proof}
+    行列$A$は対称である.
+    実際,
+    \begin{align*}
+        A^\top & = \sqrt{\Pi}^{-1} P^{\top} \sqrt{\Pi}                            &  & \text{$\because$$\sqrt{\Pi},\sqrt{\Pi}^{-1}$は対称} \\
+               & = \sqrt{\Pi} \cdot \Pi^{-1} P^{\top} \Pi \cdot \sqrt{\Pi}^{-1}                                                         \\
+               & = \sqrt{\Pi} \cdot \Pi^{-1} (\Pi P)^{\top} \cdot \sqrt{\Pi}^{-1}                                                       \\
+               & = \sqrt{\Pi} \cdot \Pi^{-1} \Pi P \cdot \sqrt{\Pi}^{-1}          &  & \text{$\because$可逆性より$\Pi P$は対称}                 \\
+               & = A.
+    \end{align*}
+    $A$は対称なので全ての固有値は実数である.
+
+    $A$と$P$は相似なので多重度も含めて同じ固有値をもつ. 実際,
+    $A$の固有値$\lambda$に対する固有ベクトルを$x$とし, ベクトル$y\defeq \sqrt{\Pi}^{-1}x$を考える.
+    固有ベクトルの式
+    \begin{align*}
+        A x = (\sqrt{\Pi} P \sqrt{\Pi}^{-1})x =  \lambda x
+    \end{align*}
+    の両辺に左から$\sqrt{\Pi}^{-1}$を掛けると
+    \begin{align*}
+        P y = \lambda y
+    \end{align*}
+    を得る.
+    すなわち, $P$と$A$は同じ固有値を持つ.
+    特に, $P$の固有値も全て実数である.
+\end{proof}
+\cref{lem:reversible real eigenvalue}において既約性の仮定は除去できる.
+実際, $P$が定める状態遷移を表す有向グラフを強連結成分に分解し,
+各成分ごとに\cref{lem:reversible real eigenvalue}を適用すればよい.
+
+%
+\begin{theorem}{固有分解}{eigendecomposition}
+    既約的かつ可逆なランダムウォークの遷移確率行列を$P$とし, その定常分布を$\pi$とする.
+    $|V|=n$とする.
+    $P$の固有値を$1=\lambda_1\ge \dots \ge \lambda_n \ge -1$とする.
+    空間$\pispace$の正規直交基底$x_1,\dots,x_n$が存在して任意の$t\ge 1$に対して
+    \[ P^t\Pi^{-1} = \sum_{i=1}^n \lambda_i^t x_i x_i^{\top}  \]
+    と表せ, さらに各$x_i$は$P$の固有値$\lambda_i$に対応する固有ベクトルとなる.
+
+    特に$x_1 = \allone$であり,
+    $J \in \Real^{V \times V}$を全成分が$1$の行列とすると
+    \[ P^t \Pi^{-1} - J =  \sum_{i=2}^n \lambda_i^t x_i x_i^\top \]
+    と表せる.
+\end{theorem}
+\begin{proof}
+    \cref{eq: symmetrized P}で定義された行列$A$は対称なので,
+    対称行列に対する固有分解の定理より,
+    通常の内積$\abra{\cdot, \cdot}$の意味での$\Real^V$の正規直交基底$y_1,\dots,y_n$が存在して
+    \[
+        A = \sum_{i=1}^n \lambda_i y_i y_i^\top
+    \]
+    と表せ, さらに各$y_i$は$A$の固有値$\lambda_i$に対応する固有ベクトルとなる.
+    一方で$A^t = \sqrt{\Pi} P^t \sqrt{\Pi}^{-1}$だから,
+    \[
+        \sqrt{\Pi} P^t \sqrt{\Pi}^{-1} = \sum_{i=1}^n \lambda_i^t y_i y_i^\top.
+    \]
+    両辺に左右から$\sqrt{\Pi}^{-1}$を一つずつ掛けて
+    $x_i = \sqrt{\Pi}^{-1}y_i$とおくと
+    \[
+        P^t \Pi^{-1} = \sum_{i=1}^n \lambda_i^t x_i x_i^\top
+    \]
+    を得る.
+    ここで
+    \[
+        \piprod{x_i,x_j} = \abra{\sqrt{\Pi}x_i,\sqrt{\Pi}x_j} = \abra{y_i,y_j} = \indicator{i=j}
+    \]
+    より, 確かに$(x_i)_{i=1,\dots,n}$は空間$\pispace$の正規直交基底である.
+    さらに
+    \[
+        Px_i = P\sqrt{\Pi}^{-1}y_i = \sqrt{\Pi}^{-1}Ay_i = \lambda_i x_i
+    \]
+    より確かに$x_i$は$P$の固有値$\lambda_i$に対応する固有ベクトルである.
+
+    特に, $\lambda_1=1$に対応する$A$の固有ベクトルは$y_1 = (\sqrt{\pi(u)})_{u \in V}$なので,
+    対応する$P$の固有ベクトルは$x_1 = \allone$となる.
+\end{proof}
+%
+空間$\pispace$上での期待値と分散を以下のように定義する:
+\begin{definition}{期待値と分散}{expectation and variance}
+    \cref{thm:eigendecomposition}と同じ仮定の下で,
+    $f \in \pispace$の
+    期待値と分散を
+    \begin{align}
+         & \Epi[f] \defeq \piprod{f,\allone} = \sum_{u\in V}\pi(u) f(u), \label{eq:mean}                       \\
+         & \Varpi[f] \defeq \pinorm{f - \Epi[f]\cdot \allone}^2 = \Epi [f^2] - (\Epi [f])^2 \label{eq:variance}
+    \end{align}
+    とする.
+\end{definition}
+すなわち, 関数$f\colon V \to \Real$を,
+ランダムに選ばれた$u\sim \pi$に対して$f(u)$を出力する確率変数とみなして
+その平均と分散をそれぞれ$\Epi[f],\Varpi[f]$とした.
+以後, 特に混乱がない限り, $\Epi[f]$や$\Varpi[f]$は$\Epi f$や$\Varpi f$などとも表す.
+同様に共分散$\mathrm{Cov}_\pi(f,g)$を$\piprod{f,g} - \Epi f \cdot \Epi g$で定義できるが,
+この値は以下の性質を持つ.
+\begin{lemma}{}{covariance}
+    任意の$f,g\in \pispace$に対し,
+    \[
+        \abs*{\piprod{f,g} - \Epi f\cdot \Epi g} \le \sqrt{\Varpi f\cdot \Varpi g}.
+    \]
+\end{lemma}
+\begin{proof}
+    \cref{thm:eigendecomposition}で得られる$\pispace$の正規直交基底を$x_1,\dots,x_n$とし, 関数$f,g$をこれらの線形結合
+    \begin{align*}
+        f & = \Epi f \cdot \allone + \sum_{i=2}^n f_i x_i, \\
+        g & = \Epi g \cdot \allone + \sum_{j=2}^n g_j x_j
+    \end{align*}
+    で表す.
+    ここで$f_i = \piprod{f,x_i},g_j = \piprod{g,x_j}$であり,
+    $x_1 = \allone$なので$f_1 = \Epi f,g_1 =  \Epi g$である.
+    特に, 基底$(x_i)$の直交性より
+    従って
+    \begin{align*}
+        \abs*{ \piprod{f,g} - \Epi f\cdot \Epi g}
+         & \le \sum_{i\ge 2} \abs{f_i}\abs{g_i}                                                                     \\
+         & \le \sqrt{\sum_{i\ge 2}f_i^2} \cdot \sqrt{\sum_{j\ge 2} g_j^2} &  & \text{$\because$Cauchy--Schwarzの不等式} \\
+         & = \sqrt{\Varpi f} \cdot \sqrt{\Varpi g}
+    \end{align*}
+    より主張を得る.
+\end{proof}
+
+%
+\section{ランダムウォークのスペクトルと混交時間}
+非自明な固有値が絶対値の意味で小さいときに混交時間が上から抑えられることを示す.
+\begin{definition}{}{second eigenvalue}
+    サイズ$n$の集合$V$上の可逆なランダムウォークを考え,
+    その遷移確率行列$P$の固有値を$1=\lambda_1 \ge \dots \ge \lambda_n\ge -1$に対し,
+    $\lambda_i(P)=\lambda_i$とし,
+    $\lambda(P) \defeq \max\cbra{\abs{\lambda_2},\abs{\lambda_n}}$を\emph{非自明な第二固有値}と呼ぶ.
+    また, $\gamma\defeq 1-\lambda(P)$を\emph{スペクトルギャップ (spectral gap)}と呼ぶ.
+\end{definition}
+遷移確率行列$P$を作用させると分散が減少する.
+\begin{lemma}{}{variance}
+    既約的かつ可逆なランダムウォークの
+    遷移確率行列$P$と関数$f \in \pispace$に対し
+    \[
+        (Pf)(u) \defeq \sum_{v\in V} P(u,v)f(v)
+    \]
+    とする. このとき,
+    \begin{align*}
+         & \Epi[Pf] = \Epi f,                            \\
+         & \Varpi[Pf] \le \lambda(P)^2 \cdot \Varpi [f].
+    \end{align*}
+\end{lemma}
+
+証明は演習問題とする.
+\begin{exercise}{}{Epi Pf = f}
+    \cref{lem:variance}を証明せよ.
+\end{exercise}
+\begin{proof}[\textbf{解答}]
+  定義通りに計算すると
+  \begin{align*} 
+     \Epi[Pf] &= \sum_{u\in V}\pi(u)(Pf)(u) \\
+     &= \sum_{u,v\in V} \underbrace{\pi(u)P(u,v)}_{\pi(v)P(v,u)}f(v) \\
+     &= \sum_{v\in V}\pi(v)f(v)\cdot \sum_{u\in V} P(v,u) \\
+     &= \Epi[f].
+  \end{align*}
+  次に$\Varpi[Pf]$を考える.
+  \cref{thm:eigendecomposition}で得られる$\pispace$の正規直交基底を$x_1,\dots,x_n$とし, 関数$f$をこれらの線型結合$ f = \Epi f \cdot \allone + \sum_{i=2}^n f_i x_i $
+  で表すと, $P\allone = \allone$より$      Pf = \Epi[Pf] \cdot \allone + \sum_{i\ge 2} f_i Px_i $.
+  よって
+  \begin{align*} 
+     \Varpi[Pf] &= \norm*{ Pf - \Epi[Pf]\cdot\allone }^2 \\
+     &= \norm*{ \sum_{i \ge 2} f_i Px_i }^2 \\
+     &= \norm*{ \sum_{i\ge 2} f_i \lambda_i x_i}^2 \\
+     &= \sum_{i\ge 2}\abs*{\lambda_i}\norm*{ f_i x_i }^2& & \because\text{$x_i$の直交性} \\
+     &\le \lambda(P)\cdot \norm*{ \sum_{i\ge 2}f_i x_i }^2 \\
+     &= \lambda(P)\cdot \Varpi[f].
+  \end{align*}
+\end{proof}
+この補題の重要な系としてエクスパンダー混交補題と呼ばれる重要な結果を得る.
+エクスパンダー混交補題については\cref{sec:expander pseudorandom}でより詳しく紹介する.
+\begin{corollary}{可逆ランダムウォークに対するエクスパンダー混交補題}{general expander mixing lemma}
+    可逆なランダムウォークの遷移確率行列$P$を考える.
+    任意の関数$f,g\in\pispace$に対し,
+    \begin{align*}
+      \abs*{\piprod{f,Pg} - \Epi f \cdot \Epi g} \le \lambda(P)\cdot \sqrt{\Varpi f \cdot \Varpi g}.
+    \end{align*}
+\end{corollary}
+
+\begin{comment}
+\begin{proof}
+    \cref{thm:eigendecomposition}で得られる空間$\pispace$の正規直交基底$x_1,\dots,x_n$を考え,
+    関数$f$をそれらの線形結合
+    \[ f = \sum_{i=1}^n f_i x_i\]
+    で表す (ここで$f_i = \piprod{f,x_i}$).
+    %
+    ここで, $x_1 = \allone$なので$f_1 = \E_\pi f$なので,
+    両辺に左から$P$を掛けて移項すると
+    \[
+        Pf - \Epi[f] \allone  = \sum_{i=2}^n f_i P x_i = \sum_{i=2}^n \lambda_i f_i x_i
+    \]
+    を得る.
+    両辺の$\pinorm{\cdot}$をとると, ピタゴラスの定理より
+    \begin{align*}
+        \pinorm{Pf - \Epi[f]\allone}^2 & = \sum_{i=2}^n f_i^2 \lambda_i^2                  \\
+                                       & \le \lambda(P)^2\cdot \sum_{i=2}^n f_i^2          \\
+                                       & = \lambda(P)^2\cdot \pinorm{f - \Epi[f]\allone}^2 \\
+                                       & = \lambda(P)^2\cdot \Varpi f
+    \end{align*}
+    を得る.
+\end{proof}
+\end{comment}
+混交時間とスペクトルギャップの間には以下の関係が知られている:
+\begin{lemma}{混交時間とスペクトルギャップ}{mixing time and spectral gap}
+    集合$V$上の既約, 非周期的, 可逆なランダムウォークを考え,
+    そのスペクトルギャップを$\gamma$とする.
+    定常分布$\pi$に対し$\pimin = \min_{u\in V} \pi(u)$とすると,
+    任意の初期分布に対して
+    \[ \tmix(\varepsilon) \le\frac{\log\rbra*{\frac{1}{2\pimin\varepsilon}}}{\log(1/\lambda(P))}. \]
+    特に, スペクトルギャップ$\gamma>0$に対し
+    $\tmix(\varepsilon) \le \frac{1}{\gamma}\log\rbra*{\frac{1}{2\pimin\varepsilon}}$.
+    \footnote{ここでは自然対数を考える.}
+\end{lemma}
+%
+\begin{proof}
+    \cref{thm:eigendecomposition}の正規直交基底を$x_1,\dots,x_n$とする.
+    ピタゴラスの定理より任意のベクトル$f \in \Real^V$は
+    \[ \pinorm{f}^2 = \sum_{i=1}^n \piprod{f,x_i}^2 \]
+    を満たす.
+    特に, 頂点$u$を固定し$f$としてディラック測度$f=\delta_u$とすると
+    \begin{align*}
+        \pi(u) & = \pinorm{\delta_u}^2                                                           \\
+               & = \sum_{i=1}^n \piprod{\delta_u,x_i}^2                                          \\
+               & = \sum_{i=1}^n \pi(u)^2x_i(u)^2                                                 \\
+               & = \pi(u)^2 + \pi(u)^2\sum_{i=2}^n x_i(u)^2 &  & \text{($\because x_1=\allone$)}
+    \end{align*}
+    を得る.
+    特に, $\sum_{i=2}^n x_i(u)^2 = \frac{1}{\pi(u)} - 1 \le \frac{1}{\pi(u)}$である.
+
+    ここで, \cref{thm:eigendecomposition}より, $P^t\Pi^{-1} - J$の第$(u,v)$成分に着目すると
+    \begin{align*}
+        \abs*{\frac{P^t(u,v)}{\pi(v)} - 1} & \le \sum_{i=2}^n \abs{\lambda_i}^t \abs{x_i(u)x_i(v)}                                                                           \\
+                                           & \le \lambda^t  \sqrt{\sum_{i=2}^n x_i(u)^2} \sqrt{\sum_{i=2}^n x_i(v)^2} &  & \text{$\because$Cauchy--Schwarzの不等式} \\
+                                           & \le \frac{\lambda^t}{\sqrt{\pi(u)\pi(v)}}                                                                                       \\
+                                           & \le \frac{\lambda^t}{\pimin}
+    \end{align*}
+    を得る.
+    特に, 任意の頂点$u\in V$に対して
+    \[
+        \dtv\rbra*{P^t(u,\cdot),\pi} = \frac{1}{2}\sum_{v\in V} \abs*{P^t(u,v) - \pi(v)} \le \frac{\lambda^t}{2\pimin}
+    \]
+    なので, 任意の初期分布に対して混交時間は
+    \[
+        \tmix(\varepsilon) \le \inf\cbra*{t\ge 0\colon \frac{\lambda^t}{2\pimin} \le \varepsilon} \le \frac{\log\rbra*{\frac{1}{2\pimin\varepsilon}}}{\log(1/\lambda(P))} \le \frac{1}{\gamma}\log\rbra*{\frac{1}{2\pimin\varepsilon}}.
+    \]
+    最後の不等式では$\forall x\in \Real,x\le \e^{x-1}$を用いた.
+\end{proof}
+
+\section{Rayleigh商} \label{sec:Rayleigh quotient}
+以下の結果は第二固有値の上界を得るときなどに役にたつ.
+\begin{lemma}{レイリー商による固有値の特徴付け}{Rayleigh quotient}
+
+  定常分布$\pi$をもつ既約的かつ可逆なランダムウォークの遷移確率行列$P$に対し, 以下が成り立つ:
+  \begin{align*}
+    &\max_{f \in \pispace\setminus\{0\},\piprod{f,\allone}=0}\frac{\piprod{f,Pf}}{\pinorm{f}^2}=\lambda_2(P),\\
+    &\min_{f \in \pispace\setminus\{0\}}\frac{\piprod{f,Pf}}{\pinorm{f}^2}=\lambda_{|V|}(P).
+  \end{align*}
+\end{lemma}
+\begin{proof}
+  $|V|=n$とする.
+  \cref{thm:eigendecomposition}の正規直交基底$x_1=\allone,x_2,\dots,x_n$を使って
+  \[
+    f = \sum_{i=1}^n f_i x_i
+  \]
+  と表す.
+  ここで$f_i = \piprod{f,x_i}$であり, $\piprod{f,\allone}=0$より$f_1 =0$である.
+  各$x_i$は固有値$\lambda_i(P)$に対応する固有ベクトルなので,
+  \begin{align*}
+    \piprod{f,Pf} = \sum_{i=2}^n\lambda_i f_i^2 \le \lambda_2(P) \sum_{i=2}^n f_i^2 = \lambda_2(P) \pinorm{f}^2
+  \end{align*}
+  より最初の等号を得る.
+  同様に,
+  \begin{align*}
+    \piprod{f,Pf} = \sum_{i=2}^n\lambda_i f_i^2 \ge \lambda_n(P) \sum_{i=2}^n f_i^2 = \lambda_n(P) \pinorm{f}^2
+  \end{align*}
+  より後半の等号も得る.
+\end{proof}
+
+値$\frac{\piprod{f,Pf}}{\pinorm{f}^2}$を\emph{レイリー商 (Rayleigh quotient)}と呼ぶ.
+ある遷移確率行列$P$に対して$\lambda_2(P) \le \lambda$であることを示したいときには,
+任意の$\allone$と直交するベクトル$f\in\pispace$に対しレイリー商が高々$\lambda$であることを示せばよい.
+
+
+\section{片側の固有値のバウンド}
+\cref{cor:general expander mixing lemma}は$\lambda(P)$が小さいときに二次形式$\piprod{f,g} - \Epi f \cdot \Epi g$を両側から押さえているが,
+同様の証明を考えると$\lambda_2(P)$のみが小さいことが保証されている場合も同様に二次形式の片側のバウンドを得ることができる.
+この事実は\cref{chap:HDX}で用いる.
+\begin{lemma}{}{one side EML}
+  任意の$f,g\in \pispace$に対し,
+  \[
+    \piprod{f,Pg} - \Epi f\cdot \Epi g \le \lambda_2(P)\sqrt{\Varpi f \cdot \Varpi g}.
+  \]
+\end{lemma}
