@@ -277,7 +277,7 @@ color: amber-light
 $\lambda$が小さいほど収束が早い → ランダムウォークが「混ざりやすい」
 
 <details class="bg-gray-100">
-<summary>証明のアイデア</summary>
+<summary>証明のアイデア (クリックして展開)</summary>
 
   簡単のため$P^\top=P$とする (つまり$G$は正則).
   ベクトル $p_t - \pi = (p_0-\pi)P^t$ の$\ell^2$ノルムを抑えてから$\ell^1$ノルムのバウンドに変換する. $\pi_0 - \pi$は第一固有ベクトル$\mathbf{1}$に直交するので,  固有値のmin-maxの関係(Courant-Fischerの定理)より
@@ -469,7 +469,7 @@ color: amber-light
 <div class="definition">
 
 次元$i\ge 0$を固定する.
-面$\tau \in X(i)$から開始して, 一様ランダムに$u\sim \tau$を選び, $\sigma:=\tau - u$に遷移するランダムウォークを**下降ウォーク**といい, 遷移確率行列を $P_i \in [0,1]^{X(i)\times X(i-1)}$ で表す.
+面$\tau \in X(i)$から開始して, 一様ランダムに$u\sim \tau$を選び, $\sigma:=\tau - u$に遷移するランダムウォークを**下降ウォーク**といい, 遷移確率行列を $P^{\downarrow}_i \in [0,1]^{X(i)\times X(i-1)}$ で表す.
 </div>
 
 <v-click>
@@ -480,13 +480,93 @@ color: amber-light
 
 各次元 $-1 \le i\le d$ に対し, $X(i)$上の**定常分布** $\pi_i\in[0,1]^{X(i)}$ を次で定める:
 - $\pi_d$ を$X(d)$上の一様分布とする.
-- $i<d$ に対し, $\pi_i = \pi_{i+1}P_i$ と再帰的に定める.
+- $i<d$ に対し, $\pi_i = \pi_{i+1}P^{\downarrow}_i$ と再帰的に定める.
 </div>
 
 </v-click>
 
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# 単体複体上のランダムウォーク
+
+::content::
+
+<div class="remark">
+
+$\pi_i(\sigma)$は$\sigma$を含む極大面の個数に比例する.
+</div>
 
 
+<details class="proof">
+<summary>証明 (クリックして展開)</summary>
+
+$\sigma \in X(i)$に対し, $\sigma$を含む極大面の個数を$m(\sigma)$とする.
+
+$\pi_d$は一様分布であるから, 任意の$\tau \in X(d)$に対し$\pi_d(\tau) = \frac{1}{|X(d)|}$である.
+
+$\pi_i = \pi_{i+1}P^{\downarrow}_{i+1}$より, 任意の$\sigma \in X(i)$に対し:
+
+$$
+\begin{align*}
+\pi_i(\sigma) &= \sum_{\tau \in X(d)} \pi_d(\tau)\cdot P^{\downarrow}_{d}\cdots P^{\downarrow}_{i+1}(\tau,\sigma) \\
+&= \frac{1}{|X(d)|}\cdot m(\sigma)
+\end{align*}
+$$
+
+したがって, $\pi_i(\sigma)$は$m(\sigma)$に比例する.
+</details>
+
+例えば, 単純ランダムウォークの定常分布$\pi$は
+
+$$
+  \begin{align*}
+    \pi(u)\propto \deg(u)
+  \end{align*}
+$$
+
+つまり, $u$を含む辺の本数に比例.
+
+辺$e\sim E$を一様ランダムに選び, ランダムな端点を出力すると定常分布$\pi$になる.
 
 
+---
+layout: top-title
+color: amber-light
+---
 
+::title::
+
+# 単体複体上のランダムウォーク
+
+::content::
+
+下降ウォークの「逆再生」を**上昇ウォーク**という.
+
+<div class="definition">
+
+次元$i<d$を固定する. 以下の等式を満たす遷移確率行列$\textcolor{violet}{P^{\uparrow}_i}\in[0,1]^{X(i)\times X(i+1)}$に従うランダムウォークを**上昇ウォーク**という:
+
+$$
+  \begin{align*}
+    \pi_i(\sigma)\textcolor{violet}{P^{\uparrow}_i(\sigma,\tau)} = \pi_{i+1}(\tau)P^{\downarrow}_{i+1}(\tau,\sigma).
+  \end{align*}
+$$
+
+
+</div>
+
+- 詳細釣り合い条件とも呼ばれる. これを解くと
+
+$$
+  P^{\uparrow}_i(\sigma,\tau) = \begin{cases}
+    \frac{\pi_{i+1}(\tau)}{(i+2)\pi_i(\sigma)} & \text{if }\sigma\subset\tau,\\
+    0 & \text{otherwise}.
+  \end{cases}
+$$
+
+すなわち定常分布の重みに比例した確率で遷移するランダムウォークであることがわかる.
