@@ -739,31 +739,52 @@ color: amber-light
 
 ::title::
 
-# 高次元エクスパンダー性の定義
+# 大域エクスパンダー性
 
 ::content::
 
 <div class="definition">
 
-純粋な$d$次元単体複体$X=(V,\F)$は, 各$0 \leq i \leq d$に対して$X(i)$上の下降上昇ウォーク$\PDU_i$が$\lambda_2(\PDU_i) \leq \lambda_i$を満たすとき, **大域$(\lambda_0,\dots,\lambda_d)$-エクスパンダー**である.
+純粋な$d$次元単体複体$X=(V,\mathcal{F})$は, 各$0 \leq i \leq d$に対して$X(i)$上の下降上昇ウォーク$\PDU_i$が$\lambda_2(\PDU_i) \leq \lambda_i$を満たすとき, **大域$(\lambda_0,\dots,\lambda_d)$-エクスパンダー**である.
 
 </div>
 
 <div class="remark">
 
-グラフのエクスパンダー性と同様, $\lambda_i$が小さいほど「混ざりやすい」.
+グラフのエクスパンダー性と同様, $\lambda_i$が小さいほど, $\PDU_i$が「混ざりやすい」.
 
 </div>
 
-<v-click>
+- 自明: $\lambda_0 = 0$ (頂点$\to$空集合$\to$頂点は1ステップで混ざる)
+- $\lambda_d$が小さければ, 極大面上のランダムウォークの収束の早さが保証される.
+  - 例: マトロイドの基交換ウォークは$\lambda_d \le 1-\frac{1}{d}$ (今日はこれの証明概要を説明)
 
-#### 単体複体の大域的エクスパンダー性の意義
+---
+layout: top-title
+color: amber-light
+---
 
-- ランダムウォークの急速な混合を保証
-- 高次元における「擬似ランダム性」を表現
-- 局所的な情報から大域的性質を導く（局所大域原理）
+::title::
 
-</v-click>
+# リンクと局所エクスパンダー性
+
+::content::
+
+局所的なRWを定義するために, リンクの概念を導入する.
+
+<div class="definition">
+
+単体複体$X=(V,\calF)$と面$\sigma\in\calF$に対し, $\sigma$における**リンク**とは, 単体複体$X_\sigma = (V\setminus\sigma,\calF_\sigma)$である. ただし
+
+$$
+  \begin{align*}
+    \calF_\sigma = \{\tau\setminus\sigma\colon \tau\in\calF, \tau\supseteq\sigma\}.
+  \end{align*}
+$$
+
+</div>
+
+- マトロイド理論でいうところの縮約 (contract) 
 
 ---
 layout: section
@@ -785,11 +806,11 @@ color: amber-light
 
 <div class="definition">
 
-単体複体 $X=(V,\mathcal{F})$ であって以下を満たすものを**マトロイド**という:
+単体複体 $X=(V,\calF)$ であって以下を満たすものを**マトロイド**という:
 
 <div style="text-align: center;">
 
-$\abs{I}<\abs{J}$を満たす任意の$I,J\in\mathcal{F}$に対し, ある$j\in J\setminus I$が存在して, $I\cup\{i\}\in \mathcal{F}$.
+$\abs{I}<\abs{J}$を満たす任意の$I,J\in\mathcal{F}$に対し, ある$j\in J\setminus I$が存在して, $I\cup\{j\}\in \mathcal{F}$.
 
 </div>
 
