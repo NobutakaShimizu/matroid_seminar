@@ -17,7 +17,6 @@ mdc: true
 author: Nobutaka Shimizu
 css: 
   - 'styles/custom.css'
-  - 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css'
 fonts:
   sans: 'Roboto'
   mono: 'Fira Code'
@@ -36,18 +35,6 @@ themeConfig:
   [清水 伸高](https://sites.google.com/view/nobutaka-shimizu/home) (東京科学大学)
 
 
-
----
-layout: top-title
-color: amber-light
----
-::title::
-
-# 目次
-
-::content::
-
-<Toc minDepth="1" maxDepth="1" />
 
 ---
 layout: top-title
@@ -191,6 +178,7 @@ color: amber-light
 
 ---
 layout: section
+color: amber-light
 ---
 
 # グラフとエクスパンダー性
@@ -280,6 +268,7 @@ color: amber-light
 
 - パラメータ$\lambda$が小さいほど, そのグラフはよりエクスパンダー性が高い ($\lambda\in[0,1]$).
 - 二部グラフは常に$\lambda_n(P)=-1$なので, 両側エクスパンダーにはならない.
+- **スペクトルギャップ** = $1-\lambda$
 
 <div class="remark">
 
@@ -306,7 +295,7 @@ color: amber-light
 
 </div>
 
-$\lambda$が小さいほど収束が早い → ランダムウォークが「混ざりやすい」
+スペクトルギャップ$1-\lambda$が大きいほど, ランダムウォークが「混ざりやすい」
 
 <details class="bg-gray-100">
 <summary>証明のアイデア (クリックして展開)</summary>
@@ -412,6 +401,7 @@ color: amber-light
 
 ---
 layout: section
+color: amber-light
 ---
 
 # 単体複体と高次元エクスパンダー
@@ -451,7 +441,6 @@ color: amber-light
 <v-click>
 
 - 全ての極大面の次元が等しいとき, $X$は**純粋**であるという.
-  - 例: マトロイド
 
 </v-click>
 
@@ -485,7 +474,6 @@ color: amber-light
 
 幾何学的な意味での次元と面の次元は一致.
 
-
 ---
 layout: top-title-two-cols
 color: amber-light
@@ -493,7 +481,7 @@ color: amber-light
 
 ::title::
 
-# 二つのエクスパンダー性の対比
+# 二つのエクスパンダー性
 
 ::left::
 
@@ -529,7 +517,7 @@ color: amber-light
 
 <div class="theorem mx-40">
 
-局所エクスパンダー性 $\approx$ 大域エクスパンダー性
+局所エクスパンダー性 $\Rightarrow$ 大域エクスパンダー性
 </div>
 
 </v-click>
@@ -736,8 +724,8 @@ color: amber-light
 
 - $\PUD_i$と$\PDU_i$はどちらも$X(i)$上の定常分布$\pi_i$を持つ
 
-- 両者は半正定値演算子である（$\because$ $\PUD_i = \Pup_i \Pdown_{i+1} = \Pup_i (\Pup_i)^*$の形）
-- $\PUD_i$と$\PDU_{i+1}$の非零固有値の多重集合は一致（$\because$ $\PDU_{i+1} = \Pdown_{i+1}\Pup_i$は$\PUD_iと掛け算の順番が逆$）
+- 両者は半正定値である（$\because$ $\PUD_i = \Pup_i \Pdown_{i+1} = \Pup_i (\Pup_i)^*$の形）
+- $\PUD_i$と$\PDU_{i+1}$の非零固有値の多重集合は一致（$\because$ $\PDU_{i+1} = \Pdown_{i+1}\Pup_i$および$\PUD_i=\Pup_i \Pdown_{i+1}$)
   - 特に, $\lambda_2(\PUD_i) = \lambda_2(\PDU_{i+1})$ (第二固有値が一致)
 
 </v-clicks>
@@ -776,4 +764,40 @@ color: amber-light
 - 局所的な情報から大域的性質を導く（局所大域原理）
 
 </v-click>
+
+---
+layout: section
+color: amber-light
+---
+
+# マトロイド
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# マトロイド
+
+::content::
+
+<div class="definition">
+
+単体複体 $X=(V,\mathcal{F})$ であって以下を満たすものを**マトロイド**という:
+
+<div style="text-align: center;">
+
+$\abs{I}<\abs{J}$を満たす任意の$I,J\in\mathcal{F}$に対し, ある$j\in J\setminus I$が存在して, $I\cup\{i\}\in \mathcal{F}$.
+
+</div>
+
+</div>
+
+- 極大な面を**基**という.
+- マトロイドは純粋であり, 基の要素数をマトロイド$X$の**ランク**という.
+- 例
+  - グラフ的マトロイド: 固定したグラフの森の辺からなる部分集合族
+  - 線形マトロイド: 固定した行列の線型独立な行のindex集合からなる部分集合族
 
