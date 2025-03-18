@@ -252,19 +252,39 @@ P = \begin{cases}
 \end{aligned}
 $$
 
-つまり, $P(u,v)=\Pr[u\to v]$. この行列の固有値を$1=\lambda_1\ge\dots\ge\lambda_n\ge -1$とする ($n=|V|$).
-
-- 全成分$1$のベクトルが$\lambda_1=1$の固有ベクトルになる.
-<v-clicks>
+一般に, 重み付きのランダムウォークも遷移確率行列を定義できる.
 
 <div class="definition">
 
-  グラフ$G=(V,E)$は, $\max\{ |\lambda_2|,|\lambda_n| \}\le\lambda$ を満たすとき, **$\lambda$-エクスパンダー**であるという.
+遷移確率行列$P\in[0,1]^{V\times V}$の固有値を$\lambda_1(P)\ge\dots\ge\lambda_n(P)$とする ($n=\abs{V}$)とし, $\lambda(P):=\max\{\abs{\lambda_2(P)},\abs{\lambda_n(P)}\}$とする.
 </div>
 
+- 全成分$1$のベクトルが$\lambda_1(P)=1$の固有ベクトルになる.
 
-パラメータ$\lambda$が小さいほど, そのグラフはよりエクスパンダー性が高い ($\lambda\in[0,1]$).
-</v-clicks>
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# グラフのエクスパンダー性
+
+::content::
+
+<div class="definition">
+
+  グラフ$G$は, その単純ランダムウォークの遷移確率行列$P$が$\lambda_2(P)\le \lambda$であるとき, **片側$\lambda$-エクスパンダー**であるという. また, $\lambda(P)\le\lambda$ を満たすとき, **(両側)$\lambda$-エクスパンダー**であるという.
+</div>
+
+- パラメータ$\lambda$が小さいほど, そのグラフはよりエクスパンダー性が高い ($\lambda\in[0,1]$).
+- 二部グラフは常に$\lambda_n(P)=-1$なので, 両側エクスパンダーにはならない.
+
+<div class="remark">
+
+慣例ではグラフの性質としてエクスパンダー性を定義するが, 一般には遷移確率行列の性質として定義してもよい. 
+</div>
 
 ---
 layout: top-title
@@ -465,6 +485,56 @@ color: amber-light
 
 幾何学的な意味での次元と面の次元は一致.
 
+
+---
+layout: top-title-two-cols
+color: amber-light
+---
+
+::title::
+
+# 二つのエクスパンダー性の対比
+
+::left::
+
+#### 大域エクスパンダー性
+
+<v-click>
+
+- **定義**: $X(i)$上の下降上昇ウォーク$\PDU_i$の第二固有値に基づく性質
+- **特徴**:
+  - グラフのエクスパンダー性の高次元版
+  - $X(i)$全体の大域的な接続性を表現
+  - マトロイド上の基交換ウォークの収束速度を保証
+
+</v-click>
+
+::right::
+
+#### 局所エクスパンダー性
+
+<v-click>
+
+- **定義**: 各面$\sigma$のリンク$X_\sigma$の$1$-スケルトンのグラフエクスパンダー性
+- **特徴**:
+  - 各面の「周辺」が良く接続されていることを保証
+  - 「局所的に見るとエクスパンダーグラフ」
+  - 局所エクスパンダー性の確認は(飛び道具を使うと)比較的容易に可能
+
+</v-click>
+
+::default::
+
+<v-click>
+
+<div class="theorem mx-40">
+
+局所エクスパンダー性 $\approx$ 大域エクスパンダー性
+</div>
+
+</v-click>
+
+
 ---
 layout: top-title
 color: amber-light
@@ -476,7 +546,6 @@ color: amber-light
 
 ::content::
 
-面上を遷移する二種類のランダムウォークを考える.
 
 <div class="definition">
 
@@ -486,7 +555,17 @@ color: amber-light
 
 <v-click>
 
-下降ウォークを用いると各次元の面上の**定常分布**が定められる.
+遷移確率行列の成分は
+
+$$
+  \begin{align*}
+    \Pdown_i(\tau,\sigma) =\begin{cases}
+    \frac{1}{i+2} & \text{if }\sigma\subset\tau,\\
+    0 & \text{otherwise}.
+    \end{cases}
+  \end{align*}
+$$
+
 
 <div class="definition">
 
@@ -607,4 +686,94 @@ $$
 </div>
 
 </details>
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# 上昇下降・下降上昇ウォーク
+
+::content::
+
+上昇ウォークと下降ウォークを組み合わせて, 同じ次元の面間でのランダムウォークを定義する.
+
+<div class="definition">
+
+- 上昇下降ウォーク: $\PUD_i = \Pup_i \Pdown_{i+1}$ ($X(i)$上で遷移)
+- 下降上昇ウォーク: $\PDU_i = \Pdown_i \Pup_{i-1}$ ($X(i)$上で遷移)
+
+</div>
+
+<div class="flex justify-center">
+<img src="/images/walks.svg" alt="上昇下降ウォークと下降上昇ウォークの図" class="w-80"/>
+</div>
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# 上昇下降・下降上昇ウォークの性質
+
+::content::
+
+<div class="topic-box">
+
+- 上昇下降ウォーク: $\PUD_i = \Pup_i \Pdown_{i+1}$ ($X(i)$上で遷移)
+- 下降上昇ウォーク: $\PDU_i = \Pdown_i \Pup_{i-1}$ ($X(i)$上で遷移)
+
+</div>
+
+
+これらのウォークは以下の重要な性質を持つ:
+
+<v-clicks>
+
+- $\PUD_i$と$\PDU_i$はどちらも$X(i)$上の定常分布$\pi_i$を持つ
+
+- 両者は半正定値演算子である（$\because$ $\PUD_i = \Pup_i \Pdown_{i+1} = \Pup_i (\Pup_i)^*$の形）
+- $\PUD_i$と$\PDU_{i+1}$の非零固有値の多重集合は一致（$\because$ $\PDU_{i+1} = \Pdown_{i+1}\Pup_i$は$\PUD_iと掛け算の順番が逆$）
+  - 特に, $\lambda_2(\PUD_i) = \lambda_2(\PDU_{i+1})$ (第二固有値が一致)
+
+</v-clicks>
+
+
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# 高次元エクスパンダー性の定義
+
+::content::
+
+<div class="definition">
+
+純粋な$d$次元単体複体$X=(V,\F)$は, 各$0 \leq i \leq d$に対して$X(i)$上の下降上昇ウォーク$\PDU_i$が$\lambda_2(\PDU_i) \leq \lambda_i$を満たすとき, **大域$(\lambda_0,\dots,\lambda_d)$-エクスパンダー**である.
+
+</div>
+
+<div class="remark">
+
+グラフのエクスパンダー性と同様, $\lambda_i$が小さいほど「混ざりやすい」.
+
+</div>
+
+<v-click>
+
+#### 単体複体の大域的エクスパンダー性の意義
+
+- ランダムウォークの急速な混合を保証
+- 高次元における「擬似ランダム性」を表現
+- 局所的な情報から大域的性質を導く（局所大域原理）
+
+</v-click>
 

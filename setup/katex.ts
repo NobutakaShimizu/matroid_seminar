@@ -15,6 +15,9 @@ export default function setup() {
       '\\sbra': '\\left[#1\\right]',
       '\\Pup': 'P^{\\uparrow}',
       '\\Pdown': 'P^{\\downarrow}',
+      '\\PDU': 'P^{\\bigtriangledown}',
+      '\\PUD': 'P^{\\triangle}',
+      '\\nonlazyPUD': 'P^{\\land}',
     },
   }
 } 
