@@ -478,7 +478,30 @@ color: amber-light
   クリークの例. クリーク複体は一般に純粋とは限らない.
 </div>
 
+---
+layout: top-title
+color: amber-light
+---
 
+::title::
+
+# 単体複体の例: 三角形複体
+
+::content::
+
+<div class="example">
+
+グラフ$G=(V,E)$上のクリーク複体$X=(V,\calF)$に対し, その次元$2$以下の面からなる集合を$\calF_{\le 2}$とする. このとき, $X'=(V,\calF_{\le 2}$は純粋な二次元単体複体であり, **三角形複体**という.
+
+</div>
+
+<div class="flex justify-center">
+<img src="/images/triangle_complex.svg" alt="三角形複体の図" class="w-80"/>
+</div>
+
+<div class="caption">
+  三角形複体は純粋.
+</div>
 
 ---
 layout: top-title
@@ -782,7 +805,7 @@ color: amber-light
 
 - 自明: $\lambda_0 = 0$ (頂点$\to$空集合$\to$頂点は1ステップで混ざる)
 - $\lambda_d$が小さければ, 極大面上のランダムウォークの収束の早さが保証される.
-  - 例: マトロイドの基交換ウォークは$\lambda_d \le 1-\frac{1}{d}$ (今日はこれの証明概要を説明)
+  - 例: マトロイドの基交換ウォークは$\lambda_d \le 1-\frac{1}{d+1}$ (今日はこれの証明概要を説明)
 
 ---
 layout: top-title
@@ -799,7 +822,7 @@ color: amber-light
 
 <div class="definition">
 
-単体複体$X=(V,\calF)$と面$\sigma\in\calF$に対し, $\sigma$における**リンク**とは, 単体複体$X_\sigma = (V\setminus\sigma,\calF_\sigma)$である. ただし
+単体複体$X=(V,\calF)$と面$\sigma\in\calF$に対し, $\sigma$における**リンク**とは, 単体複体$X_\sigma = (V_\sigma,\calF_\sigma)$である. ただし, $V_\sigma:=V\setminus \sigma$,
 
 $$
   \begin{align*}
@@ -831,10 +854,193 @@ color: amber-light
 
 <div class="definition">
 
-次元$1$以上の純粋な単体複体 $X=(V,\calF)$ の **骨格グラフ** を, 辺に重みを持つグラフ $(X(0),X(1))$ であって, 各辺$e\in X(1)$の重みが$\pi_1(e)$で与えられるものとする.
+次元$1$以上の純粋な単体複体 $X=(V,\calF)$ の **骨格グラフ** を, 辺に重みを持つグラフ $G_\sigma=(X(0),X(1))$ であって, 各辺$e\in X(1)$の重みが$\pi_1(e)$で与えられるものとする.
 </div>
 
-- 
+<v-clicks>
+
+リンク$X_\sigma$の骨格グラフ上での重み付きランダムウォークを局所ランダムウォークという.
+
+<div class="definition">
+
+$X$を$d$次純粋な単体複体とする.
+次元$d-2$以下の面$\sigma\in\calF$に対し, $\sigma$における**局所ランダムウォーク**を, リンク$X_\sigma$の骨格グラフ上の重み付きランダムウォークとして定義し, 遷移確率行列を$P_\sigma\in [0,1]^{V_\sigma\times V_\sigma}$と表す.
+
+</div>
+
+- $X$が純粋 $\Rightarrow$ $X_\sigma$も純粋
+- $\dim \sigma \le d-2$ より, $X_\sigma$の骨格グラフ$(X_\sigma(0),X_\sigma(1))$を定義可能
+
+</v-clicks>
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# 例
+
+::content::
+
+<div class="flex justify-center">
+<img src="/images/localwalk1.svg" alt="局所ランダムウォークの例" class="w-190"/>
+</div>
+
+<div class="caption">
+
+  グラフ上の三角形複体を考える. 頂点$u$のリンクの骨格グラフは, $u$の近傍がなす誘導部分グラフとなる.
+</div>
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# 局所エクスパンダー性
+
+::content::
+
+<div class="definition">
+
+  $d\ge 1$次純粋な単体複体$X$は
+
+  <div style="text-align: center;">
+  
+  全ての次元$d-2$以下の面$\sigma$に対し, $\lambda_2(P_\sigma) \le \gamma$
+  
+  </div>
+  
+  を満たすとき, **局所$\gamma$-エクスパンダー**であるという:
+  
+</div>
+
+- 第二固有値のみを見る (すなわち骨格グラフの**片側**エクスパンダー性に着目する) ことに注意.
+- 従って, 局所エクスパンダーだからといって, 局所ランダムウォークの混交性が保証されるわけではない.
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# 例
+
+::content::
+
+グラフ$G=(V,E)$上の三角形複体$X$が局所エクスパンダー性が成り立つための条件を考えよう.
+
+<v-clicks>
+
+- $\sigma=\emptyset$のリンクの骨格グラフ$G_\emptyset$は$G$そのもの
+  - 辺$e$の重み$\pi_1(e)$は, その辺を含む三角形の個数に比例
+
+- 各頂点$\sigma=\{u\}$のリンクの骨格グラフ$G_\sigma$は, 頂点$u$の近傍からなる誘導部分グラフ.
+  - 辺の重みは一様 (三角形上の定常分布が一様だから)
+
+<div class="topic-box">
+
+まとめると, $G$自身および各頂点の近傍からなる誘導部分グラフが片側エクスパンダー性を持つとき, 三角形複体は局所エクスパンダー性を持つ.
+
+</div>
+
+<div class="remark">
+
+代表的なエクスパンダーグラフ(ラマヌジャングラフ)の多くの構成は内周(非自明な最小長サイクル)が大きいので, その上の三角形複体は決して局所エクスパンダー性を持たない.
+
+</div>
+
+</v-clicks>
+
+---
+layout: top-title-two-cols
+color: amber-light
+---
+
+::title::
+
+# 代表的なラマヌジャングラフと局所エクスパンダーの比較
+
+::left::
+
+#### 代表的なラマヌジャングラフ
+
+各頂点の近傍は$d$-正則木
+
+<div class="flex justify-center">
+<img src="/images/tree.svg" alt="ラマヌジャングラフの例" class="w-50"/>
+</div>
+
+特に, 三角形を持たないので(三角形複体は)局所エクスパンダー性は持たない.
+
+例: <a href="https://link.springer.com/article/10.1007/BF02126799" class="cite-reference">[Lubotzky, Phillips, Sarnak, Combinatorica, 1988]</a>
+
+
+::right::
+
+#### 局所エクスパンダー性を持つグラフ
+
+<div class="flex justify-center">
+<img src="/images/local_expansion_graph.svg" alt="局所エクスパンダーの例" class="w-80"/>
+</div>
+
+たくさんの三角形が均一に散らばっていて, かつ辺を共有する三角形もたくさんある.
+
+例:<a href="https://www.sciencedirect.com/science/article/pii/S019566980400099X?via%3Dihub" class="cite-reference">[Lubotzky, Samuels, Vishne, 2005]</a>によるラマヌジャン複体は局所的にはBruhat-Tits building (無限$d$-正則木の高次元版)
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# Kaufman-Oppenheimの定理
+
+::content::
+
+局所エクスパンダー $\Rightarrow$ 大域エクスパンダーが成り立つ <a href="https://link.springer.com/article/10.1007/s00493-019-3847-0" class="cite-reference">[Kaufman, Oppenheim, Combinatorica, 2020]</a>
+
+- 局所エクスパンダー : 三角形がどの局所的な部分を見ても均一に分散
+- 大域エクスパンダー : 三角形上の上昇下降ランダムウォークが高速に収束
+
+<div class="theorem">
+
+純粋な$d$-次元単体複体 $X=(V,\calF)$が局所$\gamma$-エクスパンダーならば,
+
+$$
+  \begin{align*}
+    \lambda_i = 1 - \frac{1}{i+1} + \frac{\gamma i}{2}
+  \end{align*}
+$$
+
+に対して$X$は大域$(\lambda_0,\dots,\lambda_d)$-エクスパンダーである.
+
+</div>
+
+<v-click>
+
+<div class="question">
+
+どうやって局所エクスパンダー性を示すか?
+
+</div>
+</v-click>
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# Oppenheimのトリクルダウン定理
+
+::content::
 
 ---
 layout: section
@@ -871,4 +1077,5 @@ $\abs{I}<\abs{J}$を満たす任意の$I,J\in\mathcal{F}$に対し, ある$j\in 
 - 例
   - グラフ的マトロイド: 固定したグラフの森の辺からなる部分集合族
   - 線形マトロイド: 固定した行列の線型独立な行のindex集合からなる部分集合族
+
 
