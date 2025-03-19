@@ -491,7 +491,7 @@ color: amber-light
 
 <div class="example">
 
-グラフ$G=(V,E)$上のクリーク複体$X=(V,\calF)$に対し, その次元$2$以下の面からなる集合を$\calF_{\le 2}$とする. このとき, $X'=(V,\calF_{\le 2}$は純粋な二次元単体複体であり, **三角形複体**という.
+グラフ$G=(V,E)$上のクリーク複体$X=(V,\calF)$に対し, その次元$2$以下の面からなる集合を$\calF_{\le 2}$とする. このとき, $X'=(V,\calF_{\le 2})$は純粋な二次元単体複体であり, **三角形複体**という.
 
 </div>
 
@@ -502,6 +502,32 @@ color: amber-light
 <div class="caption">
   三角形複体は純粋.
 </div>
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# 単体複体の例: 森からなる複体 (グラフ的マトロイド)
+
+::content::
+
+<div class="example">
+
+グラフ$G=(U,E)$に対し, 辺部分集合$F\subseteq E$は閉路を含まないとき森である. 全ての森からなる辺部分集合族$\calF$に対し, $(E,\calF)$は$(\abs{V}-1)$-次の純粋な単体複体である.
+
+</div>
+
+<div class="flex justify-center">
+<img src="/images/forest.svg" alt="全域森複体の例" class="w-80"/>
+</div>
+
+<div class="caption">
+  グラフとその森の例. グラフ的マトロイドとも呼ばれる.
+</div>
+
 
 ---
 layout: top-title
