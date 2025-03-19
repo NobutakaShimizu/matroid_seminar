@@ -448,10 +448,35 @@ color: amber-light
 
 <div class="remark">
 
-以後は純粋な$d$次元単体複体のみを考える.
+以後は主に純粋な$d$次元単体複体のみを考える (例えばマトロイド).
 </div>
 
 </v-click>
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# 単体複体の例: クリーク複体
+
+::content::
+
+<div class="example">
+
+グラフ$G=(V,E)$に対し, $S\subseteq V$は, $\binom{S}{2}\subseteq E$のとき, **クリーク**という. $\calF$を$G$のクリーク全体としたとき, $X=(V,\calF)$は**クリーク複体**と呼ばれる単体複体である.
+
+</div>
+
+<div class="flex justify-center">
+<img src="/images/clique_complex.svg" alt="クリーク複体の図" class="w-80"/>
+</div>
+
+<div class="caption">
+  クリークの例. クリーク複体は一般に純粋とは限らない.
+</div>
 
 
 
@@ -462,7 +487,7 @@ color: amber-light
 
 ::title::
 
-# (抽象的)単体複体
+# 単体複体の幾何的な意味合い
 
 ::content::
 
@@ -538,7 +563,7 @@ color: amber-light
 <div class="definition">
 
 次元$i\ge 0$を固定する.
-面$\tau \in X(i)$から開始して, 一様ランダムに$u\sim \tau$を選び, $\sigma:=\tau - u$に遷移するランダムウォークを**下降ウォーク**といい, 遷移確率行列を $\Pdown_i \in [0,1]^{X(i)\times X(i-1)}$ で表す.
+面$\tau \in X(i)$から開始して, 一様ランダムに$u\sim \tau$を選び, $\sigma:=\tau \setminus\{u\}$に遷移するランダムウォークを**下降ウォーク**といい, 遷移確率行列を $\Pdown_i \in [0,1]^{X(i)\times X(i-1)}$ で表す.
 </div>
 
 <v-click>
@@ -766,7 +791,7 @@ color: amber-light
 
 ::title::
 
-# リンクと局所エクスパンダー性
+# リンクと局所ランダムウォーク
 
 ::content::
 
@@ -784,7 +809,32 @@ $$
 
 </div>
 
-- マトロイド理論でいうところの縮約 (contract) 
+<div class="flex justify-center">
+<img src="/images/contract.svg" alt="リンクの図" class="w-110"/>
+</div>
+
+<div class="caption">
+
+  面$\sigma$のリンクは, $\sigma$を含む面から$\sigma$を取り除いて得られる.
+</div>
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# リンクと局所ランダムウォーク
+
+::content::
+
+<div class="definition">
+
+次元$1$以上の純粋な単体複体 $X=(V,\calF)$ の **骨格グラフ** を, 辺に重みを持つグラフ $(X(0),X(1))$ であって, 各辺$e\in X(1)$の重みが$\pi_1(e)$で与えられるものとする.
+</div>
+
+- 
 
 ---
 layout: section
