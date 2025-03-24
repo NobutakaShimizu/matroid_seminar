@@ -190,7 +190,7 @@ color: amber-light
 
 <div class="topic-box">
 
-  マトロイドを一つ固定し, その基全体 $\calB$ を頂点集合として次のようにして生成されるグラフ$\calG$を考える:
+  マトロイドを一つ固定し, その基全体 $\calB$ を頂点集合として次のようにして生成される**交換グラフ**$\calG$を考える:
   二つの基$B,B'\in \calB$に対し, その対称差$B\triangle B' = (B\setminus B')\cup (B'\setminus B)$がちょうど二つの元からなる時, かつその時に限って$B$と$B'$の間に辺を引く.
   このグラフは**エクスパンダー性**をもつ.
   
@@ -1155,10 +1155,18 @@ color: amber-light
 
 </div>
 
+<div class="relative h-10">
+  <Arrow x1="50%" y1="0" x2="50%" y2="55" width="3" color="#ff9800" />
+</div>
+
 <div class="topic-box">
 
 $X$は局所$\gamma$-エクスパンダー
 
+</div>
+
+<div class="relative h-10">
+  <Arrow x1="50%" y1="0" x2="50%" y2="55" width="3" color="#ff9800" />
 </div>
 
 <div class="topic-box">
@@ -1166,6 +1174,18 @@ $X$は局所$\gamma$-エクスパンダー
 $X$は大域$(\lambda_0,\dots,\lambda_d)$-エクスパンダー
 
 </div>
+
+<div class="relative h-10">
+  <Arrow x1="50%" y1="0" x2="50%" y2="55" width="3" color="#ff9800" />
+</div>
+
+<div class="topic-box">
+
+$X(d)$の交換グラフはエクスパンダー性を持つ.
+
+</div>
+
+
 
 
 ---
