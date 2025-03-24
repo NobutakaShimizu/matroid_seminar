@@ -175,13 +175,45 @@ color: amber-light
 
 
 
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# マトロイドの基の交換関係の構造
+
+::content::
+
+具体的には, 次の主張の背景を説明していく:
+
+<div class="topic-box">
+
+  マトロイドを一つ固定し, その基全体 $\calB$ を頂点集合として次のようにして生成されるグラフ$\calG$を考える:
+  二つの基$B,B'\in \calB$に対し, その対称差$B\triangle B' = (B\setminus B')\cup (B'\setminus B)$がちょうど二つの元からなる時, かつその時に限って$B$と$B'$の間に辺を引く.
+  このグラフは**エクスパンダー性**をもつ.
+  
+</div>
+
+<div class="flex justify-center">
+<img src="/images/base_exchange.svg" alt="マトロイドの基交換" class="w-50"/>
+</div>
+
+<v-click>
+
+- **マトロイドの交換公理**を表すグラフ
+- 一様マトロイドの場合はJohnsonグラフと同一
+
+</v-click>
 
 ---
 layout: section
 color: amber-light
 ---
 
-# グラフとエクスパンダー性
+# エクスパンダーグラフ
+Expander Graph
 
 ---
 layout: top-title
@@ -404,7 +436,8 @@ layout: section
 color: amber-light
 ---
 
-# 単体複体と高次元エクスパンダー
+# 単体複体
+Simplicial Complex
 
 ---
 layout: top-title
@@ -596,6 +629,13 @@ color: amber-light
 
 </v-click>
 
+---
+layout: section
+color: amber-light
+---
+
+# 大域エクスパンダー性
+Global Expansion
 
 ---
 layout: top-title
@@ -831,7 +871,15 @@ color: amber-light
 
 - 自明: $\lambda_0 = 0$ (頂点$\to$空集合$\to$頂点は1ステップで混ざる)
 - $\lambda_d$が小さければ, 極大面上のランダムウォークの収束の早さが保証される.
-  - 例: マトロイドの基交換ウォークは$\lambda_d \le 1-\frac{1}{d+1}$ (今日はこれの証明概要を説明)
+  - 実はマトロイドの基交換ウォークは$\lambda_d \le 1-\frac{1}{d+1}$
+
+---
+layout: section
+color: amber-light
+---
+
+# 局所エクスパンダー性
+Local Expansion
 
 ---
 layout: top-title
@@ -1068,12 +1116,65 @@ color: amber-light
 
 ::content::
 
+局所エクスパンダー性を確認するには, **全ての**面$\sigma$に対して$\lambda_2(P_\sigma)$を抑えなければならない.
+- そもそも局所ウォーク$P_\sigma$の成分すら簡単な形でないのに, 固有値を抑えるのは難しそう...
+
+**Oppenheimのトリクルダウン定理**によれば, **次元$d-2$の**面$\sigma$について, $\lambda_2(P_\sigma)$を抑えればよい.
+
+<v-click>
+
+<div class="theorem">
+
+純粋な$d$-次元単体複体 $X=(V,\calF)$が以下の条件を満たすとする:
+
+- 全ての$i\le d-2$と全ての$\sigma\in X(i)$に対してリンクの骨格グラフ$G_\sigma$は連結.
+- 全ての$\sigma\in X(d-2)$に対して$\lambda_2(P_\sigma) \le \gamma$.
+
+このとき, $X$は局所$\gamma$-エクスパンダーである.
+
+</div>
+
+- 高次元の面における局所RWを片側エクスパンダー性が低次元に「浸透」(trickle down) していく.
+
+</v-click>
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# ここまでのまとめ
+
+::content::
+
+<div class="topic-box">
+
+全ての$\sigma \in X(d-2)$に対して$\lambda_2(P_\sigma)\le \gamma$
+
+</div>
+
+<div class="topic-box">
+
+$X$は局所$\gamma$-エクスパンダー
+
+</div>
+
+<div class="topic-box">
+
+$X$は大域$(\lambda_0,\dots,\lambda_d)$-エクスパンダー
+
+</div>
+
+
 ---
 layout: section
 color: amber-light
 ---
 
 # マトロイド
+Matroid
 
 ---
 layout: top-title
