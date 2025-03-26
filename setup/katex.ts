@@ -6,6 +6,7 @@ export default function setup() {
       '\\Int': '\\mathbb{Z}',
       '\\Nat': '\\mathbb{N}',
       '\\bm': '\\boldsymbol',
+      '\\poly': '\\mathrm{poly}',
       '\\norm': '\\left\\|#1\\right\\|',
       '\\abs': '\\left|#1\\right|',
       '\\set': '\\left\\{#1\\right\\}',

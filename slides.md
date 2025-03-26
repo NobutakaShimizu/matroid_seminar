@@ -105,9 +105,9 @@ color: amber-light
   - 貪欲法
   - マトロイド交叉
 
-- 効率的にサンプリング(数え上げ)できる離散構造の性質の抽象化 (**今日の話**)
-  - 高次元エクスパンダー
-  - 対数凹多項式 (log-concave polynomial)
+- 効率的にサンプリング(数え上げ)できる離散構造の性質の抽象化
+  - 高次元エクスパンダー (**今日の話**)
+  - 母関数の対数凹性 (重み付きへの拡張)
 
 ::right::
 
@@ -140,12 +140,17 @@ color: amber-light
 ::content::
 
 - ランダムウォークが早く「混ざり合う」ことを保証する性質
+
+<v-clicks>
+
 - 計算量理論の擬似ランダムネスの文脈における非常に重要な道具
   - 誤り訂正符号の構成, PCP定理の証明, 擬似乱数生成器の構成
 - 私の研究におけるエクスパンダー性の応用
   - 平均時計算量の困難性増幅 <a href="https://dl.acm.org/doi/10.1145/3564246.3585189" target="_blank" class="cite-reference">Hirahara and S, STOC'23</a>
   - 埋め込みクリーク問題の最適な探索から判定への帰着 <a href="https://dl.acm.org/doi/10.1145/3618260.3649751" target="_blank" class="cite-reference">[Hirahara and S, STOC'24]</a>
   - 行列積アルゴリズムの誤り訂正 <span class="cite-reference"> [Hirahara and S, STOC'25] </span>
+
+</v-clicks>
 
 ---
 layout: top-title
@@ -159,6 +164,9 @@ color: amber-light
 ::content::
 
 - エクスパンダー性は元々はグラフの性質だが, 近年は単体複体に拡張 (高次元エクスパンダー)
+
+<v-clicks>
+
 - 計算量理論と誤り訂正符号におけるブレイクスルー
   - PCP定理のパラメータ改善 <span class="cite-reference">\[Bafna, Minzer, Vyas, Yun, STOC'25]</span>
   - 立方複体に基づく量子誤り訂正符号 <a href="https://dl.acm.org/doi/10.1145/3519935.3520024" class="cite-reference">\[Dinur, Evra, Livne, Lubotzky, Mozes, STOC'22\]</a><a href="https://dl.acm.org/doi/10.1145/3519935.3520017" class="cite-reference">\[Panteleev, Kalachev, STOC'22\]</a>
@@ -173,7 +181,9 @@ color: amber-light
 
 </div>
 
+- 参考資料: 東北大で高次元エクスパンダーに関する集中講義をした際の[講義ノート](https://nobutakashimizu.github.io/lecture_May2024/main.pdf)
 
+</v-clicks>
 
 ---
 layout: top-title
@@ -190,8 +200,8 @@ color: amber-light
 
 <div class="topic-box">
 
-  マトロイドを一つ固定し, その基全体 $\calB$ を頂点集合として次のようにして生成される**交換グラフ**$\calG$を考える:
-  二つの基$B,B'\in \calB$に対し, その対称差$B\triangle B' = (B\setminus B')\cup (B'\setminus B)$がちょうど二つの元からなる時, かつその時に限って$B$と$B'$の間に辺を引く.
+  マトロイドを一つ固定し, その基全体 $\calB$ を頂点集合とする**交換グラフ**$\calG$を考える. 交換グラフでは,
+  各基のペア$B,B'\in \calB$に対し, その対称差$B\triangle B' = (B\setminus B')\cup (B'\setminus B)$がちょうど二つの元からなる時, かつその時に限って$B$と$B'$の間に辺を引く.
   このグラフは**エクスパンダー性**をもつ.
   
 </div>
@@ -1122,6 +1132,8 @@ color: amber-light
 - 局所エクスパンダー : 三角形がどの局所的な部分を見ても均一に分散
 - 大域エクスパンダー : 三角形上の上昇下降ランダムウォークが高速に収束
 
+<v-click>
+
 <div class="theorem">
 
 純粋な$d$-次元単体複体 $X=(V,\calF)$が局所$\gamma$-エクスパンダーならば,
@@ -1135,7 +1147,7 @@ $$
 に対して$X$は大域$(\lambda_0,\dots,\lambda_d)$-エクスパンダーである.
 
 </div>
-
+</v-click>
 <v-click>
 
 <div class="question">
@@ -1157,11 +1169,11 @@ color: amber-light
 ::content::
 
 局所エクスパンダー性を確認するには, **全ての**面$\sigma$に対して$\lambda_2(P_\sigma)$を抑えなければならない.
-- そもそも局所ウォーク$P_\sigma$の成分すら簡単な形でないのに, 固有値を抑えるのは難しそう...
+- そもそも局所ウォーク$P_\sigma$の成分(=$G_\sigma$の辺重み)すら簡単な形でないのに, 固有値を抑えるのは難しそう😔
 
-**Oppenheimのトリクルダウン定理**によれば, **次元$d-2$の**面$\sigma$について, $\lambda_2(P_\sigma)$を抑えればよい.
+<v-clicks>
 
-<v-click>
+Oppenheimのトリクルダウン定理: **次元$d-2$の**面$\sigma$について, $\lambda_2(P_\sigma)$を抑えればよい.
 
 <div class="theorem">
 
@@ -1174,9 +1186,10 @@ color: amber-light
 
 </div>
 
-- 高次元の面における局所RWを片側エクスパンダー性が低次元に「浸透」(trickle down) していく.
+- 高次元の面における局所RWを片側エクスパンダー性が低次元に「浸透」(trickle down) していく
+- メリット: $\sigma\in X(d-2)$ならば骨格グラフ$G_\sigma$の辺重みは全て一様
 
-</v-click>
+</v-clicks>
 
 ---
 layout: top-title
@@ -1387,6 +1400,259 @@ color: amber-light
 - (トリクルダウン定理を適用するには本当は$G_\sigma$の連結性も示さなければならないが, 簡単に示せるので今回は割愛)
 - 交換グラフのエクスパンダー性や基の交換ウォークの収束性の保証が与えられる
 
+---
+layout: section
+color: amber-light
+---
+
+# 応用: 基の数え上げ
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# 基の数え上げ
+
+::content::
+
+<div class="question">
+
+ $n$頂点の連結グラフ$G=(V,E)$が与えられたとき, 全域木の個数を効率的に数え上げよ.
+</div>
+
+<v-click>
+
+- 効率的 = $\mathrm{poly}(n)$回のビット演算
+- **行列木定理**によれば, $G$から構成されるある$(n-1)\times(n-1)$行列$L'_G$の行列式を計算すれば, 全域木の個数と一致
+- 行列式の計算は効率的に可能 (いくつかの素数$p$に対して$\bmod\, p$で行列式を計算して中国剰余定理を適用)
+
+</v-click>
+<v-click>
+
+<div class="question">
+
+頂点数$n$のマトロイド$X=(V,\calF)$の基の個数を効率的に数え上げよ (つまり$\abs{V}=n$).
+これが$\mathrm{poly}(n)$回の演算でできるか?
+</div>
+
+</v-click>
+
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# 独立性オラクル
+
+::content::
+
+- 一般にマトロイドを指定するには$n$に関して**指数長の文字列**が必要
+  - 例えば, 全ての基を指定すれば良いが, 基は指数個ある
+  - よって, $\poly(n)$回の演算では不可 (入力の1ビットの読み込みも演算にカウント)
+    - $\mathsf{P}\ne\mathsf{NP}$かどうかとは独立に成り立つ困難性(**情報理論的な困難性**)
+<v-click>
+
+- **独立性オラクル**を用いるアルゴリズム
+  - 集合$I\subseteq V$について「$I\in\calF$ですか?」という質問をすると, オラクルがYes/Noを答えてくれる
+  - 効率的 = 質問と演算の回数の合計が$\mathrm{poly}(n)$
+
+</v-click>
+
+<!--  TODO: 図 -->
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# 基数え上げの困難性
+
+::content::
+
+- 情報理論的な下界により, 決定的アルゴリズムの質問回数は少なくとも$2^{\Omega(n)}$ <a href="https://www.sciencedirect.com/science/article/abs/pii/002001909490037X" class="cite-reference">Azar, Broder, Frieze, IPL 1994</a>
+  - 答えの$2^{n/(\log n)^2}$倍以内の近似値すら求められない
+- 有限体上の線形マトロイドの基の数え上げは$\#\mathsf{P}$-困難 <a href="https://www.combinatorics.org/ojs/index.php/eljc/article/view/v19i4p41" class="cite-reference">Snook, Electron. J. Comb. 2012</a>
+  - $\#\mathsf{P}$-困難: $\mathsf{NP}$困難以上に難しく, 多項式時間では解けないと信じられている
+
+<div class="topic-box">
+
+まとめると, 一般のマトロイドの基の数え上げは難しい.
+</div>
+
+特殊ケースでは可能
+- グラフ的マトロイド (=全域木の個数)
+- 正則マトロイド (行列木定理の一般化が成り立つ)
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# ランダムウォークによる近似数え上げ(MCMC)
+
+::content::
+
+- これまでの下界によると, **決定的**アルゴリズムは近似値すら求められない
+<v-clicks>
+
+- しかし, **乱択**を使うと良い近似値を高確率で計算できる!
+
+
+<div class="theorem">
+
+任意のマトロイド$X=(V,\calF)$に対し, その基の集合を$\calB$とする.
+独立性オラクルと二つのパラメータ$\delta,\varepsilon>0$が与えられたとき, $\poly(|V|,1/\delta,1/\varepsilon)$時間で
+
+$$
+  \begin{align*}
+    (1-\varepsilon)\abs{\calB} \le m \le (1+\varepsilon)\abs{\calB}
+  \end{align*}
+$$
+
+を満たす$m\in\Nat$を確率$1-\delta$で出力する乱択アルゴリズムが存在する.
+
+</div>
+
+- マルコフ連鎖モンテカルロ法(MCMC)と呼ばれる手法に基づく
+
+</v-clicks>
+
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# マルコフ連鎖モンテカルロ法(MCMC)とは...
+
+::content::
+
+<div class="topic-box">
+
+有限集合$S$上の分布$\pi\in[0,1]^S$に対し, $\pi$に従うサンプリングを行う手法.
+1. 定常分布が$\pi$となるように重み付きランダムウォークを設計
+2. そのランダムウォークを十分長く行って得られるサンプル$x\in S$の分布は$\pi$に近い
+
+</div>
+
+重要なポイント
+- 1ステップの遷移は効率的にシミュレートしなければならない
+- 必要なステップ数 (=ランダムウォークの混交時間) の上界が欲しい
+
+<div class="question">
+
+MCMCを使ってどうやって数え上げの近似値を求めるか?
+</div>
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# MCMCに基づく数え上げのイメージ
+
+::content::
+
+<div class="question">
+
+以下の青部分の面積の近似値を求めよ.
+
+<div class="flex justify-center">
+<img src="/images/MCMC_menseki.svg" alt="MCMCのイメージ図" class="w-75"/>
+</div>
+
+</div>
+
+
+<v-click>
+
+**アイデア**: 長方形内にたくさんのランダムな点を打ち, 青部分に入った点の個数の割合を出力.
+
+以下の二つが実現できればOK:
+
+- 長方形内のランダムな位置をサンプリング (MCMCを使う)
+- 青部分に入ったかどうかの判定
+
+</v-click>
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# 基数え上げへの素朴な適用
+
+::content::
+
+$X=(V,\calF)$を$d$次元マトロイドとする.
+
+1. 独立一様ランダムに$\sigma_1,\sigma_2,\dots,\sigma_\ell \in \binom{V}{d+1}$ を選ぶ
+2. これらの中で$\calF$に属するものの割合を出力する ($\sigma_i\in\calF$ならば要素数から自動的に$\sigma_i$は基)
+
+<div class="question">
+
+この方法でうまくいくか?
+
+</div>
+
+<v-click>
+
+- 一つの点$\sigma_i$が$\calB$に属する確率は$\frac{\abs{\calB}}{n^{d+1}}$
+  - 従って, $\ell \gg \frac{n^{d+1}}{\abs{\calB}}$でなければならない (そうでなければ常に$0$が出力される)
+- $\calB$が大きければ問題ないが, 一般に$\ell\gg\poly(n)$になりうる
+
+</v-click>
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# Jerrum-Valiant-Vazirani (1986)のアプローチ
+
+::content::
+
+- <a href="https://www.sciencedirect.com/science/article/pii/030439758690174X" class="cite-reference">[Jerrum, Valiant, Vazirani, TCS, 1986]</a>は, 離散構造の再帰的な性質とMCMCを組み合わせたアプローチを提案.
+
+<div class="topic-box">
+
+**マトロイドの基の再帰構造**: $\calB$を基全体とし, $u\in V$に対し$\calB_u$を$u$を含む基の全体とすると
+
+$$
+  \begin{align*}
+    \frac{1}{\abs{\calB}} &= \frac{\abs{\calB_u}}{\abs{\calB}}\cdot \frac{1}{\abs{\calB_u}} = \Pr_{\sigma\sim\calB}[\sigma \ni u]\cdot  \frac{1}{\abs{\calB_u}}.
+  \end{align*}
+$$
+
+</div>
+
+<v-clicks>
+
+- $\Pr_{\sigma\sim \calB}[\sigma\ni u]$はMCMC(上昇下降ウォーク$\PDU_d$を使って基をサンプリング)で近似計算
+  - **高次元エクスパンダー性より混交時間がバウンドされている!**
+- $\calB_u$は, $u$で縮約したマトロイド ($u$のリンク$X_{\{u\}}$) の基全体と一致するので, $1/\abs{\calB_u}$は再帰的に近似計算
+  - 頂点数が一つ減るので, 再帰の深さは$d+1$
+  - 各ステップで$1\pm \varepsilon$倍の近似値が確率$1-\delta$で得られるとすると, 全て掛け算すると$1\pm n\varepsilon$倍の近似値を確率$1-n\delta$で得られる
+
+</v-clicks>
 
 ---
 layout: top-title
@@ -1419,6 +1685,4 @@ color: amber-light
 - 新しい誤り訂正符号の構成や平均時計算量への応用
 
 </v-click>
-
-
 
