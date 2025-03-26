@@ -26,7 +26,7 @@
   "bugs": {
     "url": "https://github.com/NobutakaShimizu/matroid_seminar/issues"
   },
-  "homepage": "https://github.com/NobutakaShimizu/matroid_seminar#readme",
+  "homepage": "https://nobutakashimizu.github.io/matroid_seminar/",
   "devDependencies": {
     "@slidev/cli": "^51.4.0"
   }

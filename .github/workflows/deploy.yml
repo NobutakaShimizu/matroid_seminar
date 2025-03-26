@@ -28,6 +28,7 @@ jobs:
       - name: Build slides
         env:
           NODE_ENV: production
+          BASE: /matroid_seminar/
         run: npm run build
         
       - name: Upload artifact
