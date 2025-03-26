@@ -306,4 +306,37 @@ a.cite-reference:hover {
   color: #009688;
   font-weight: bold;
   font-size: 0.95em;
+}
+
+strong {
+  color: #c2185b;  /* 濃いマゼンタ色 */
+}
+
+.claim {
+  border: 2px solid #e65100;
+  background-color: #fff3e0;
+  padding: 35px 15px 4px;
+  margin: 10px 0 2px;
+  position: relative;
+  border-radius: 8px;
+}
+
+.claim::before {
+  content: "主張";
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  color: #e65100;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.claim::after {
+  content: "🔎";
+  position: absolute;
+  top: 10px;
+  left: 55px;
+  color: #e65100;
+  font-weight: bold;
+  font-size: 0.95em;
 } 

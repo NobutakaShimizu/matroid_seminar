@@ -63,7 +63,7 @@ color: amber-light
 - 誤り訂正符号
 - マルコフ連鎖
 
-数学の様々な概念が応用される. 
+数学の様々な概念が応用される
 
 </v-click>
 
@@ -202,7 +202,7 @@ color: amber-light
 
 <v-click>
 
-- **マトロイドの交換公理**を表すグラフ
+- 交換グラフ: **マトロイドの交換公理**を表すグラフ
 - 一様マトロイドの場合はJohnsonグラフと同一
 
 </v-click>
@@ -230,7 +230,7 @@ color: amber-light
 
 <div class="proposition">
 
-グラフが連結かつ非二部ならば, 任意の初期頂点から開始しても, $u_t$の分布は, $t\to\infty$ のとき定常分布 $\pi \in [0,1]^V$ に収束する.
+グラフが連結かつ非二部ならば, 任意の初期頂点$u_0$から開始しても, $u_t$の分布は, $t\to\infty$ のとき**定常分布** $\pi \in [0,1]^V$ に収束する.
 
 </div>
 
@@ -244,8 +244,6 @@ color: amber-light
 
 </div>
 
-
-グラフがエクスパンダー性を満たすならば指数的に早く収束します!
 
 </v-clicks>
 
@@ -272,14 +270,17 @@ P = \begin{cases}
 \end{aligned}
 $$
 
-一般に, 重み付きのランダムウォークも遷移確率行列を定義できる.
+つまり, $P(u,v)=\Pr[u\to v]$.
+
+一般に, 重み付きのランダムウォークも同様に遷移確率行列を定める.
 
 <div class="definition">
 
 遷移確率行列$P\in[0,1]^{V\times V}$の固有値を$\lambda_1(P)\ge\dots\ge\lambda_n(P)$とする ($n=\abs{V}$)とし, $\lambda(P):=\max\{\abs{\lambda_2(P)},\abs{\lambda_n(P)}\}$とする.
 </div>
 
-- 全成分$1$のベクトルが$\lambda_1(P)=1$の固有ベクトルになる.
+- 無向グラフ上のRW(辺重みありも含)の遷移確率行列は常に実固有値を持つ (**可逆性**)
+- 全成分$1$のベクトルが$\lambda_1(P)=1$の固有ベクトルになる
 
 
 ---
@@ -298,13 +299,14 @@ color: amber-light
   グラフ$G$は, その単純ランダムウォークの遷移確率行列$P$が$\lambda_2(P)\le \lambda$であるとき, **片側$\lambda$-エクスパンダー**であるという. また, $\lambda(P)\le\lambda$ を満たすとき, **(両側)$\lambda$-エクスパンダー**であるという.
 </div>
 
-- パラメータ$\lambda$が小さいほど, そのグラフはよりエクスパンダー性が高い ($\lambda\in[0,1]$).
-- 二部グラフは常に$\lambda_n(P)=-1$なので, 両側エクスパンダーにはならない.
+- パラメータ$\lambda$が小さいほど, そのグラフはよりエクスパンダー性が高い ($\lambda\in[0,1]$)
+- 二部グラフは常に$\lambda_n(P)=-1$なので, 両側エクスパンダーにはならない
 - **スペクトルギャップ** = $1-\lambda$
+  - スペクトルギャップが頂点数に依存しない値で下から抑えらるときエクスパンダーと呼ぶことが多い
 
 <div class="remark">
 
-慣例ではグラフの性質としてエクスパンダー性を定義するが, 一般には遷移確率行列の性質として定義してもよい. 
+TCSの多くの文脈では正則グラフの性質としてエクスパンダー性を定義するが, 一般に遷移確率行列$P$の性質としても定義できる.
 </div>
 
 ---
@@ -317,12 +319,12 @@ color: amber-light
 
 ::content::
 
-グラフがエクスパンダー性を持つならば, ランダムウォークの分布は早く収束する.
+グラフがエクスパンダー性を持つならば, 単純ランダムウォークの分布は早く収束する.
 
 
 <div class="proposition">
 
-ランダムウォークの$t$番目の頂点$u_t$の分布を$p_t\in[0,1]^V$とする.
+単純ランダムウォークの$t$番目の頂点$u_t$の分布を$p_t\in[0,1]^V$とする.
 グラフ$G$が$\lambda$-エクスパンダーならば, 任意の初期頂点$u_0$と十分大きな全ての$t\ge 0$に対して, $\|p_t-\pi\|_1\le O(n^2\lambda^{t})$が成り立つ.
 
 </div>
@@ -373,62 +375,31 @@ color: amber-light
 
 ::title::
 
-# 遅延単純ランダムウォーク
+# 余談: なぜ「エクスパンダー」なのか？
 
 ::content::
 
-単純ランダムウォークに確率$1/2$の自己遷移を付与したランダムウォークを**遅延単純ランダムウォーク**という.
-遷移確率行列は次で与えられる:
+(私個人の意見ですが) エクスパンダー性は, ランダムウォークが「広がりやすい」性質を表すためにこの名前がついたと考えられる.
 
+<div class="lemma">
+
+グラフ$G=(V,E)$を$n$頂点$d$-正則$\lambda$-エクスパンダーとする.
+頂点部分集合$S\subseteq V$に対し, $e(S)$を, $S$と$\overline{S}$をまたがる辺の本数とすると,
+任意の$S\subseteq V$に対して
 $$
   \begin{align*}
-    P = \begin{cases}
-      \frac{1}{2} & \text{if } u=v,\\
-      \frac{1}{2\deg(u)} & \text{if }\{u,v\}\in E,\\
-      0 & \text{otherwise}.
-    \end{cases}
+    e(S) \ge \frac{(1-\lambda) d}{n} \abs{S}(n - \abs{S}).
   \end{align*}
 $$
 
-<div class="remark">
-
-単純遅延RWは**頂点→辺**の遷移と**辺→頂点**の遷移に分解して考えることができる.
-
 </div>
+
+- $|S|$が小さければ, $e(S)\gtrsim d|S|$ (グラフが$d$-正則なので常に$e(S)\le d|S|$).
 
 <div class="flex justify-center">
-<div class="relative">
-<img v-click.hide="1" src="/images/lazyRW1.svg" alt="遅延単純RWの遷移プロセス" class="w-40"/>
-<img v-click="['+1', '+1']" src="/images/lazyRW2.svg" alt="遅延単純RWの遷移プロセス" class="w-40 absolute top-0 left-0"/>
-<img v-click="2" src="/images/lazyRW3.svg" alt="遅延単純RWの遷移プロセス" class="w-40 absolute top-0 left-0"/>
-</div>
+<img src="/images/EML.svg" alt="エクスパンダー混交補題" class="w-110"/>
 </div>
 
-
----
-layout: top-title
-color: amber-light
----
-
-::title::
-
-# 遅延単純ランダムウォーク
-
-::content::
-
-<div class="flex justify-center">
-<img src="/images/VE.svg" alt="頂点-辺の遷移" class="w-80"/>
-</div>
-
-<div class="caption">
-「0次元」の点から開始し, 「1次元」の辺を経由して再び「0次元」の点に戻るプロセスに分解できる.
-</div>
-
-<div class="remark">
-
-高次元エクスパンダーでは, これをより高次元の面に一般化したランダムウォークを考える.
-
-</div>
 
 
 ---
@@ -459,7 +430,7 @@ color: amber-light
 
 <v-click>
 
-- 面$\sigma$に対し, その次元を$\dim(\sigma)=|\sigma|-1$で定め, 次元$i$の面の集合を$X(i)$とする.
+- 面$\sigma$に対し, その次元を$\dim(\sigma)=|\sigma|-1$で定め, 次元$i$の面の集合を$X(i)$とする
 
   - 頂点=次元$0$, 辺=次元$1$, ...
 
@@ -467,13 +438,13 @@ color: amber-light
 
 <v-click>
 
-- $X$の次元を$\max\{\dim(\sigma)\colon \sigma\in\mathcal{F}\}$とする.
+- $X$の次元を$\max\{\dim(\sigma)\colon \sigma\in\mathcal{F}\}$とする
 
 </v-click>
 
 <v-click>
 
-- 全ての極大面の次元が等しいとき, $X$は**純粋**であるという.
+- 全ての極大面の次元が等しいとき, $X$は**純粋**であるという
 
 </v-click>
 
@@ -481,7 +452,7 @@ color: amber-light
 
 <div class="remark">
 
-以後は主に純粋な$d$次元単体複体のみを考える (例えばマトロイド).
+以後は主に純粋な$d$次元単体複体のみを考える (例えばマトロイド)
 </div>
 
 </v-click>
@@ -598,8 +569,8 @@ color: amber-light
 
 - **定義**: $X(i)$上の下降上昇ウォーク$\PDU_i$の第二固有値に基づく性質
 - **特徴**:
-  - グラフのエクスパンダー性の高次元版
-  - $X(i)$全体の大域的な接続性を表現
+  - グラフエクスパンダー性の自然な一般化
+  - $X(i)$全体の大域的なエクスパンダー性を表現
   - マトロイド上の基交換ウォークの収束速度を保証
 
 </v-click>
@@ -636,6 +607,71 @@ color: amber-light
 
 # 大域エクスパンダー性
 Global Expansion
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# グラフ上の遅延単純ランダムウォーク
+
+::content::
+
+グラフ上の単純ランダムウォークに確率$1/2$の自己遷移を付与したランダムウォークを**遅延単純ランダムウォーク**という.
+遷移確率行列は次で与えられる:
+
+$$
+  \begin{align*}
+    P = \begin{cases}
+      \frac{1}{2} & \text{if } u=v,\\
+      \frac{1}{2\deg(u)} & \text{if }\{u,v\}\in E,\\
+      0 & \text{otherwise}.
+    \end{cases}
+  \end{align*}
+$$
+
+<div class="remark">
+
+単純遅延RWは**頂点$\to$辺**の遷移と**辺$\to$頂点**の遷移に分解して考えることができる
+
+</div>
+
+<div class="flex justify-center">
+<div class="relative">
+<img v-click.hide="1" src="/images/lazyRW1.svg" alt="遅延単純RWの遷移プロセス" class="w-40"/>
+<img v-click="['+1', '+1']" src="/images/lazyRW2.svg" alt="遅延単純RWの遷移プロセス" class="w-40 absolute top-0 left-0"/>
+<img v-click="2" src="/images/lazyRW3.svg" alt="遅延単純RWの遷移プロセス" class="w-40 absolute top-0 left-0"/>
+</div>
+</div>
+
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# グラフ上の遅延単純ランダムウォーク
+
+::content::
+
+<div class="flex justify-center">
+<img src="/images/VE.svg" alt="頂点-辺の遷移" class="w-80"/>
+</div>
+
+<div class="caption">
+「0次元」の点から開始し, 「1次元」の辺を経由して再び「0次元」の点に戻るプロセスに分解できる.
+</div>
+
+<div class="remark">
+
+高次元エクスパンダーでは, これをより高次元の面に一般化したランダムウォークを考える.
+
+</div>
+
 
 ---
 layout: top-title
@@ -859,18 +895,21 @@ color: amber-light
 
 <div class="definition">
 
-純粋な$d$次元単体複体$X=(V,\mathcal{F})$は, 各$0 \leq i \leq d$に対して$X(i)$上の下降上昇ウォーク$\PDU_i$が$\lambda_2(\PDU_i) \leq \lambda_i$を満たすとき, **大域$(\lambda_0,\dots,\lambda_d)$-エクスパンダー**である.
+純粋な$d$次元単体複体$X=(V,\mathcal{F})$は, 各$0 \leq i \leq d$に対して$X(i)$上の下降上昇ウォーク$\PDU_i$が
+$$\lambda_2(\PDU_i) \leq \lambda_i$$
+を満たすとき, **大域$(\lambda_0,\dots,\lambda_d)$-エクスパンダー**である.
 
 </div>
 
 <div class="remark">
 
-グラフのエクスパンダー性と同様, $\lambda_i$が小さいほど, $\PDU_i$が「混ざりやすい」.
+$\PDU_i$は半正定値なのでスペクトルギャップは$1-\lambda_2(\PDU_i)$.
+よって, グラフのエクスパンダー性と同様, $\lambda_i$が小さいほど, $\PDU_i$が「混ざりやすい」
 
 </div>
 
 - 自明: $\lambda_0 = 0$ (頂点$\to$空集合$\to$頂点は1ステップで混ざる)
-- $\lambda_d$が小さければ, 極大面上のランダムウォークの収束の早さが保証される.
+- $\lambda_d$が小さければ, 極大面上のランダムウォークの収束の早さが保証される
   - 実はマトロイドの基交換ウォークは$\lambda_d \le 1-\frac{1}{d+1}$
 
 ---
@@ -896,11 +935,12 @@ color: amber-light
 
 <div class="definition">
 
-単体複体$X=(V,\calF)$と面$\sigma\in\calF$に対し, $\sigma$における**リンク**とは, 単体複体$X_\sigma = (V_\sigma,\calF_\sigma)$である. ただし, $V_\sigma:=V\setminus \sigma$,
+単体複体$X=(V,\calF)$と面$\sigma\in\calF$に対し, $\sigma$における**リンク**とは, 単体複体$X_\sigma = (V_\sigma,\calF_\sigma)$である. ただし
 
 $$
   \begin{align*}
-    \calF_\sigma = \{\tau\setminus\sigma\colon \tau\in\calF, \tau\supseteq\sigma\}.
+    \calF_\sigma &= \{\tau\setminus\sigma\colon \tau\in\calF, \tau\supseteq\sigma\},\\
+    V_\sigma &= \{ u\in V\setminus \sigma\colon \sigma\cup\{u\}\in \calF \}.
   \end{align*}
 $$
 
@@ -992,8 +1032,8 @@ color: amber-light
   
 </div>
 
-- 第二固有値のみを見る (すなわち骨格グラフの**片側**エクスパンダー性に着目する) ことに注意.
-- 従って, 局所エクスパンダーだからといって, 局所ランダムウォークの混交性が保証されるわけではない.
+- 第二固有値のみを見る (すなわち骨格グラフの**片側**エクスパンダー性に着目する) ことに注意
+- 従って, 局所エクスパンダーだからといって, 局所ランダムウォークの混交性が保証されるわけではない
 
 ---
 layout: top-title
@@ -1013,18 +1053,18 @@ color: amber-light
 - $\sigma=\emptyset$のリンクの骨格グラフ$G_\emptyset$は$G$そのもの
   - 辺$e$の重み$\pi_1(e)$は, その辺を含む三角形の個数に比例
 
-- 各頂点$\sigma=\{u\}$のリンクの骨格グラフ$G_\sigma$は, 頂点$u$の近傍からなる誘導部分グラフ.
+- 各頂点$\sigma=\{u\}$のリンクの骨格グラフ$G_\sigma$は, 頂点$u$の近傍からなる誘導部分グラフ
   - 辺の重みは一様 (三角形上の定常分布が一様だから)
 
 <div class="topic-box">
 
-まとめると, $G$自身および各頂点の近傍からなる誘導部分グラフが片側エクスパンダー性を持つとき, 三角形複体は局所エクスパンダー性を持つ.
+まとめると, $G$自身および各頂点の近傍からなる誘導部分グラフが片側エクスパンダー性を持つとき, 三角形複体は局所エクスパンダー性を持つ
 
 </div>
 
 <div class="remark">
 
-代表的なエクスパンダーグラフ(ラマヌジャングラフ)の多くの構成は内周(非自明な最小長サイクル)が大きいので, その上の三角形複体は決して局所エクスパンダー性を持たない.
+代表的なエクスパンダーグラフ(ラマヌジャングラフ)の多くの構成は内周(非自明な最小長サイクル)が大きいので, その上の三角形複体は決して局所エクスパンダー性を持たない
 
 </div>
 
@@ -1155,8 +1195,9 @@ color: amber-light
 
 </div>
 
-<div class="relative h-10">
+<div class="relative h-10 flex items-center">
   <Arrow x1="50%" y1="0" x2="50%" y2="55" width="3" color="#ff9800" />
+  <span class="pl-115 pt-5" style="color: #ff9800;">トリクルダウン定理</span>
 </div>
 
 <div class="topic-box">
@@ -1165,8 +1206,9 @@ $X$は局所$\gamma$-エクスパンダー
 
 </div>
 
-<div class="relative h-10">
+<div class="relative h-10 flex items-center">
   <Arrow x1="50%" y1="0" x2="50%" y2="55" width="3" color="#ff9800" />
+  <span class="pl-115 pt-5" style="color: #ff9800;">Kaufman-Oppenheimの定理</span>
 </div>
 
 <div class="topic-box">
@@ -1175,13 +1217,13 @@ $X$は大域$(\lambda_0,\dots,\lambda_d)$-エクスパンダー
 
 </div>
 
-<div class="relative h-10">
+<div class="relative h-10 flex items-center">
   <Arrow x1="50%" y1="0" x2="50%" y2="55" width="3" color="#ff9800" />
 </div>
 
 <div class="topic-box">
 
-$X(d)$の交換グラフはエクスパンダー性を持つ.
+$X(d)$の交換グラフはエクスパンダー性を持つ
 
 </div>
 
@@ -1213,16 +1255,170 @@ color: amber-light
 
 <div style="text-align: center;">
 
-$\abs{I}<\abs{J}$を満たす任意の$I,J\in\mathcal{F}$に対し, ある$j\in J\setminus I$が存在して, $I\cup\{j\}\in \mathcal{F}$.
+$\abs{I}<\abs{J}$を満たす任意の$I,J\in\mathcal{F}$に対し, ある$j\in J\setminus I$が存在して, $I\cup\{j\}\in \mathcal{F}$
 
 </div>
 
 </div>
 
-- 極大な面を**基**という.
-- マトロイドは純粋であり, 基の要素数をマトロイド$X$の**ランク**という.
+- 極大な面を**基**という
+- マトロイドは純粋であり, 基の要素数をマトロイド$X$の**ランク**という (ランク=次元+1)
 - 例
   - グラフ的マトロイド: 固定したグラフの森の辺からなる部分集合族
   - 線形マトロイド: 固定した行列の線型独立な行のindex集合からなる部分集合族
+
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# マトロイドのエクスパンダー性
+
+::content::
+
+<div class="lemma">
+
+任意のマトロイド$X$は局所$0$-エクスパンダーである.
+</div>
+
+**証明.**
+
+次元$d-2$の面$\sigma\in X(d-2)$を一つ固定し, そのリンク$X_\sigma$の骨格グラフ$G_\sigma$を考える.
+基上の定常分布は一様分布なので, 骨格グラフ上の局所ランダムウォークは$G_\sigma$上の単純RWとなる.
+
+<div class="flex justify-center">
+<img src="/images/matroid_skelton.svg" alt="マトロイドの骨格グラフ" class="w-70"/>
+</div>
+
+<div class="caption">
+
+  マトロイドの骨格グラフ$G_\sigma$の例. 二頂点$u,v\in V(G_\sigma)$は$\sigma\cup\{u,v\}$が基となるときに辺で結ばれる.
+</div>
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# マトロイドのエクスパンダー性
+
+::content::
+
+<div class="claim">
+
+ マトロイド$X=(V,\calF)$から構成されたこの骨格グラフ$G_\sigma$は, 補グラフの全ての連結成分がクリークとなる. すなわち, 補グラフ$\overline{G_\sigma}$の任意の長さ2のパス$\{a,b\},\{b,c\}\in E(\overline{G_\sigma})$ (ただし$a\ne c$) に対して, $\{a,c\}\in E(\overline{G_\sigma})$.
+
+</div>
+
+**主張の証明.**
+
+背理法で示す. ある$\{a,b\},\{b,c\}\in E(\overline{G_\sigma})$であって, $\{a,c\}\not \in E(\overline{G_\sigma})$となるとする.
+このとき
+1. $\sigma\cup\{a,b\}$と$\sigma\cup\{b,c\}$は$X$の独立集合ではない ($\calF$に属さない).
+2. $I:=\sigma\cup\{a,c\}$は元のマトロイドの基である.
+3. $b$は骨格グラフの頂点なので, $I':=\sigma\cup\{b\}$は独立集合.
+
+$|I'|<|I|$に対して, 独立集合の公理を適用すると, $I'\cup\{a\}$と$I'\cup\{c\}$の一方は独立集合. これは1に矛盾. $\square$
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# マトロイドのエクスパンダー性
+
+::content::
+
+<div class="lemma">
+
+任意のマトロイド$X$は局所$0$-エクスパンダーである.
+</div>
+
+**証明の続き.**
+
+主張より, $G_\sigma$の隣接行列$A$は, 
+
+
+$$
+  \begin{align*}
+    A = J - \sum_{i=1}^c v_i v_i^{\top}
+  \end{align*}
+$$
+
+の形で書ける. ただし, $J$は全ての成分が$1$の行列, $v_i$はクリークの頂点集合の支持ベクトル.
+また, 遷移確率行列$P_\sigma$は$P_\sigma=D^{-1}A$の形で表せる ($D$は各頂点の次数を対角に並べた行列).
+したがって, $x\bot \mathbf{1}$に関する二次形式$x^\top P_\sigma x$は, 
+
+$$
+  \begin{align*}
+    x^\top P_\sigma x = x^\top D^{-1} A x \le x^\top D^{-1}J x = 0
+  \end{align*}
+$$
+
+となり, 特に$\lambda_2(P_\sigma)\le 0$. $\square$
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# マトロイドのエクスパンダー性
+
+::content::
+
+補題, Oppenheimのトリクルダウン定理, Kaufman-Oppenheimの定理を用いると, マトロイドの大域エクスパンダー性を示せる.
+
+<div class="theorem">
+
+自然数$d$に対し, $\lambda_i = 1 - \frac{1}{i+1}$ ($i=0,\dots,d$)と定める.
+任意の次元$d$のマトロイド$X$は大域$(\lambda_0,\dots,\lambda_d)$-エクスパンダーである.
+
+</div>
+
+- (トリクルダウン定理を適用するには本当は$G_\sigma$の連結性も示さなければならないが, 簡単に示せるので今回は割愛)
+- 交換グラフのエクスパンダー性や基の交換ウォークの収束性の保証が与えられる
+
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# まとめと展望
+
+::content::
+
+#### 単体複体上の高次元エクスパンダー性
+
+- グラフのエクスパンダー性は単体複体上に自然に拡張される
+- 局所エクスパンダー性：各面のリンクの骨格グラフが良いエクスパンダー性を持つ
+- 大域エクスパンダー性：単体複体上のランダムウォークの混交性
+
+#### マトロイドとエクスパンダー性
+
+- マトロイドは局所$0$-エクスパンダー（最適な局所エクスパンダー）
+- 局所エクスパンダー性 $\Rightarrow$ 大域エクスパンダー性 $\Rightarrow$ 基交換グラフのエクスパンダー性
+- マトロイドの基上のランダムウォークの高速混合の理論的保証
+
+<v-click>
+
+#### 今後の(個人的)展望
+
+- より広いクラスの離散構造への拡張（e.g., マトロイド交叉)
+- 新しい誤り訂正符号の構成や平均時計算量への応用
+
+</v-click>
+
 
 
