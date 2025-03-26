@@ -149,7 +149,7 @@ color: amber-light
 - 私の研究におけるエクスパンダー性の応用
   - 平均時計算量の困難性増幅 <a href="https://dl.acm.org/doi/10.1145/3564246.3585189" target="_blank" class="cite-reference">Hirahara and S, STOC'23</a>
   - 埋め込みクリーク問題の最適な探索から判定への帰着 <a href="https://dl.acm.org/doi/10.1145/3618260.3649751" target="_blank" class="cite-reference">[Hirahara and S, STOC'24]</a>
-  - 行列積アルゴリズムの誤り訂正 <span class="cite-reference"> [Hirahara and S, STOC'25] </span>
+  - 行列積アルゴリズムの誤り訂正 <a href="https://eccc.weizmann.ac.il/report/2025/031/" class="cite-reference"> [Hirahara and S, STOC'25] </a>
 
 </v-clicks>
 
@@ -169,7 +169,7 @@ color: amber-light
 <v-clicks>
 
 - 計算量理論と誤り訂正符号におけるブレイクスルー
-  - PCP定理のパラメータ改善 <span class="cite-reference">\[Bafna, Minzer, Vyas, Yun, STOC'25]</span>
+  - PCP定理のパラメータ改善 <a href="https://arxiv.org/abs/2407.12762" class="cite-reference">\[Bafna, Minzer, Vyas, Yun, STOC'25]</a>
   - 立方複体に基づく量子誤り訂正符号 <a href="https://dl.acm.org/doi/10.1145/3519935.3520024" class="cite-reference">\[Dinur, Evra, Livne, Lubotzky, Mozes, STOC'22\]</a><a href="https://dl.acm.org/doi/10.1145/3519935.3520017" class="cite-reference">\[Panteleev, Kalachev, STOC'22\]</a>
   - マトロイドの基の数え上げ <a href="https://projecteuclid.org/journals/annals-of-mathematics/volume-199/issue-1/Log-concave-polynomials-II--High-dimensional-walks-and-an/10.4007/annals.2024.199.1.4.short" class="cite-reference">\[Anari, Liu, Gharan, Vinzant, Ann. of Math.(2024)\]</a>
   
@@ -346,7 +346,7 @@ color: amber-light
 <summary>証明のアイデア (クリックして展開)</summary>
 
   簡単のため$P^\top=P$とする (つまり$G$は正則).
-  ベクトル $p_t - \pi = (p_0-\pi)P^t$ の$\ell^2$ノルムを抑えてから$\ell^1$ノルムのバウンドに変換する. $\pi_0 - \pi$は第一固有ベクトル$\mathbf{1}$に直交するので,  固有値のmin-maxの関係(Courant-Fischerの定理)より
+  ベクトル $p_t - \pi = (p_0-\pi)P^t$ の$\ell^2$ノルムを抑えてから$\ell^1$ノルムのバウンドに変換する. $\pi_0 - \pi$は第一固有ベクトル$\mathbf{1}$に直交するので,  固有値のmin-maxの関係(Courant-Fischerの定理)から
 
   $$
     \begin{align*}
@@ -679,7 +679,7 @@ color: amber-light
 
 <div class="remark">
 
-高次元エクスパンダーでは, これをより高次元の面に一般化したランダムウォークを考える.
+高次元エクスパンダーでは, これを高次元の面に一般化したランダムウォークを考える.
 
 </div>
 
@@ -994,7 +994,7 @@ $X$を$d$次純粋な単体複体とする.
 </div>
 
 - $X$が純粋 $\Rightarrow$ $X_\sigma$も純粋
-- $\dim \sigma \le d-2$ より, $X_\sigma$の骨格グラフ$(X_\sigma(0),X_\sigma(1))$を定義可能
+- $\dim \sigma \le d-2$ から, $X_\sigma$の骨格グラフ$(X_\sigma(0),X_\sigma(1))$を定義可能
 
 </v-clicks>
 
@@ -1107,6 +1107,8 @@ color: amber-light
 
 ::right::
 
+<v-click>
+
 #### 局所エクスパンダー性を持つグラフ
 
 <div class="flex justify-center">
@@ -1116,6 +1118,8 @@ color: amber-light
 たくさんの三角形が均一に散らばっていて, かつ辺を共有する三角形もたくさんある.
 
 例:<a href="https://www.sciencedirect.com/science/article/pii/S019566980400099X?via%3Dihub" class="cite-reference">[Lubotzky, Samuels, Vishne, 2005]</a>によるラマヌジャン複体は局所的にはBruhat-Tits building (無限$d$-正則木の高次元版)
+
+</v-click>
 
 ---
 layout: top-title
@@ -1169,12 +1173,12 @@ color: amber-light
 
 ::content::
 
-局所エクスパンダー性を確認するには, **全ての**面$\sigma$に対して$\lambda_2(P_\sigma)$を抑えなければならない.
+局所エクスパンダー性を確認するには, 次元$d-2$**以下の**全ての面$\sigma$に対して$\lambda_2(P_\sigma)$を抑えなければならない.
 - そもそも局所ウォーク$P_\sigma$の成分(=$G_\sigma$の辺重み)すら簡単な形でないのに, 固有値を抑えるのは難しそう😔
 
 <v-clicks>
 
-Oppenheimのトリクルダウン定理: **次元$d-2$の**面$\sigma$について, $\lambda_2(P_\sigma)$を抑えればよい.
+Oppenheimのトリクルダウン定理: 全ての次元**ちょうど**$d-2$の面$\sigma$について, $\lambda_2(P_\sigma)$を抑えればよい.
 
 <div class="theorem">
 
@@ -1188,7 +1192,7 @@ Oppenheimのトリクルダウン定理: **次元$d-2$の**面$\sigma$につい�
 </div>
 
 - 高次元の面における局所RWを片側エクスパンダー性が低次元に「浸透」(trickle down) していく
-- メリット: $\sigma\in X(d-2)$ならば骨格グラフ$G_\sigma$の辺重みは全て一様
+- メリット: $\sigma\in X(d-2)$ならば骨格グラフ$G_\sigma$の**辺重みは全て一様**
 
 </v-clicks>
 
@@ -1205,7 +1209,7 @@ color: amber-light
 
 <div class="topic-box">
 
-全ての$\sigma \in X(d-2)$に対して$\lambda_2(P_\sigma)\le \gamma$
+全ての$\sigma \in X(d-2)$に対し, $\lambda_2(P_\sigma)\le \gamma$かつ$G_\sigma$は連結
 
 </div>
 
@@ -1227,19 +1231,10 @@ $X$は局所$\gamma$-エクスパンダー
 
 <div class="topic-box">
 
-$X$は大域$(\lambda_0,\dots,\lambda_d)$-エクスパンダー
+$X$は大域$(\lambda_0,\dots,\lambda_d)$-エクスパンダー. 特に$X(d)$の交換グラフはエクスパンダー性を持つ
 
 </div>
 
-<div class="relative h-10 flex items-center">
-  <Arrow x1="50%" y1="0" x2="50%" y2="55" width="3" color="#ff9800" />
-</div>
-
-<div class="topic-box">
-
-$X(d)$の交換グラフはエクスパンダー性を持つ
-
-</div>
 
 
 
@@ -1463,9 +1458,13 @@ color: amber-light
   - 集合$I\subseteq V$について「$I\in\calF$ですか?」という質問をすると, オラクルがYes/Noを答えてくれる
   - 効率的 = 質問と演算の回数の合計が$\mathrm{poly}(n)$
 
+
+<div class="flex justify-center">
+<img src="/images/oracle.svg" alt="独立性オラクル" class="w-60"/>
+</div>
+
 </v-click>
 
-<!--  TODO: 図 -->
 
 ---
 layout: top-title
@@ -1648,10 +1647,44 @@ $$
 <v-clicks>
 
 - $\Pr_{\sigma\sim \calB}[\sigma\ni u]$はMCMC(上昇下降ウォーク$\PDU_d$を使って基をサンプリング)で近似計算
-  - **高次元エクスパンダー性より混交時間がバウンドされている!**
+  - **高次元エクスパンダー性によって混交時間がバウンドされている!**
 - $\calB_u$は, $u$で縮約したマトロイド ($u$のリンク$X_{\{u\}}$) の基全体と一致するので, $1/\abs{\calB_u}$は再帰的に近似計算
   - 頂点数が一つ減るので, 再帰の深さは$d+1$
-  - 各ステップで$1\pm \varepsilon$倍の近似値が確率$1-\delta$で得られるとすると, 全て掛け算すると$1\pm n\varepsilon$倍の近似値を確率$1-n\delta$で得られる
+  - 各ステップで$1\pm \varepsilon$倍の近似値が確率$1-\delta$で得られるとすると, 全て掛け算すると$1\pm (d+1)\varepsilon$倍の近似値を確率$1-(d+1)\delta$で得られる
+
+</v-clicks>
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# 近年の研究動向
+
+::content::
+
+### 一様分布から重み付きへの拡張
+
+<v-clicks>
+
+- $d$次単体複体$X=(V,\calF)$と$X(d)$上の分布$\pi\in[0,1]^{X(d)}$に対し, 母関数
+
+$$
+  \begin{align*}
+    g_X(x_1,\dots,x_n) := \sum_{\sigma\in X(d)} \pi(\sigma)\prod_{i\in\sigma} x_i
+  \end{align*}
+$$
+
+が$x=\mathbf{1}$で**対数凹性**を持つ (i.e., $\nabla^2\log g_X(\mathbf{1})$が半負定値) $\iff$ $X$が局所$0$-エクスパンダー <a href="https://projecteuclid.org/journals/annals-of-mathematics/volume-199/issue-1/Log-concave-polynomials-II--High-dimensional-walks-and-an/10.4007/annals.2024.199.1.4.short" class="cite-reference">\[Anari, Liu, Gharan, Vinzant, Ann. of Math.(2024)\]</a>
+
+- **Lorenzian多項式**: 斉次多項式への一般化 <a href="https://annals.math.princeton.edu/2020/192-3/p04" class="cite-reference">\[Brändén, Huh, Ann. of Math.(2020)\]</a>
+  - Lorenzian多項式$p(x)=\sum_\alpha c_\alpha x^\alpha$に対し, $c_\alpha\ne 0$なる$\alpha\in \mathbb{Z}^n$全体はM凸集合 (マトロイドのmultiset版)
+
+### 他の離散構造
+
+- 一般グラフのマッチングの辺集合からなる単体複体上の$\PDU$の混交性 <a href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.APPROX/RANDOM.2024.63" class="cite-reference">\[Jain, Mizgerd, RANDOM(2024)\]</a>
 
 </v-clicks>
 
@@ -1668,7 +1701,6 @@ color: amber-light
 
 #### 単体複体上の高次元エクスパンダー性
 
-- グラフのエクスパンダー性は単体複体上に自然に拡張される
 - 局所エクスパンダー性：各面のリンクの骨格グラフが良いエクスパンダー性を持つ
 - 大域エクスパンダー性：単体複体上のランダムウォークの混交性
 
@@ -1676,14 +1708,13 @@ color: amber-light
 
 - マトロイドは局所$0$-エクスパンダー（最適な局所エクスパンダー）
 - 局所エクスパンダー性 $\Rightarrow$ 大域エクスパンダー性 $\Rightarrow$ 基交換グラフのエクスパンダー性
-- マトロイドの基上のランダムウォークの高速混合の理論的保証
+- マトロイドの基の個数の近似値をMCMCに基づいて計算
 
 <v-click>
 
 #### 今後の(個人的)展望
 
-- より広いクラスの離散構造への拡張（e.g., マトロイド交叉)
-- 新しい誤り訂正符号の構成や平均時計算量への応用
-
+- マトロイドに基づく誤り訂正符号の解析: $\mathbb{F}^V \ni x \mapsto (x(B))_{B\in \calB} \in \mathbb{F}^\calB$ (ただし $x(B)=\sum_{u\in B}x(u)$)
+- $\calB=\binom{V}{k}$のときは誤り訂正能力を持つ <a href="https://epubs.siam.org/doi/10.1137/080734030" class="cite-reference">\[Impagliazzo, Jaiswal, Kabanets, Wigderson, SIAM J. Comput. 2010\]</a>
 </v-click>
 
