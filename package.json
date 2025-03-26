@@ -10,7 +10,8 @@
   "dependencies": {
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "^0.25.0",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "slidev-theme-neversink": "^0.3.6"
   },
   "version": "1.0.0",
   "description": "To start the slide show:",
@@ -27,7 +28,6 @@
   },
   "homepage": "https://github.com/NobutakaShimizu/matroid_seminar#readme",
   "devDependencies": {
-    "@slidev/cli": "^51.4.0",
-    "slidev-theme-neversink": "^0.3.6"
+    "@slidev/cli": "^51.4.0"
   }
 }
