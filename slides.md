@@ -15,8 +15,8 @@ drawings:
 # enable MDC Syntax: https://sli.dev/features/mdc
 mdc: true
 author: Nobutaka Shimizu
-css: 
-  - 'styles/custom.css'
+# css: 
+#   - 'styles/custom.css'
 fonts:
   sans: 'Roboto'
   mono: 'Fira Code'
