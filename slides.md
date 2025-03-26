@@ -33,8 +33,9 @@ themeConfig:
 @北海道大学マトロイドセミナー
 
   [清水 伸高](https://sites.google.com/view/nobutaka-shimizu/home) (東京科学大学)
-
-
+  <div class="absolute bottom-5 right-5">
+    <QRCode value="https://nobutakashimizu.github.io/matroid_seminar/" :size="120" render-as="svg"/>
+  </div>
 
 ---
 layout: top-title
