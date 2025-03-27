@@ -1678,16 +1678,47 @@ $$
   \end{align*}
 $$
 
-が$x=\mathbf{1}$で**対数凹性**を持つ (i.e., $\nabla^2\log g_X(\mathbf{1})$が半負定値) $\iff$ $X$が局所$0$-エクスパンダー <a href="https://projecteuclid.org/journals/annals-of-mathematics/volume-199/issue-1/Log-concave-polynomials-II--High-dimensional-walks-and-an/10.4007/annals.2024.199.1.4.short" class="cite-reference">\[Anari, Liu, Gharan, Vinzant, Ann. of Math.(2024)\]</a>
+が${}^{\forall} x\in \Real_{>0}^n$で**対数凹性**を持つ (i.e., $\nabla^2\log g_X(x)$が${}^{\forall}x\in\Real_{>0}^n$で半負定値) $\Rightarrow$ $X$が局所$0$-エクスパンダー <a href="https://projecteuclid.org/journals/annals-of-mathematics/volume-199/issue-1/Log-concave-polynomials-II--High-dimensional-walks-and-an/10.4007/annals.2024.199.1.4.short" class="cite-reference">\[Anari, Liu, Gharan, Vinzant, Ann. of Math.(2024)\]</a>
+- この拡張により, マトロイドのTutte多項式の(特定の領域内での評価値の)近似計算, Determinal Point Processのサンプリングが可能
 
 - **Lorenzian多項式**: 斉次多項式への一般化 <a href="https://annals.math.princeton.edu/2020/192-3/p04" class="cite-reference">\[Brändén, Huh, Ann. of Math.(2020)\]</a>
-  - Lorenzian多項式$p(x)=\sum_\alpha c_\alpha x^\alpha$に対し, $c_\alpha\ne 0$なる$\alpha\in \mathbb{Z}^n$全体はM凸集合 (マトロイドのmultiset版)
+  - Lorenzian多項式$p(x)=\sum_\alpha c_\alpha x^\alpha$ ($\alpha\in \mathbb{Z}_{\ge 0}^n$は成分和=$d$の中で動く) に対し, $c_\alpha\ne 0$なる$\alpha$全体はM凸集合 (マトロイドのmultiset版)
 
-### 他の離散構造
-
-- 一般グラフのマッチングの辺集合からなる単体複体上の$\PDU$の混交性 <a href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.APPROX/RANDOM.2024.63" class="cite-reference">\[Jain, Mizgerd, RANDOM(2024)\]</a>
 
 </v-clicks>
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# 余談: なぜ多項式の対数凹性が重要?
+
+::content::
+
+- 簡単のため, 変数$x_u$での偏微分を$\partial_u$と表し, 母関数$g_X(x)=\sum_{\sigma\in X(d)} \prod_{u\in \sigma}x_u$とする
+- このとき, $\partial_u g_X(x) = \sum_{\sigma\in X(d),\sigma\ni u} \prod_{i\in \sigma\setminus\{u\}} x_i$ = リンク$X_{\{u\}}$の母関数
+  - すなわち, 母関数の微分 = リンクの母関数
+- $\log g_X$を偏微分して$x=\mathbf{1}$を代入すると
+  
+  $$
+    \begin{align*}
+      \partial_i \log g_X (\mathbf{1}) = \frac{\partial_i g_X(\mathbf{1})}{g_X(\mathbf{1})} = \Pr_{\sigma\sim X(d)}[\sigma\ni i] 
+    \end{align*}
+  $$
+
+- 二回偏微分して$x=\mathbf{1}$を代入すると
+
+$$
+  \begin{align*}
+    \partial_i\partial_j \log g_X(\mathbf{1}) = \Pr_{\sigma\sim X(d)}[\sigma\supseteq\{i,j\}] - \Pr_{\sigma}[\sigma\ni i]\Pr_{\sigma}[\sigma\ni j]
+  \end{align*}
+$$
+  - これが$i\ne j$で負$\Rightarrow$ $i\in\sigma$と$j\in\sigma$は負の相関を持つ (balanced matroid) <a href="https://dl.acm.org/doi/10.1145/129712.129716" class="cite-reference">\[Feder, Mihail, STOC(1992)\]</a>
+  - 対数凹性は, これを$(i,j)$成分に持つ行列が半負定値であるという性質
+
 
 ---
 layout: top-title
