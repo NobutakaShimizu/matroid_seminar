@@ -146,10 +146,10 @@ color: amber-light
 
 - 計算量理論の擬似ランダムネスの文脈における非常に重要な道具
   - 誤り訂正符号の構成, PCP定理の証明, 擬似乱数生成器の構成
-- 私の研究におけるエクスパンダー性の応用
-  - 平均時計算量の困難性増幅 <a href="https://dl.acm.org/doi/10.1145/3564246.3585189" target="_blank" class="cite-reference">Hirahara and S, STOC'23</a>
-  - 埋め込みクリーク問題の最適な探索から判定への帰着 <a href="https://dl.acm.org/doi/10.1145/3618260.3649751" target="_blank" class="cite-reference">[Hirahara and S, STOC'24]</a>
-  - 行列積アルゴリズムの誤り訂正 <a href="https://eccc.weizmann.ac.il/report/2025/031/" class="cite-reference"> [Hirahara and S, STOC'25] </a>
+- 私の研究におけるエクスパンダー性の活用
+  - 平均時計算量の困難性増幅 <a href="https://dl.acm.org/doi/10.1145/3564246.3585189" target="_blank" class="cite-reference">\[Hirahara and S, STOC(2023)\]</a>
+  - 埋め込みクリーク問題の最適な探索から判定への帰着 <a href="https://dl.acm.org/doi/10.1145/3618260.3649751" target="_blank" class="cite-reference">\[Hirahara and S, STOC(2024)\]</a>
+  - 行列積アルゴリズムの誤り訂正 <a href="https://eccc.weizmann.ac.il/report/2025/031/" class="cite-reference"> \[Hirahara and S, STOC(2025)\] </a>
 
 </v-clicks>
 
@@ -169,8 +169,8 @@ color: amber-light
 <v-clicks>
 
 - 計算量理論と誤り訂正符号におけるブレイクスルー
-  - PCP定理のパラメータ改善 <a href="https://arxiv.org/abs/2407.12762" class="cite-reference">\[Bafna, Minzer, Vyas, Yun, STOC'25]</a>
-  - 立方複体に基づく量子誤り訂正符号 <a href="https://dl.acm.org/doi/10.1145/3519935.3520024" class="cite-reference">\[Dinur, Evra, Livne, Lubotzky, Mozes, STOC'22\]</a><a href="https://dl.acm.org/doi/10.1145/3519935.3520017" class="cite-reference">\[Panteleev, Kalachev, STOC'22\]</a>
+  - PCP定理のパラメータ改善 <a href="https://arxiv.org/abs/2407.12762" class="cite-reference">\[Bafna, Minzer, Vyas, Yun, STOC(2025)]</a>
+  - 立方複体に基づく量子誤り訂正符号 <a href="https://dl.acm.org/doi/10.1145/3519935.3520024" class="cite-reference">\[Dinur, Evra, Livne, Lubotzky, Mozes, STOC(2022)\]</a><a href="https://dl.acm.org/doi/10.1145/3519935.3520017" class="cite-reference">\[Panteleev, Kalachev, STOC(2022)\]</a>
   - マトロイドの基の数え上げ <a href="https://projecteuclid.org/journals/annals-of-mathematics/volume-199/issue-1/Log-concave-polynomials-II--High-dimensional-walks-and-an/10.4007/annals.2024.199.1.4.short" class="cite-reference">\[Anari, Liu, Gharan, Vinzant, Ann. of Math.(2024)\]</a>
   
 <div class="topic-box">
@@ -182,7 +182,7 @@ color: amber-light
 
 </div>
 
-- 参考資料: 東北大で高次元エクスパンダーに関する集中講義をした際の[講義ノート](https://nobutakashimizu.github.io/lecture_May2024/main.pdf)
+- [資料](https://nobutakashimizu.github.io/lecture_May2024/main.pdf): 清水が2024年5月に東北大数学科で高次元エクスパンダーに関する集中講義をした際の講義ノート
 
 </v-clicks>
 
@@ -270,18 +270,16 @@ color: amber-light
 
 ::content::
 
-遷移確率行列を$P$とする:
+遷移確率行列を$P\in[0,1]^{V\times V}$とする:
 
 $$
 \begin{aligned}
-P = \begin{cases}
+P(u,v) := \Pr[u\to v] = \begin{cases}
 \frac{1}{\deg(u)} & \text{if }\{u,v\}\in E,\\
 0 & \text{otherwise}.
 \end{cases}
 \end{aligned}
 $$
-
-つまり, $P(u,v)=\Pr[u\to v]$.
 
 一般に, 重み付きのランダムウォークも同様に遷移確率行列を定める.
 
@@ -292,7 +290,7 @@ $$
 
 - 無向グラフ上のRW(辺重みありも含)の遷移確率行列は常に実固有値を持つ (**可逆性**)
 - 全成分$1$のベクトルが$\lambda_1(P)=1$の固有ベクトルになる
-
+- $G$が二部グラフである$\iff \lambda_n(P)=-1$
 
 ---
 layout: top-title
@@ -310,15 +308,18 @@ color: amber-light
   グラフ$G$は, その単純ランダムウォークの遷移確率行列$P$が$\lambda_2(P)\le \lambda$であるとき, **片側$\lambda$-エクスパンダー**であるという. また, $\lambda(P)\le\lambda$ を満たすとき, **(両側)$\lambda$-エクスパンダー**であるという.
 </div>
 
-- パラメータ$\lambda$が小さいほど, そのグラフはよりエクスパンダー性が高い ($\lambda\in[0,1]$)
-- 二部グラフは常に$\lambda_n(P)=-1$なので, 両側エクスパンダーにはならない
-- **スペクトルギャップ** = $1-\lambda$
-  - スペクトルギャップが頂点数に依存しない値で下から抑えらるときエクスパンダーと呼ぶことが多い
+<v-clicks>
 
+- 文脈によるが, スペクトルギャップが非自明な値(例えば頂点数に依存しない値)で下から抑えらるときエクスパンダーと呼ぶことが多い
+- パラメータ$\lambda$が小さいほど, そのグラフはよりエクスパンダー性が高い ($\lambda\in[0,1]$)
+- 二部グラフは$\lambda_n(P)=-1$なので両側エクスパンダーにはならないが片側エクスパンダーにはなりえる
+- **スペクトルギャップ** = $1-\lambda$
+ 
 <div class="remark">
 
-TCSの多くの文脈では正則グラフの性質としてエクスパンダー性を定義するが, 一般に遷移確率行列$P$の性質としても定義できる.
+TCSの多くの文脈では正則グラフの性質としてエクスパンダー性を定義するが, 一般にランダムウォーク(遷移確率行列$P$)の性質としても定義できる.
 </div>
+</V-clicks>
 
 ---
 layout: top-title
@@ -1102,7 +1103,7 @@ color: amber-light
 
 特に, 三角形を持たないので(三角形複体は)局所エクスパンダー性は持たない.
 
-例: <a href="https://link.springer.com/article/10.1007/BF02126799" class="cite-reference">[Lubotzky, Phillips, Sarnak, Combinatorica, 1988]</a>
+例: <a href="https://link.springer.com/article/10.1007/BF02126799" class="cite-reference">\[Lubotzky, Phillips, Sarnak, Combinatorica(1988)\]</a>
 
 
 ::right::
@@ -1117,7 +1118,7 @@ color: amber-light
 
 たくさんの三角形が均一に散らばっていて, かつ辺を共有する三角形もたくさんある.
 
-例:<a href="https://www.sciencedirect.com/science/article/pii/S019566980400099X?via%3Dihub" class="cite-reference">[Lubotzky, Samuels, Vishne, 2005]</a>によるラマヌジャン複体は局所的にはBruhat-Tits building (無限$d$-正則木の高次元版)
+例:<a href="https://www.sciencedirect.com/science/article/pii/S019566980400099X?via\%3Dihub" class="cite-reference">\[Lubotzky, Samuels, Vishne, European J. Combin.(2005)\]</a>によるラマヌジャン複体は局所的にはBruhat-Tits building (無限$d$-正則木の高次元版)
 
 </v-click>
 
@@ -1132,7 +1133,7 @@ color: amber-light
 
 ::content::
 
-局所エクスパンダー $\Rightarrow$ 大域エクスパンダーが成り立つ <a href="https://link.springer.com/article/10.1007/s00493-019-3847-0" class="cite-reference">[Kaufman, Oppenheim, Combinatorica, 2020]</a>
+局所エクスパンダー $\Rightarrow$ 大域エクスパンダーが成り立つ <a href="https://link.springer.com/article/10.1007/s00493-019-3847-0" class="cite-reference">\[Kaufman, Oppenheim, Combinatorica(2020)\]</a>
 
 - 局所エクスパンダー : 三角形がどの局所的な部分を見ても均一に分散
 - 大域エクスパンダー : 三角形上の上昇下降ランダムウォークが高速に収束
@@ -1477,9 +1478,9 @@ color: amber-light
 
 ::content::
 
-- 情報理論的な下界により, 決定的アルゴリズムの質問回数は少なくとも$2^{\Omega(n)}$ <a href="https://www.sciencedirect.com/science/article/abs/pii/002001909490037X" class="cite-reference">Azar, Broder, Frieze, IPL 1994</a>
+- 情報理論的な下界により, 決定的アルゴリズムの質問回数は少なくとも$2^{\Omega(n)}$ <a href="https://www.sciencedirect.com/science/article/abs/pii/002001909490037X" class="cite-reference">\[Azar, Broder, Frieze, IPL(1994)\]</a>
   - 答えの$2^{n/(\log n)^2}$倍以内の近似値すら求められない
-- 有限体上の線形マトロイドの基の数え上げは$\#\mathsf{P}$-困難 <a href="https://www.combinatorics.org/ojs/index.php/eljc/article/view/v19i4p41" class="cite-reference">Snook, Electron. J. Comb. 2012</a>
+- 有限体上の線形マトロイドの基の数え上げは$\#\mathsf{P}$-困難 <a href="https://www.combinatorics.org/ojs/index.php/eljc/article/view/v19i4p41" class="cite-reference">\[Snook, Electron. J. Comb.(2012)\]</a>
   - $\#\mathsf{P}$-困難: $\mathsf{NP}$困難以上に難しく, 多項式時間では解けないと信じられている
 
 <div class="topic-box">
@@ -1630,7 +1631,7 @@ color: amber-light
 
 ::content::
 
-- <a href="https://www.sciencedirect.com/science/article/pii/030439758690174X" class="cite-reference">[Jerrum, Valiant, Vazirani, TCS, 1986]</a>は, 離散構造の再帰的な性質とMCMCを組み合わせたアプローチを提案.
+- <a href="https://www.sciencedirect.com/science/article/pii/030439758690174X" class="cite-reference">\[Jerrum, Valiant, Vazirani, TCS(1986)\]</a>は, 離散構造の再帰的な性質とMCMCを組み合わせたアプローチを提案.
 
 <div class="topic-box">
 
@@ -1715,6 +1716,33 @@ color: amber-light
 #### 今後の(個人的)展望
 
 - マトロイドに基づく誤り訂正符号の解析: $\mathbb{F}^V \ni x \mapsto (x(B))_{B\in \calB} \in \mathbb{F}^\calB$ (ただし $x(B)=\sum_{u\in B}x(u)$)
-- $\calB=\binom{V}{k}$のときは誤り訂正能力を持つ <a href="https://epubs.siam.org/doi/10.1137/080734030" class="cite-reference">\[Impagliazzo, Jaiswal, Kabanets, Wigderson, SIAM J. Comput. 2010\]</a>
+- $\calB=\binom{V}{k}$のときは誤り訂正能力を持つ <a href="https://epubs.siam.org/doi/10.1137/080734030" class="cite-reference">\[Impagliazzo, Jaiswal, Kabanets, Wigderson, SIAM J. Comput.(2010)\]</a>
 </v-click>
+
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# その他の参考資料
+
+::content::
+
+- <a href="https://nobutakashimizu.github.io/lecture_May2024/main.pdf" class="cite-reference">高次元エクスパンダーとその応用 (清水による講義資料)</a>
+  - エクスパンダーグラフと高次元エクスパンダーに関する講義資料
+
+
+- <a href="https://www.ams.org/journals/bull/2006-43-04/S0273-0979-06-01126-8/" class="cite-reference">Expander graphs and their applications (Hoory, Linial, Wigderson, Bull. Amer. Math. Soc.(2006))</a>
+  - エクスパンダーグラフの基本的な性質とTCSでの応用に関するサーベイ論文
+
+- <a href="https://cseweb.ucsd.edu/classes/sp21/cse291-g/" class="cite-reference">Expander graphs and High-Dimensional Expanders (Hopkins, Lovett, 2021)</a>
+  - 高次元エクスパンダーに関する講義資料
+
+- <a href="https://cs.uwaterloo.ca/~lapchi/cs860-2022/notes.html" class="cite-reference">Eigenvalues and Polynomials (Lau, 2022) </a>
+  - 高次元エクスパンダーに関する講義資料
+
+- <a href="https://mattbaker.blog/2015/12/14/hodge-theory-in-combinatorics/" class="cite-reference">Hodge Theory in Combinatorics (Matt Bakerのブログ)</a>
+  - Lorenzian多項式の応用としてマトロイドの基サンプリングの紹介
 
