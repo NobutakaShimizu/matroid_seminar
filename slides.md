@@ -38,6 +38,43 @@ themeConfig:
   </div>
 
 ---
+layout: top-title-two-cols
+color: amber-light
+---
+
+::title::
+
+# 講演の構成
+
+::left::
+
+### 前半
+
+1. 理論計算機科学とマトロイド
+2. エクスパンダーグラフ
+   - グラフ上のランダムウォーク
+   - エクスパンダー性の定義と性質
+3. 単体複体
+   - 定義と例
+   - 幾何的な意味合い
+4. 高次元エクスパンダー性
+   - 大域エクスパンダー性
+   - 局所エクスパンダー性
+
+::right::
+
+### 後半
+
+5. マトロイド
+   - 定義と例
+   - エクスパンダー性の証明
+6. 応用: 基の数え上げ
+   - 決定的アルゴリズムの限界
+   - MCMCに基づく近似アルゴリズム
+   - 近年の研究動向
+7. まとめと展望
+
+---
 layout: top-title
 color: amber-light
 ---
@@ -1699,6 +1736,9 @@ color: amber-light
 ::content::
 
 - 簡単のため, 変数$x_u$での偏微分を$\partial_u$と表し, 母関数$g_X(x)=\sum_{\sigma\in X(d)} \prod_{u\in \sigma}x_u$とする
+
+<v-clicks>
+
 - このとき, $\partial_u g_X(x) = \sum_{\sigma\in X(d),\sigma\ni u} \prod_{i\in \sigma\setminus\{u\}} x_i$ = リンク$X_{\{u\}}$の母関数
   - すなわち, 母関数の微分 = リンクの母関数
 - $\log g_X$を偏微分して$x=\mathbf{1}$を代入すると
@@ -1719,6 +1759,7 @@ $$
   - これが$i\ne j$で負$\Rightarrow$ $i\in\sigma$と$j\in\sigma$は負の相関を持つ (balanced matroid) <a href="https://dl.acm.org/doi/10.1145/129712.129716" class="cite-reference">\[Feder, Mihail, STOC(1992)\]</a>
   - 対数凹性は, これを$(i,j)$成分に持つ行列が半負定値であるという性質
 
+</v-clicks>
 
 ---
 layout: top-title
