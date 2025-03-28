@@ -124,6 +124,28 @@ color: amber-light
   マトロイドはTCSと純粋数学の間の架け橋の一つ
 </div>
 
+---
+layout: top-title
+color: amber-light
+---
+
+::title::
+
+# 数学の賞を受賞したTCS研究者
+
+::content::
+
+- [C. Shannon](https://en.wikipedia.org/wiki/Claude_Shannon): 京都賞(1985)
+- [L. Lovász](https://en.wikipedia.org/wiki/L%C3%A1szl%C3%B3_Lov%C3%A1sz): アーベル賞(2021)
+- [A. Wigderson](https://en.wikipedia.org/wiki/Avi_Wigderson): アーベル賞(2021)
+- [A. Kitaev](https://en.wikipedia.org/wiki/Alexei_Kitaev): ポアンカレ賞(2024)
+- [N. Alon](https://en.wikipedia.org/wiki/Noga_Alon): ウルフ賞(2024)
+- [A. Shamir](https://en.wikipedia.org/wiki/Adi_Shamir): ウルフ賞(2024)
+
+<div class="topic-box">
+
+最近は理論計算機科学も数学の中で重要な分野として認識されている
+</div>
 
 ---
 layout: top-title-two-cols
